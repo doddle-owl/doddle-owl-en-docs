@@ -54,8 +54,8 @@ source_suffix = '.rst'
 master_doc = 'index'
 
 # General information about the project.
-project = u'doddle-owl'
-copyright = u'2016, Takeshi Morita'
+project = u'DODDLE-OWL'
+copyright = u'2016-2017, Takeshi Morita'
 author = u'Takeshi Morita'
 
 # The version info for the project you're documenting, acts as replacement for
@@ -212,6 +212,8 @@ htmlhelp_basename = 'doddle-owl docs'
 
 # -- Options for LaTeX output ---------------------------------------------
 
+latex_docclass = {'manual': 'jsbook'}
+
 latex_elements = {
 # The paper size ('letterpaper' or 'a4paper').
 #'papersize': 'letterpaper',
@@ -361,6 +363,8 @@ epub_exclude_files = ['search.html']
 # If false, no index is generated.
 #epub_use_index = True
 
+numfig = True
+numfig_secnum_depth = (2)
 
 # Example configuration for intersphinx: refer to the Python standard library.
 intersphinx_mapping = {'https://docs.python.org/': None}
