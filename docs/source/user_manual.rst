@@ -544,10 +544,10 @@ Basic Tab
 .. _option-dialog-basic:
 .. figure:: figures/option-dialog-basic.png
    :scale: 80 %
-   :alt: オプションダイアログ：基本
+   :alt: Option Dialog: Basic Tab
    :align: center
 
-   オプションダイアログ：基本
+   Option Dialog: Basic Tab
 
 Folder Tab
 ---------------------
@@ -578,10 +578,10 @@ perl.exe
 .. _option-dialog-folder:
 .. figure:: figures/option-dialog-folder.png
    :scale: 80 %
-   :alt: オプションダイアログ：フォルダ
+   :alt: Option Dialog: Folder Tab
    :align: center
 
-   オプションダイアログ：フォルダ
+   Option Dialog: Folder Tab
 
 Input Concept Selection Tab
 --------------------------------
@@ -590,10 +590,10 @@ Input Concept Selection Tab
 .. _option-dialog-input-concept-selection:
 .. figure:: figures/option-dialog-input-concept-selection.png
    :scale: 80 %
-   :alt: オプションダイアログ：入力概念選択
+   :alt: Option Dialog: Input Concept Selection Tab
    :align: center
 
-   オプションダイアログ：入力概念選択
+   Option Dialog: Input Concept Selection Tab
 
 Comound Word Tab
 ---------------------------------
@@ -602,10 +602,10 @@ Comound Word Tab
 .. _option-dialog-compound-word:
 .. figure:: figures/option-dialog-compound-word.png
    :scale: 80 %
-   :alt: オプションダイアログ：複合語
+   :alt: Option Dialog: Compound Word Tab
    :align: center
 
-   オプションダイアログ：複合語
+   Option Dialog: Compound Word Tab
 
 Display Tab
 -------------------------
@@ -615,11 +615,10 @@ Display Tab
 .. _option-dialog-display:
 .. figure:: figures/option-dialog-display.png
    :scale: 80 %
-   :alt: オプションダイアログ：表示
+   :alt: Option Dialog: Display Tab
    :align: center
 
-   オプションダイアログ：表示
-
+   Option Dialog: Display Tab
 
 Menu
 ===================
