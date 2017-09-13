@@ -16,15 +16,15 @@ Web 上の既存オントロジーを獲得するために，オントロジー�
 .. _implementation_architecture:
 .. figure:: figures/implementation-architecture-of-doddle-owl.svg
    :scale: 100 %
-   :alt: DODDLE-OWLの実装アーキテクチャ
+   :alt: Implementation Architecture of DODDLE-OWL
    :align: center
 
-   DODDLE-OWLの実装アーキテクチャ
+   Implementation Architecture of DODDLE-OWL
 
-オントロジー選択モジュール
+Ontology Selection Panel
 ======================================
 
-Swoogle を用いた既存オントロジーの獲得
+Aquiring existing ontologies using Swoogle
 ----------------------------------------------------
 オントロジー検索エンジンSwoogle は19 種類のREST 形式のWeb サービス（Swoogle　Web サービス）を提供している．ユーザはURL を用いてクエリーを作成し，RDF/XML形式の検索結果を得ることができる．:numref:`swoogle-web-service-io` に領域オントロジー構築支援に利用可能なSwoogle Web サービスとその入出力を示す．:numref:`swoogle-web-service-io` のSWT (Semantic Web Term) はクラスまたはプロパティを表す．SWD (Semantic Web Document) はRDF/XML，N-Triple，N3 形式で記述されたRDF 文書を表す．SWO (Semantic Web Ontology) はクラスおよびプロパティの定義の割合が8 割以上のSWD を表す．
 
@@ -91,7 +91,7 @@ Swoogle を用いた既存オントロジーの獲得
 
 .. _extracting-ontology-elements-using-sparql-template:
 
-SPARQL テンプレートを用いたオントロジー要素抽出
+Extracting ontological elements using SPARQL templates
 ---------------------------------------------------------------------
 :numref:`sparql-template1` から :numref:`sparql-template5` にRDFS，DAML，OWL語彙におけるオントロジーの要素を抽出するためのSPARQLで記述したテンプレートを示す．:numref:`sparql-template3` の見出しと説明抽出テンプレートを直接SPARQL のクエリーとした場合，OWLオントロジー中のすべてのrdfs:labelおよびrdfs:comment プロパティの値を抽出してしまう．オントロジー選択モジュールでは?concept 変数の部分を取得したい概念（クラスまたはプロパティ）のURIに置換することにより，特定の概念の見出しおよび説明のみを抽出できるようにしている．他のテンプレートも同様にテンプレートを直接SPARQLのクエリーとして用いるのではなく，変数部分をオントロジー選択モジュールが適切なURIに置換したものを最終的なSPARQLのクエリーとしている．?concept, ?subConcept, ?class, ?property, ?label, ?description,?domain, ?range 変数を用いてトリプルのパターンを各オントロジーの要素を抽出するテンプレートに記述し，テンプレートをOWLオントロジーに対応づけることで，様々なクラス，プロパティ，構造により表現されたオントロジーの要素を抽出することが可能となる．
 
@@ -180,7 +180,7 @@ SPARQL テンプレートを用いたオントロジー要素抽出
          {?property daml10:domain ?domain} UNION {?property daml10:range ?range}
      }
 
-汎用オントロジー選択パネル
+General Ontology Selection Panel
 -------------------------------------------
 :numref:`ontology-selection-panel` に汎用オントロジー選択パネルを示す．:numref:`ontology-selection-panel` -1 に示す，5 種類の汎用オントロジー（WordNet，日本語WordNet，日本語Wikipediaオントロジー，EDR 一般辞書，EDR 専門辞書）の中から参照オントロジーを選択する．WordNetについては，ver.3.0とver.3.1のいずれかを選択できる．チェックボックスにチェックをつけた汎用オントロジーを用いて，その後，領域オントロジーにおける概念階層を構築する．領域によっては，一つの汎用オントロジーだけでは語彙を網羅しきれない場合があるため，複数の汎用オントロジーを組み合わせて利用できるようにしている．:numref:`ontology-selection-panel` -2 の名前空間テーブルは，名前空間URI とその名前空間接頭辞の対応関係を管理している．:numref:`ontology-selection-panel` -3 に接頭辞と名前空間を入力し，:numref:`ontology-selection-panel` -3 右側の「追加」ボタンで追加することができる．
 
@@ -188,36 +188,36 @@ SPARQL テンプレートを用いたオントロジー要素抽出
 .. _ontology-selection-panel:
 .. figure:: figures/ontology-selection-panel.png
    :scale: 80 %
-   :alt: 汎用オントロジー選択パネル
+   :alt: General Ontology Selection Panel
    :align: center
 
-   汎用オントロジー選択パネル
+   General Ontology Selection Panel
 
 
-OWLオントロジー選択パネル
+OWL Ontology Selection Panel
 ------------------------------------------
 :numref:`owl-ontology-selection-panel` にOWL オントロジー選択パネルを示す．:numref:`owl-ontology-selection-panel` -1 の「追加（ファイル）」または「追加(URI)」ボタンにより，参照オントロジーとする既存OWLオントロジーを選択する．:numref:`owl-ontology-selection-panel` -3 には，:numref:`owl-ontology-selection-panel` -1 のオントロジーリスト中で選択したオントロジーのOWLメタデータが表示される．また，:numref:`owl-ontology-selection-panel` -2 において，OWLオントロジー中から抽出する要素を決定するためのSPARQL テンプレートを指定する．SPARQL テンプレートの種類として， :ref:`extracting-ontology-elements-using-sparql-template` で述べた5 種類が利用できる．
 
 .. _owl-ontology-selection-panel:
 .. figure:: figures/owl-ontology-selection-panel.png
    :scale: 80 %
-   :alt: OWLオントロジー選択パネル
+   :alt: OWL Ontology Selection Panel
    :align: center
 
-   OWLオントロジー選択パネル
+   OWL Ontology Selection Panel
 
 
-入力文書選択パネル
+Input Document Selection Panel
 =================================
 :numref:`input-document-selection-panel` に入力文書選択パネルを示す．入力文書選択パネルでは，領域に関連する英語または日本語で記述された文書を選択する．入力文書選択パネルでは，Apache POIとApache PDFBoxを用いて，様々な形式（Word, Excel, PowerPoint, PDF など）のファイルからテキストデータを抽出できる．単語を抽出する際には，抽出する単語の品詞を指定できるようにしている．名詞，動詞，その他の品詞，複合語のいずれかを抽出することができる．以下に :numref:`input-document-selection-panel` の各部分について説明する．
 
 .. _input-document-selection-panel:
 .. figure:: figures/input-document-selection-panel.png
    :scale: 80 %
-   :alt: 入力文書選択パネル
+   :alt: Input Document Selection Panel
    :align: center
 
-   入力文書選択パネル
+   Input Document Selection Panel
 
 #. 入力文書のリストを表示する．
 #. 入力文書の記述言語（日本語または英語）の選択と入力文書の追加および削除を行う．
@@ -226,21 +226,21 @@ OWLオントロジー選択パネル
 #. 抽出する語の品詞，複合語を抽出するかどうか，1文字の語を抽出するかどうかを選択する．
 #. 1の入力文書リストで選択された文書中から5で指定した条件の語を抽出する．
 
-入力語選択パネル
+Input Term Selection Panel
 =================================
 入力語選択パネルは，入力文書ビューア，入力語情報テーブル，削除語情報テーブルから構成される．以下では，各構成要素について説明する．
 
-入力文書ビューア
+Input Document Viewer
 --------------------------
 入力文書ビューアでは，入力文書の内容を見ながらユーザは入力語の選択を行うことができる．:numref:`input-document-viewer` に入力文書ビューアのスクリーンショットを示す．以下では，入力文書ビューアの各部分について説明する．
 
 .. _input-document-viewer:
 .. figure:: figures/input-document-viewer.png
    :scale: 80 %
-   :alt: 入力文書ビューア
+   :alt: Input Document Viewer
    :align: center
 
-   入力文書ビューア
+   Input Document Viewer
 
 #. 入力文書リストを表示する．
 #. 1で選択した入力文書の内容を3に表示する際に，文書中の行範囲を選択する．
@@ -250,17 +250,17 @@ OWLオントロジー選択パネル
 #. 自動用語抽出により，抽出できなかった用語を手動で追加することができる．3において用語を範囲選択し，マウスを右クリックすることでも，同様に手動で用語を追加することができる．追加された用語は，3において青色のハイパーリンクが張られる．
 #. 3に表示される入力文書の内容にハイパーリンクを張る用語の種類（複合語，名詞，動詞，その他の品詞）を選択する．
 
-入力語情報テーブル
+Input Term Table
 ---------------------------------
 入力語情報テーブルでは，入力文書から自動抽出された語から入力語を選択することができる．:numref:`input-term-table` に入力語情報テーブルのスクリーンショットを示す．以下では，入力語情報テーブルの各部分について説明する．
 
 .. _input-term-table:
 .. figure:: figures/input-term-table.png
    :scale: 80 %
-   :alt: 入力語情報テーブル
+   :alt: Input Term Table
    :align: center
 
-   入力語情報テーブル
+   Input Term Table
 
 #. ユーザが入力した用語で3に表示する用語情報リストを絞り込む．
 #. ユーザが入力した品詞で3に表示する用語情報リストを絞り込む．
@@ -270,7 +270,7 @@ OWLオントロジー選択パネル
 #. 「入力語リストに追加」ボタンを押すと，3の中で選択された行の用語を5の入力語リストに追加する．「削除」ボタンを押すと，3の中で選択された用語情報の用語を「削除語テーブル」に移す．
 #. 5に入力された入力語を設定し，入力概念選択パネルに移る．「入力語彙をセット」ボタンを押した場合は，新規に入力語リストを入力概念選択パネルに設定する．「入力語彙を追加」ボタンを押した場合は，設定済みの入力語リストに新たに入力語を追加する．
 
-削除語情報テーブル
+Removed Term Table
 ------------------------------------
 削除語情報テーブルには，入力語情報テーブルから削除された用語情報のリストが表示される．:numref:`removed-term-table` に削除語情報テーブルのスクリーンショットを示す．削除語情報テーブルの各部分は，入力語情報テーブルと同様である．異なる点は，「戻す」ボタンと「完全削除」ボタンである．「戻す」ボタンにより，誤って削除語情報テーブルに移動させてしまった用語情報を入力語情報テーブルに戻すことができる．「完全削除」ボタンにより，用語情報をリストから完全に削除することができる．
 
@@ -278,22 +278,22 @@ OWLオントロジー選択パネル
 .. _removed-term-table:
 .. figure:: figures/removed-term-table.png
    :scale: 80 %
-   :alt: 削除語情報テーブル
+   :alt: Removed Term Table
    :align: center
 
-   削除語情報テーブル
+   Removed Term Table
 
-入力概念選択パネル
-============================
+Input Concept Selection Panel
+==================================
 :numref:`input-concept-selection-panel` に入力概念選択パネルを示す．入力概念選択パネルでは，入力語と参照オントロジー中の概念との対応付けを行う．語には多義性があり，ある入力語を見出しとして持つ概念が複数存在する可能性がある．入力概念選択パネルでは，対象領域にとって最も適切な入力語に対応する概念を選択する際の支援を行う．以下に入力概念選択パネルの構成要素の説明を示す．
 
 .. _input-concept-selection-panel:
 .. figure:: figures/input-concept-selection-panel.png
    :scale: 80 %
-   :alt: 入力概念選択パネル
+   :alt: Input Concept Selection Panel
    :align: center
 
-   入力概念選択パネル
+   Input Concept Selection Panel
 
 #. **用語リスト**: 入力語彙の中で参照オントロジー中の概念見出しと完全照合または部分照合した用語のリストを表示する．
 #. **概念リスト**: 1で選択された語を見出しとしてもつ参照オントロジー中の概念のリストを表示する．
@@ -303,17 +303,17 @@ OWLオントロジー選択パネル
 #. **入力文書**: 1で選択された語の入力文書中の出現箇所を表示する．
 #. **階層構築オプション**: 階層構築における条件を設定する．
 
-用語リスト
+Term List
 -----------------------
 :numref:`input-concept-selection-panel-term-list` は :numref:`input-concept-selection-panel` -1 用語リストを拡大した図である．以下では，入力概念選択パネルの用語リストの各部分について説明する．
 
 .. _input-concept-selection-panel-term-list:
 .. figure:: figures/input-concept-selection-panel-term-list.png
    :scale: 80 %
-   :alt: 入力概念選択パネル: 用語リスト
+   :alt: Input Concept Selection Panel: Term List
    :align: center
 
-   入力概念選択パネル: 用語リスト
+   Input Concept Selection Panel: Term List
 
 #. テキストフィールドに検索キーワードを入力し，検索ボタンを押すと2および3の完全照合語リストおよび部分照合語リストに検索キーワードを含む入力語のみが表示される．
 #. 完全照合語リストを表示する．1番目の括弧内には，入力語を見出しとする参照オントロジー中の概念の数が表示される．システムが自動的に追加した入力語は，2番目の括弧内に「自動追加」と表示される．
@@ -333,31 +333,31 @@ OWLオントロジー選択パネル
 
 #. 入力語の追加および削除を行うことができる．
 
-概念リスト
+Concept List
 -------------------
 :numref:`input-concept-selection-panel-concept-list` は :numref:`input-concept-selection-panel` -2「概念リスト」を拡大した図である．
 
 .. _input-concept-selection-panel-concept-list:
 .. figure:: figures/input-concept-selection-panel-concept-list.png
    :scale: 80 %
-   :alt: 入力概念選択パネル: 概念リスト
+   :alt: Input Concept Selection Panel: Concept List
    :align: center
 
-   入力概念選択パネル: 概念リスト
+   Input Concept Selection Panel: Concept List
 
 概念リストは，:numref:`input-concept-selection-panel-term-list` -2 または-3で選択した完全照合語または部分照合語を見出しとして持つ参照オントロジー中の概念のリストを表示する．:numref:`input-concept-selection-panel-concept-list` は，「エネルギー」を見出しとして持つ参照オントロジー（この例では日本語WordNetを参照オントロジーとしている）中の概念リストを示している．リストの項目は，三つの部分から構成されている．左側は，入力モジュールの設計で述べた，自動概念選択方法により求めた，入力語に対応する概念候補の評価値を示す．入力語に対応する概念候補は，評価値の降順に並び替えて表示される．評価値が高い概念ほど，より入力概念となる可能性が高い概念となる．中央は概念のID をあらわす．概念のID はURIで表され，画面上には修飾名が表示される．jwn は日本語WordNet の名前空間接頭辞を示しており，ここで表示される接頭辞は，汎用オントロジー選択パネル ( :numref:`ontology-selection-panel` -2) で示した名前空間テーブルで設定した名前空間接頭辞となる．右側には，概念の見出しが複数ある場合，そのうちのいずれか一つが表示される．
 
-概念情報
+Concept Information
 --------------------
 :numref:`input-concept-selection-panel-concept-info` は :numref:`input-concept-selection-panel` -3「概念情報」を拡大した図である．
 
 .. _input-concept-selection-panel-concept-info:
 .. figure:: figures/input-concept-selection-panel-concept-info.png
    :scale: 80 %
-   :alt: 入力概念選択パネル: 概念情報
+   :alt: Input Concept Selection Panel: Concept Information
    :align: center
 
-   入力概念選択パネル: 概念情報
+   Input Concept Selection Panel: Concept Information
 
 「概念情報」には，:numref:`input-concept-selection-panel-concept-list` の「概念リスト」で選択された概念の見出しと説明が表示される．「言語」リストで選択した言語の見出しおよび説明が「見出し」リストおよび「説明」リストに表示される．:numref:`input-concept-selection-panel-concept-info` 下部の「構築オプション」では，概念階層の構築方法を設定することができる．「構築オプション」には，:numref:`input-concept-selection-panel-term-list` 「用語リスト」で選択する用語の種類に応じて3 種類の表示方法がある．:numref:`input-concept-selection-panel-term-list` -2で完全照合語を選択した場合，:numref:`input-concept-selection-panel-concept-info` 左側のように「構築オプション」には何も表示されない．:numref:`input-concept-selection-panel-term-list` -2でシステムが自動的に追加した完全照合語（「自動追加」が表示される完全照合語）を選択した場合には，:numref:`input-concept-selection-panel-concept-info` 中央のように「構築オプション」には「下位概念に置換」するかどうかを選択するチェックボックスが表示される．:numref:`input-concept-selection-panel-term-list` -3で部分照合語を選択した場合には :numref:`input-concept-selection-panel-concept-info` 右側のように「構築オプション」には，「同一概念」か「下位概念」かの選択をするためのラジオボタンが表示される．
 
@@ -368,17 +368,17 @@ OWLオントロジー選択パネル
 
 :numref:`input-concept-selection-panel-concept-info` 右側の「構築オプション」の例として，「発電」と「火力発電」を入力語とした場合を考える．上記と同様に「火力発電」は「発電」で照合する部分照合語である．「火力発電」の入力概念選択を行う際に，:numref:`input-concept-selection-panel-concept-info` 右側の「構築オプション」が表示される．「同一概念」のほうを選択した場合は，概念階層構築時に「火力発電」は「発電」と同一概念として扱われる．つまり，「火力発電」は「発電」概念に対応する参照オントロジー中の概念の別見出しとして概念階層が構築される．一方，「下位概念」のほうを選択した場合は，「火力発電」は「発電」とは異なる概念，ここでは，「発電」の下位概念として概念階層が構築される．初期状態において，部分照合語を「同一概念」とみなすか，「下位概念」とみなすかは，オプションダイアログにより設定することができる．
 
-階層構築オプション
+Construct Concept Tree Option
 -------------------------------
 :numref:`input-concept-selection-panel-construct-concept-tree-option` は :numref:`input-concept-selection-panel` -7「階層構築オプション」を拡大した図である．
 
 .. _input-concept-selection-panel-construct-concept-tree-option:
 .. figure:: figures/input-concept-selection-panel-construct-concept-tree-option.png
    :scale: 80 %
-   :alt: 入力概念選択パネル: 階層構築オプション
+   :alt: Input Concept Selection Panel: Construct Concept Tree Option
    :align: center
 
-   入力概念選択パネル: 階層構築オプション
+   Input Concept Selection Panel: Construct Concept Tree Option
 
 「階層構築オプション」では，クラスおよびプロパティ階層構築モジュールにおいて，クラスおよびプロパティ階層を構築する際のパラメータの設定を行う．「階層構築オプション」は，「完全照合オプション」および「部分照合オプション」から構成される．
 
@@ -388,17 +388,17 @@ OWLオントロジー選択パネル
 
 :numref:`input-concept-selection-panel-construct-concept-tree-option` 右端にある「クラス階層構築」ボタンを押すと，上記の階層構築オプションに基づいて，クラス階層構築パネルにクラス階層のみが構築される．「クラスおよびプロパティ階層構築」ボタンを押すと，上記の階層構築オプションに基づいて，クラス階層構築パネルおよびプロパティ階層構築パネルに，クラス階層およびプロパティ階層が構築される．クラス階層とプロパティ階層の両方を構築するためには，参照オントロジーとしてEDR一般辞書またはプロパティ階層を含むOWLオントロジーを設定しなければならない．
 
-クラス階層構築パネル
+Construct Class Tree Panel
 =================================================
 :numref:`construct-class-tree-panel` にクラス階層構築パネルを示す．
 
 .. _construct-class-tree-panel:
 .. figure:: figures/construct-class-tree-panel.png
    :scale: 80 %
-   :alt: クラス階層構築パネル
+   :alt: Construct Class Tree Panel
    :align: center
 
-   クラス階層構築パネル
+   Construct Class Tree Panel
 
 以下に各部分の説明を示す．
 
@@ -409,17 +409,17 @@ OWLオントロジー選択パネル
 
 以下では， :numref:`construct-class-tree-panel` 2から4の詳細を説明する．
 
-概念情報パネル
+Concept Information Panel
 -------------------------------
 :numref:`construct-class-tree-panel-concept-info` は :numref:`construct-class-tree-panel` -2. 概念情報パネルを拡大した図である．
 
 .. _construct-class-tree-panel-concept-info:
 .. figure:: figures/construct-class-tree-panel-concept-info.png
    :scale: 80 %
-   :alt: クラス階層構築パネル: 概念情報パネル
+   :alt: Construct Class Tree Panel: Concept Information Panel
    :align: center
 
-   クラス階層構築パネル: 概念情報パネル
+   Construct Class Tree Panel: Concept Information Panel
 
 以下では，概念情報パネルの各部分について説明する．
 
@@ -429,17 +429,17 @@ OWLオントロジー選択パネル
 #. 概念変動管理情報を表示・編集するための領域である．「ノードのタイプ」は，編集対象のノードがSIN（参照オントロジーから抽出した概念）かベストマッチノード（入力概念）かを表示する．SIN の中でベストマッチノードとしたいノードについては，ここでノードのタイプをSIN からベストマッチに変更することができる．「剪定概念数」は，階層構築時の剪定により，選択された概念とその上位概念の間の概念がいくつ削除されたかを表示している．「多重継承」は，編集対象のノードが多重継承をしているかしていないかを表している．多重継承をしている場合は「true」，していない場合は「false」と表示される． 
 #. 3 の「追加」または「編集」ボタンを押すと表示される．「言語」と「説明」を入力し，「OK」ボタンを押すと，概念の説明の追加や編集を行うことができる．また，「削除」ボタンにより選択された概念の説明を削除することができる．
 
-Is-a 階層およびHas-a 階層パネル
+Is-a and Has-a Hierarchy Panel
 ----------------------------------------
 :numref:`construct-class-tree-panel-isa-hasa-tree-panel` は :numref:`construct-class-tree-panel` -3を拡大した図である．:numref:`construct-class-tree-panel-isa-hasa-tree-panel` の左側がIs-a 階層パネルを右側がHas-a階層パネルを示している．
 
 .. _construct-class-tree-panel-isa-hasa-tree-panel:
 .. figure:: figures/construct-class-tree-panel-isa-hasa-tree-panel.png
    :scale: 80 %
-   :alt: クラス階層構築パネル: Is-a階層パネルとHas-a階層パネル
+   :alt: Construct Class Tree Panel: Is-a and Has-a Hierarchy Panel
    :align: center
 
-   クラス階層構築パネル: Is-a階層パネルとHas-a階層パネル
+   Construct Class Tree Panel: Is-a and Has-a Hierarchy Panel
 
 #. 概念階層中の概念を検索するための領域である．テキストフィールドに検索キーワードを入力し，「検索」ボタンを押すと検索オプションを満たす概念が選択される．候補が複数ある場合には，「次」ボタンまたは「前」ボタンで別の概念候補に移動できる．検索オプションとしては，言語，概念の見出し，概念の説明が選択できる．また，「完全一致検索」チェックボックスにチェックをいれると，入力した検索キーワードと完全に一致する見出しや説明を含む概念のみが検索される．「完全一致検索」チェックボックスにチェックが入っていない場合は部分一致検索となり，検索キーワードを見出しまたは説明の一部に含む概念が検索される．「URI 検索」チェックボックスにチェックをいれると，概念のURI も検索対象となる．「大文字と小文字の区別」チェックボックスにチェックをいれると，英語見出しまたは説明を検索する際に，大文字と小文字を区別して検索する．
 #. Is-a 階層およびHas-a 階層の編集に利用可能なツールバー．ツールバーは，階層中の概念をマウスで右クリックした際に表示される， :numref:`construct-class-tree-panel-popup-menu` のポップアップメニューと同様の機能を持つ．
@@ -448,10 +448,10 @@ Is-a 階層およびHas-a 階層パネル
 .. _construct-class-tree-panel-popup-menu:
 .. figure:: figures/construct-class-tree-panel-popup-menu.png
    :scale: 80 %
-   :alt: クラス階層構築パネル: ポップアップメニュー
+   :alt: Construct Class Tree Panel: Popup menu
    :align: center
 
-   クラス階層構築パネル: ポップアップメニュー
+   Construct Class Tree Panel: Popup menu
 
 :numref:`construct-class-tree-panel-popup-menu`  はIs-a 階層パネルのポップアップメニューを示している．Is-a 階層パネルとHas-a階層パネルの主な違いとして，Has-a 階層パネルではIs-a 階層パネルで定義された概念を用いてHas-a 関係を定義する点が異なる．また，Has-a 階層では，以下で説明する「概念の削除」を行うことはできない．
 
@@ -460,24 +460,24 @@ DODDLE-OWLにおける概念の削除は3 種類ある．「概念の削除」�
 .. _construct-class-tree-panel-node-icon:
 .. figure:: figures/construct-class-tree-panel-node-icon.png
    :scale: 80 %
-   :alt: クラス階層構築パネル: ノードのアイコン
+   :alt: Construct Class Tree Panel: Node icon
    :align: center
 
-   クラス階層構築パネル: ノードのアイコン
+   Construct Class Tree Panel: Node icon
 
 クラス階層構築パネルにおけるIs-a 階層パネルとHas-a 階層パネルのクラスには， :numref:`construct-class-tree-panel-node-icon` に示す4 種類がある．
 
-概念変動管理パネル
--------------------------------
+Concept Drift Management Panel
+---------------------------------
 :numref:`construct-class-tree-panel-concept-drift-management-panel` は :numref:`construct-class-tree-panel` -4 概念変動管理パネルの各タブを展開し，拡大した図である．
 
 .. _construct-class-tree-panel-concept-drift-management-panel:
 .. figure:: figures/construct-class-tree-panel-concept-drift-management-panel.png
    :scale: 80 %
-   :alt: クラス階層構築パネル: 概念変動管理パネル
+   :alt: Construct Class Tree Panel: Concept Drift Management Panel
    :align: center
 
-   クラス階層構築パネル: 概念変動管理パネル
+   Construct Class Tree Panel: Concept Drift Management Panel
 
 以下では，概念変動管理パネルの各部分について説明する．
 
@@ -485,41 +485,41 @@ DODDLE-OWLにおける概念の削除は3 種類ある．「概念の削除」�
 #. 剪定結果分析の結果をリストで表示する．2下部の「剪定概念リスト」は，概念階層構築時に剪定された，選択した概念とその上位概念の間の概念が提示されている．「剪定結果分析」ボタンを押すと，ボタン左側のテキストフィールドに指定した数よりも多くの中間概念が削除された概念をリストに表示する．また，剪定結果分析結果を確認し，修正する必要がない場合，もしくは，修正後に「剪定結果分析結果の確認」ボタンを押すことで，選択した項目をリストから削除することができる．（当該概念の剪定概念数がゼロとなる）
 #. 多重継承している概念のリストを表示する．リストの項目を選択すると，3下部に多重継承しているノードのリストが表示される．このノードを選択すると，Is-a 階層パネル中の概念に移動し，ノードを選択する．「上位概念へのリンクを削除」ボタンを押すと，選択した概念と上位概念の間の関係が削除される．
 
-プロパティ階層構築パネル
+Construct Property Tree Panel
 ========================================================
 :numref:`construct-property-tree-panel` にプロパティ階層構築パネルを示す．
 
 .. _construct-property-tree-panel:
 .. figure:: figures/construct-property-tree-panel.png
    :scale: 80 %
-   :alt: プロパティ階層構築パネル
+   :alt: Construct Property Tree Panel
    :align: center
 
-   プロパティ階層構築パネル
+   Construct Property Tree Panel
 
 プロパティ階層構築パネルの構成要素の大部分は，クラス階層構築パネルと同様である．異なる点は， :numref:`construct-property-tree-panel` -1の概念定義パネルがある点である．概念定義パネルは，汎用オントロジーとしてEDR 一般辞書を指定し，プロパティ階層を構築した場合，EDR 概念記述辞書における，agent およびobject の関係にある概念を定義域および値域として自動的に定義している．また，クラス階層を参照し，定義域および値域の追加を行うことも可能である．
 
 .. _construct-property-tree-panel-node-icon:
 .. figure:: figures/construct-property-tree-panel-node-icon.png
    :scale: 80 %
-   :alt: プロパティ階層構築パネル: ノードのアイコン
+   :alt: Construct Property Tree Panel: Node icon
    :align: center
 
-   プロパティ階層構築パネル: ノードのアイコン
+   Construct Property Tree Panel: Node icon
 
 プロパティ階層構築パネルにおけるIs-a 階層パネルとHas-a 階層パネルのプロパティには， :numref:`construct-property-tree-panel-node-icon`  に示す4 種類がある．
 
-関係構築パネル
+Construct Relationship Panel
 =============================================
 :numref:`construct-relationship-panel` に，関係構築パネルのスクリーンショットを示す．
 
 .. _construct-relationship-panel:
 .. figure:: figures/construct-relationship-panel.png
    :scale: 80 %
-   :alt: 関係構築パネル
+   :alt: Construct Relationship Panel
    :align: center
 
-   関係構築パネル
+   Construct Relationship Panel
 
 以下では，関係構築パネルの各部分について説明する．
 
@@ -532,12 +532,12 @@ DODDLE-OWLにおける概念の削除は3 種類ある．「概念の削除」�
 #. 定義域，プロパティ，値域が表示される．プロパティは，プロパティ階層構築パネルから選択することができる．
 #. 不要な概念対が表示される．不要な概念対は，概念定義の候補となる概念対集合から削除されるため，残りの概念定義を行いやすくなっている．
 
-オプションダイアログ
+Option Dialog
 ================================
 「ツール」→「オプションダイアログを表示」メニューを選択するとオプションダイアログが表示される．オプションダイアログでは，DODDLE- OWLにおける様々な設定を行うことができる．オプションダイアログは，「基本」，「フォルダ」，「入力概念選択」，「複合語」，「表示」の各タブから構成 されている． オプションダイアログの下部にある4つのボタンは，それぞれ，設定の保存，設定の適用，設定の削除，オプションダイアログを閉じるために用意されている．「保存」ボタンは，オプションダイアログで設定した内容をWindowsのレジストリに保存することができる（Unixの場合はXML形式 等でユーザごとのフォルダに保存される）．ここで保存した内容は，DODDLE-OWLを再起動後も有効となる．「削除」ボタンによりレジストリに保存された設定を削除できる．以下では，それぞれのタブについて説明する．
 
 
-基本タブ
+Basic Tab
 ---------------------
 :numref:`option-dialog-basic` にオプションダイアログの基本タブを示す．基本タブでは，「言語」，「基本接頭辞」，「基本URI」の設定を行うことができる．「言語」では DODDLE-OWLユーザインタフェースのメニュー等の表示言語や概念の見出しが複数言語用意されていた場合のデフォルト言語を設定するために用いる． 「基本接頭辞」では，OWL形式で領域オントロジーを保存する際の基本URIの接頭辞を設定する．「基本URI」では，OWL形式で領域オントロジーを保 存する際の基本URIを設定する．
 
@@ -549,7 +549,7 @@ DODDLE-OWLにおける概念の削除は3 種類ある．「概念の削除」�
 
    オプションダイアログ：基本
 
-フォルダタブ
+Folder Tab
 ---------------------
 :numref:`option-dialog-folder` にオプションダイアログのフォルダタブを示す．フォルダタブでは，DODDLE-OWLが参照する外部プログラムや辞書データなどのパスを設定する．以下にフォルダタブで設定する項目を示す．
 
@@ -583,7 +583,7 @@ perl.exe
 
    オプションダイアログ：フォルダ
 
-入力概念選択タブ
+Input Concept Selection Tab
 --------------------------------
 :numref:`option-dialog-input-concept-selection` にオプションダイアログの多義性解消タブを示す．入力概念選択タブでは，半自動的に入力概念選択を行う際のオプションを設定する．詳細は，入力概念選択の半自動化を参照．
 
@@ -595,7 +595,7 @@ perl.exe
 
    オプションダイアログ：入力概念選択
 
-複合語タブ
+Comound Word Tab
 ---------------------------------
 :numref:`option-dialog-compound-word` にオプションダイアログの複合語タブを示す．複合語タブでは，多義性解消パネルにおける部分照合単語のオプションを設定する．ユーザがこのオ プションを選択しない場合に，デフォルト状態として，部分照合単語を階層構築時に照合した概念の「下位概念」とするか「同一概念」とするかをラジオボタン で設定できる．
 
@@ -607,7 +607,7 @@ perl.exe
 
    オプションダイアログ：複合語
 
-表示タブ
+Display Tab
 -------------------------
 :numref:`option-dialog-display` にオプションダイアログの表示タブを示す．表示タブでは，クラス階層構築パネル及びプロパティ階層構築パネルにおいて，クラスまたはプロパ ティのノードを表示する際に，接頭辞を表示するかどうかを選択することができる．「修飾名を表示」にチェックをいれた場合，クラスまたはプロパティの名前 空間接頭辞がそれぞれのパネルに表示される．
 
