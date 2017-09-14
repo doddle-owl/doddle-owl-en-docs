@@ -185,47 +185,47 @@ If DODDLE-OWL executes the extracting labels and descriptions template in :numre
 
 General Ontology Selection Panel
 -------------------------------------------
-:numref:`ontology-selection-panel` shows the General Ontology Selection Panel. In the Ontology Selection Module, you can select reference ontologies. The reference ontologies are used in the other modules in DODDLE-OWL.  5 types of general ontologies as shown in :numref:`ontology-selection-panel` -1 (WordNet, Japanese, WordNet, Japanese Wikipedia Ontology, EDR general electronic dictionary, and EDR special electronic dictionary) can be used as reference ontologies in DODDLE-OWL. For WordNet, you can choose either ver.3.0 or ver.3.1. Using general ontologies with checkboxes checked, then build a concept hierarchy in a domain ontology. Depending on the domain, it may not be possible to cover the vocabulary with only one general ontology, so it is possible to combine multiple general ontologies to build domain ontologies.
+:numref:`ontology-selection-panel` shows a screenshot of the General Ontology Selection Panel. In the Ontology Selection Module, the users can select reference ontologies. The reference ontologies are used in the other modules in DODDLE-OWL.  5 types of general ontologies as shown in :numref:`ontology-selection-panel` -1 (WordNet, Japanese, WordNet, Japanese Wikipedia Ontology, EDR general electronic dictionary, and EDR special electronic dictionary) can be used as reference ontologies in DODDLE-OWL. For WordNet, the users can choose either ver.3.0 or ver.3.1. Using general ontologies with checkboxes checked, then build a concept hierarchy in a domain ontology. Depending on the domain, it may not be possible to cover the vocabulary with only one general ontology, so it is possible to combine multiple general ontologies to build domain ontologies.
 
-The namespace table as shown in :numref:`ontology-selection-panel` -2 manages the correspondence between the namespace URI and its namespace prefix. You can input a prefix and a namespace in the :numref:`ontology-selection-panel` -3  and add them by the add button in the right side of :numref:`ontology-selection-panel` -3. 
+The namespace table as shown in :numref:`ontology-selection-panel` -2 manages the correspondence between the namespace URI and its namespace prefix. The users can input a prefix and a namespace in the :numref:`ontology-selection-panel` -3  and add them by the add button in the right side of :numref:`ontology-selection-panel` -3. 
 
 .. _ontology-selection-panel:
 .. figure:: figures/ontology-selection-panel.png
    :scale: 80 %
-   :alt: General Ontology Selection Panel
+   :alt: A screenshot of the General Ontology Selection Panel
    :align: center
 
-   General Ontology Selection Panel
+   A screenshot of the General Ontology Selection Panel
 
 OWL Ontology Selection Panel
 ------------------------------------------
-:numref:`owl-ontology-selection-panel` shows the OWL Ontology Selection Panel. You can select existing OWL ontologies as reference ontologies by the Add (File) or Add (URI) buttons in the :numref:`owl-ontology-selection-panel` -1.
+:numref:`owl-ontology-selection-panel` shows a screenshot of the OWL Ontology Selection Panel. The users can select existing OWL ontologies as reference ontologies by the Add (File) or Add (URI) buttons in the :numref:`owl-ontology-selection-panel` -1.
 
 It is considered that if the ontologies for a target domain exist on the web and can be reused, the cost of refining semi-automatically generated ontologies will be reduced. The ontologies constructed by DODDLE-OWL are described in OWL. Therefore, these ontologies can be reused as reference ontologies in DODDLE-OWL.
 
-OWL meta data of the selected ontology from the ontology list (:numref:`owl-ontology-selection-panel` -1 ) is shown in the :numref:`owl-ontology-selection-panel` -3. You can select SPARQL templates to extract ontological elements in OWL ontologies in the :numref:`owl-ontology-selection-panel` -2 . You can use 5 types of SPARQL templates as shown in :ref:`extracting-ontology-elements-using-sparql-template`. 
+OWL meta data of the selected ontology from the ontology list (:numref:`owl-ontology-selection-panel` -1 ) is shown in the :numref:`owl-ontology-selection-panel` -3. The users can select SPARQL templates to extract ontological elements in OWL ontologies in the :numref:`owl-ontology-selection-panel` -2 . The users can use 5 types of SPARQL templates as shown in :ref:`extracting-ontology-elements-using-sparql-template`. 
 
 .. _owl-ontology-selection-panel:
 .. figure:: figures/owl-ontology-selection-panel.png
    :scale: 80 %
-   :alt: OWL Ontology Selection Panel
+   :alt: A screenshot of the OWL Ontology Selection Panel
    :align: center
 
-   OWL Ontology Selection Panel
+   A screenshot of the OWL Ontology Selection Panel
 
 Input Document Selection Panel
 =================================
-:numref:`input-document-selection-panel` shows the Input Document Selection Panel. In the Input Document Selection Panel, you can select domain specific documents described in English or Japanese. Text data can be extracted from files of various formats (Word, Excel, PowerPoint, and PDF) using Apache POI and Apache PDFBox.  At this step, you can select part of speech (POS) (Noun, Verb, Others, and Compound Word) for extraction of words from the documents.
+:numref:`input-document-selection-panel` shows a screenshot of the Input Document Selection Panel. In the Input Document Selection Panel, the users can select domain specific documents described in English or Japanese. Text data can be extracted from files of various formats (Word, Excel, PowerPoint, and PDF) using Apache POI and Apache PDFBox.  At this step, the users can select part of speech (POS) (Noun, Verb, Others, and Compound Word) for extraction of words from the documents.
 
 We describe the details of each part in :numref:`input-document-selection-panel` below. 
 
 .. _input-document-selection-panel:
 .. figure:: figures/input-document-selection-panel.png
    :scale: 80 %
-   :alt: Input Document Selection Panel
+   :alt: A screenshot of the Input Document Selection Panel
    :align: center
 
-   Input Document Selection Panel
+   A screenshot of the Input Document Selection Panel
 
 #. Display a list of input documents.
 #. Selects the description language (Japanese or English) of the input document and adds and deletes the input document.
@@ -240,56 +240,56 @@ The Input Term Selection Panel is composed of the Input Document Viewer, the Inp
 
 Input Document Viewer
 --------------------------
-入力文書ビューアでは，入力文書の内容を見ながらユーザは入力語の選択を行うことができる．:numref:`input-document-viewer` に入力文書ビューアのスクリーンショットを示す．以下では，入力文書ビューアの各部分について説明する．
+In the Input Document Viewer, the user can select input terms while viewing the contents of the input document. :numref:`input-document-viewer` shows a screenshot of the Input Document Viewer. The details of each part are described below.
 
 .. _input-document-viewer:
 .. figure:: figures/input-document-viewer.png
    :scale: 80 %
-   :alt: Input Document Viewer
+   :alt: A screenshot of the Input Document Viewer
    :align: center
 
-   Input Document Viewer
+   A screenshot of the Input Document Viewer
 
-#. 入力文書リストを表示する．
-#. 1で選択した入力文書の内容を3に表示する際に，文書中の行範囲を選択する．
-#. 1で選択した入力文書の内容を表示する．表示される行範囲は2で選択される．入力文書中のハイパーリンクが張られている語をクリックすることで，入力語か不要語かを選択することができる．青色リンクは入力語を，灰色リンクは不要語を表している．
-#. 3のハイパーリンクにマウスカーソルを合わせた際に，ハイパーリンクが張られている語の用語名，品詞，TF，IDF，TF-IDF，上位概念が表示される．
-#. 1で選択した入力文書の内容を分割して3に表示する際の分割行数を設定する．
-#. 自動用語抽出により，抽出できなかった用語を手動で追加することができる．3において用語を範囲選択し，マウスを右クリックすることでも，同様に手動で用語を追加することができる．追加された用語は，3において青色のハイパーリンクが張られる．
-#. 3に表示される入力文書の内容にハイパーリンクを張る用語の種類（複合語，名詞，動詞，その他の品詞）を選択する．
+#. Display the input document list.
+#. When displaying the content of the input document selected in 1 to 3, select the line range in the document.
+#. Display the contents of the input document selected in 1. The displayed row range is selected by 2. By clicking on the term to which the hyperlink is placed in the input document, it is possible to select either an input term or an unnecessary term. The blue link represents an input term, and the gray link represents an unnecessary term.
+#. When matching the mouse cursor to the hyperlink of 3, the term name, part of speech, TF, IDF, TF-IDF, and upper concept of the term are displayed.
+#. Sets the number of divided lines for dividing the content of the input document.
+#. The users can manually add terms that could not be extracted. By selecting the range in 3 and right clicking on the mouse, the users can add terms manually as well. For added terms, a blue hyperlink is established in 3.
+#. Select a type (compound words, nouns, verbs, other parts of speech) of the term that makes a hyperlink to the content of the input document displayed in 3.
 
 Input Term Table
 ---------------------------------
-入力語情報テーブルでは，入力文書から自動抽出された語から入力語を選択することができる．:numref:`input-term-table` に入力語情報テーブルのスクリーンショットを示す．以下では，入力語情報テーブルの各部分について説明する．
+In the Input Term Table, it is possible to select input terms from terms automatically extracted from the input documents. :numref:`input-term-table` shows a screenshot of the Input Term Table. The details of eatch part of the Input Term Table are shown below.
 
 .. _input-term-table:
 .. figure:: figures/input-term-table.png
    :scale: 80 %
-   :alt: Input Term Table
+   :alt: A screenshot of the Input Term Table
    :align: center
 
-   Input Term Table
+   A screenshot of the Input Term Table
 
-#. ユーザが入力した用語で3に表示する用語情報リストを絞り込む．
-#. ユーザが入力した品詞で3に表示する用語情報リストを絞り込む．
-#. 入力文書から自動抽出された用語情報を表示する．用語情報には，用語名，品詞，TF，IDF，TF-IDF，上位概念があり，それぞれの観点からリストをソートすることができる．抽出された語が，あらかじめユーザが用意した参照オントロジー中の概念の下位概念の見出しに含まれる場合，その概念の見出しを上位概念に表示する．概念階層中の上位概念を設定しておくことで，抽出された語を「もの」「場所」「時間」などに分類して表示することができ，入力語選択を支援することができる．
-#. 3の中で選択された用語情報の用語の入力文書中の出現箇所を表示する．
-#. 最終的にユーザが決定した入力語のリスト．テキストエリアになっているため，入力文書に出現しなかった入力語の追加をユーザは行うことができる．
-#. 「入力語リストに追加」ボタンを押すと，3の中で選択された行の用語を5の入力語リストに追加する．「削除」ボタンを押すと，3の中で選択された用語情報の用語を「削除語テーブル」に移す．
+#. Narrows down the term list displayed in 3 by the term entered by the user.
+#. Narrows down the term list displayed in 3 by the part of speech entered by the user. 
+#. Display terms automatically extracted from input documents. The term information includes a term name, part of speech, TF, IDF, TF-IDF, and an upper concept of the term, and it is possible to sort the list from each viewpoint. 抽出された語が，あらかじめユーザが用意した参照オントロジー中の概念の下位概念の見出しに含まれる場合，その概念の見出しを上位概念に表示する．概念階層中の上位概念を設定しておくことで，抽出された語を「もの」「場所」「時間」などに分類して表示することができ，入力語選択を支援することができる．
+#. Display the occurrence of the term selected in 3 in the input documents.
+#. A list of input terms finally decided by the users. Since it is a text area, the users can add input terms that did not appear in the input documents.
+#. When "Add to input term list" button is pushed, the term of the line selected in 3 is added to the input term list of 5. When the "remove" button is pushed, the term selected in 3 is transferred to the "removed term table".
 #. 5に入力された入力語を設定し，入力概念選択パネルに移る．「入力語彙をセット」ボタンを押した場合は，新規に入力語リストを入力概念選択パネルに設定する．「入力語彙を追加」ボタンを押した場合は，設定済みの入力語リストに新たに入力語を追加する．
 
 Removed Term Table
 ------------------------------------
-削除語情報テーブルには，入力語情報テーブルから削除された用語情報のリストが表示される．:numref:`removed-term-table` に削除語情報テーブルのスクリーンショットを示す．削除語情報テーブルの各部分は，入力語情報テーブルと同様である．異なる点は，「戻す」ボタンと「完全削除」ボタンである．「戻す」ボタンにより，誤って削除語情報テーブルに移動させてしまった用語情報を入力語情報テーブルに戻すことができる．「完全削除」ボタンにより，用語情報をリストから完全に削除することができる．
+In the Removed Term Table, a list of the term from the Input Term Table is displayed．:numref:`removed-term-table` shows a screenshot of the Removed Term Table. 削除語情報テーブルの各部分は，入力語情報テーブルと同様である．異なる点は，「戻す」ボタンと「完全削除」ボタンである．「戻す」ボタンにより，誤って削除語情報テーブルに移動させてしまった用語情報を入力語情報テーブルに戻すことができる．「完全削除」ボタンにより，用語情報をリストから完全に削除することができる．
 
 
 .. _removed-term-table:
 .. figure:: figures/removed-term-table.png
    :scale: 80 %
-   :alt: Removed Term Table
+   :alt: A screenshot of the Removed Term Table
    :align: center
 
-   Removed Term Table
+   A screenshot of the Removed Term Table
 
 Input Concept Selection Panel
 ==================================
@@ -654,7 +654,7 @@ File menu
 * Save Project
 * Save Project As
 
-  * Save the project of DODDLE-OWL with a name. Select the DODDLE project folder as the file format if you want to check the intermediate result file being processed. If you want to save it in one file, select the DODDLE project file (.ddl).
+  * Save the project of DODDLE-OWL with a name. Select the DODDLE project folder as the file format if the users want to check the intermediate result file being processed. If the users want to save it in one file, select the DODDLE project file (.ddl).
 
 * Save->Input Term List
 * Save->Input Term Table
@@ -671,30 +671,30 @@ File menu
 
 Tool menu
 -----------------------
-* すべての用語を表示
-* 自動入力概念選択
+* Show all terms
+* Automatically select input concepts
 
   * 入力語集合から自動的に入力語に対応する汎用オントロジー中の概念をランキングする．入力概念選択パネル中で入力語を選択した際に，ランキング順に対応する概念を表示する．
 
-* クラス階層構築
-* クラス及びプロパティ階層構築
+* Construct Class Hierarchy
+* Construct Class and Property Hierarchy
 * DODDLE Dic Converter
 
   * EDR電子化辞書と日本語WordNetの辞書ファイルををDODDLE-OWLで利用可能な形式に変換するためのダイアログを表示する．
 
-* ログコンソールを表示
+* Show Log Console
 
   * 標準出力と標準エラー出力を画面上に表示する．
 
-* XGAレイアウト
+* XGA Layout
 
   * 1024x768の解像度に合わせてウィンドウをレイアウトする．
 
-* UXGAレイアウト    
+* UXGA Layout
 
   * 1600 x 1200の解像度に合わせてウィンドウをレイアウトする．
 
-* オプションダイアログを表示
+* Show the Option Dialog
 
 Project menu
 ------------------------
