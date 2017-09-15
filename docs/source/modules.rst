@@ -462,14 +462,21 @@ Relationship Refinement Module
 
 Visualization Module
 ======================
-セマンティックWeb における領域オントロジーの質を高めるために，DODDLE-OWLには視覚化モジュールを導入している．視覚化モジュールには，RDF(S) コンテンツ構築支援ツール MR \ :sup:`3` \ (http://mrcube.org) を利用している． MR \ :sup:`3` \ はRDF コンテンツとRDFS コンテンツをモデルとオントロジーの関係としてとらえ，両者の視覚的編集および一貫性を（半）自動的に管理するツールである．MR \ :sup:`3` \ のプラグイン機構を用いて，DODDLE-OWLと相互にOWLデータの交換を行う．
+In order to visually support the refinement of the semi-automatically constructed domain ontology, DODDLE-OWL is integrated with the Visualization Module. DODDLE-OWL uses |MR3|: Meta-Model Management based on RDFs Revision Reflection [Morita06]_ as the Visualization Module. |MR3| is a graphical RDF and RDFS editor for managing relationships between RDF and RDFS descriptions. DODDLE-OWL can interchange an OWL ontology with ¥mrcube using a plug-in function of |MR3|. 
 
-領域オントロジー構築における視覚化モジュールの役割は二つある．一つ目は階層洗練モジュールにおける概念変動管理を視覚的に支援する機能である．視覚化モジュールのクラスエディタおよびプロパティエディタに，階層構築モジュールで構築された概念階層初期モデルを表示し，ユーザは階層洗練モジュールにより同定された概念変動が生じている可能性のある概念階層の部分を編集することができる．二つ目はオントロジーの外在化である．オントロジーの外在化とは階層関係とその他の関係をDODDLE-OWL以外の見方によって視覚的に表示することを意味する．DODDLE-OWL以外の見方の例として，階層関係のグラフ表示やオントロジーとインスタンスの関係を同時に見ることができることがあげられる．階層関係をグラフ表示することにより，多重継承関係をユーザが把握しやすくなる．また，オントロジーとインスタンスの関係を同時に見ることで，クラスおよびプロパティ定義の不足や誤りを発見しやすくなる．オントロジーの外在化を行うことによって，オントロジー全体（クラス階層，プロパティ階層，その他の関係，インスタンス）のバランスを見ながら領域オントロジーの調整を行い，領域オントロジーの質を向上させることができる．
+Visualization Module has two main roles for supporting domain ontology construction. One is the visualization function for concept drift management in the Refinement Module. Visualization Module displays the initial concept hierarchy generated in the Construction Module. Then, the user can visually refine candidates of concept drifts which are suggested by the Refinement Module. The other role is the externalization of the domain ontology. The externalization of the domain ontology means visualizing the whole taxonomic relationships and other relationships in the domain ontology. Taxonomic relationships and other relationships are constructed separately in the Hierarchy Construction Module and the Relationship Construction Module. By the externalization of the domain ontology, the user can refine the domain ontology while regarding the balance of the taxonomic relationships and other relationships. 
 
 
 Translation Module
 ====================
-DODDLE-OWLによって構築される領域オントロジーは，階層関係とその他の関係から構成される．クラスのis-a階層は，OWLが提供するowl:Classクラスおよびrdfs:subClassOfプロパティにより定義する．クラスのhas-a階層は，owl:Classクラスおよびdoddle:partOfプロパティにより定義する．プロパティのis-a 階層は，owl:ObjectProperty クラスおよびrdfs:subPropertyOfプロパティにより定義する．プロパティのhas-a階層は，owl:ObjectPropertyクラスおよびdoddle:partOf プロパティにより定義する．その他の関係は，概念対の間の関係をOWLにおけるプロパティ，概念対をプロパティの定義域および値域としてとらえ，OWLが提供するowl:ObjectProperty クラス，rdfs:domain およびrdfs:range プロパティにより定義する．
+Translation Module exports the taxonomic relationships and other relationships described in OWL. Taxonomic relationships are defined using **owl:Class** class **rdfs:subClassOf** property. Other relationships are defined using **owl:ObjectProperty** class, **rdfs:domain** property, and **rdfs:range** property. 
+
+:numref:`translation_module` shows an example of exporting taxonomic relationships and other relationships in OWL. The upper part of :numref:`translation_module` shows that **goods** class is a subclass of **artifact** class. The lower part of :numref:`translation_module` shows that **attribute** relationships is defined between an individual of **goods** class and an individual of **quality** class. 
+
+.. note::
+    owl is a prefix of http://www.w3.org/2002/07/owl#. rdfs is a prefix of http://www.w3.org/2000/01/rdf-schema#.
+
+クラスのhas-a階層は，owl:Classクラスおよびdoddle:partOfプロパティにより定義する．プロパティのis-a 階層は，owl:ObjectProperty クラスおよびrdfs:subPropertyOfプロパティにより定義する．プロパティのhas-a階層は，owl:ObjectPropertyクラスおよびdoddle:partOf プロパティにより定義する．
 
 :numref:`translation_module` の上部は，概念関係の定義の例として，「act」クラスの下位クラスとして「aim」と「behavior」クラスが定義された状態を，OWL形式に変換する方法を示している．:numref:`translation_module` の下部は，その他の関係の定義の例として，「time」と「offer」クラスの間に「attribute」プロパティという関係がある状態を，OWL形式に変換する方法を示している．
 
@@ -479,8 +486,8 @@ DODDLE-OWLによって構築される領域オントロジーは，階層関係�
 .. _translation_module:
 .. figure:: figures/translation_module.png
    :scale: 80 %
-   :alt: 変換モジュールによる領域オントロジーのOWL形式への変換例
+   :alt: An example of exporting taxonomic relationships and other relationships in OWL
    :align: center
 
-   変換モジュールによる領域オントロジーのOWL形式への変換例
+   An example of exporting taxonomic relationships and other relationships in OWL
 
