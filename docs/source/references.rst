@@ -12,6 +12,7 @@ References
 .. [Miles05] A. Miles, and D. Brickley, “SKOS Core Guide,” , 2005, http://www.w3.org/TR/swbp-skos-core-guide/.
 .. [Miller95] G.A.Miller, “WordNet: A Lexical Database for English,” Commun. ACM, vol.38, no.11, pp.39?41, 1995.
 .. [Motoda06] 元田浩，津本周作，山口高平，沼尾政行，データマイニングの基礎，オーム社，2006.
+.. [Morita06] Takeshi Morita, Noriaki Izumi, Naoki Fukuta, Takahira Yamaguchi, “A Graphical RDF-based Meta-Model Management Tool”, IEICE Transactions on Information and Systems, Special Issue on Knowledge-Based Software Engineering Vol.E89-D No.4 pp.1368-1377, (2006), DOI: 10.1093/ietisy/e89-d.4.1368
 .. [Nakagawa03] 中川裕志，森辰則，湯本紘彰，“出現頻度と連接頻度に基づく専門用語抽出，” 自然言語処理，vol.10，no.1，pp.29–35，2003，http://gensen.dl.itc.u-tokyo.ac.jp/.
 .. [Nakayama06] 中山浩太郎，原隆浩，西尾章治郎，“Wikipedia マイニングによるシソーラス辞書構築手法，” 情報処理学会論文誌，vol.47，no.10，pp.2917?2928，2006，http://wikipedialab.org/.
 .. [Page98] L. Page, S. Brin, R. Motwani, and T. Winograd, “The PageRank Citation Ranking: Bringing Order to the Web,” Technical report, Stanford Digital Library Technologies Project, 1998, http://citeseer.ist.psu.edu/page98pagerank.html.
