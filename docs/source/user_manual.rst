@@ -191,7 +191,7 @@ The namespace table as shown in :numref:`ontology-selection-panel` -2 manages th
 
 .. _ontology-selection-panel:
 .. figure:: figures/ontology-selection-panel.png
-   :scale: 80 %
+   :scale: 50 %
    :alt: A screenshot of the General Ontology Selection Panel
    :align: center
 
@@ -207,7 +207,7 @@ OWL meta data of the selected ontology from the ontology list (:numref:`owl-onto
 
 .. _owl-ontology-selection-panel:
 .. figure:: figures/owl-ontology-selection-panel.png
-   :scale: 80 %
+   :scale: 50 %
    :alt: A screenshot of the OWL Ontology Selection Panel
    :align: center
 
@@ -221,7 +221,7 @@ We describe the details of each part in :numref:`input-document-selection-panel`
 
 .. _input-document-selection-panel:
 .. figure:: figures/input-document-selection-panel.png
-   :scale: 80 %
+   :scale: 50 %
    :alt: A screenshot of the Input Document Selection Panel
    :align: center
 
@@ -244,7 +244,7 @@ In the Input Document Viewer, the user can select input terms while viewing the 
 
 .. _input-document-viewer:
 .. figure:: figures/input-document-viewer.png
-   :scale: 80 %
+   :scale: 50 %
    :alt: A screenshot of the Input Document Viewer
    :align: center
 
@@ -264,7 +264,7 @@ In the Input Term Table, it is possible to select input terms from terms automat
 
 .. _input-term-table:
 .. figure:: figures/input-term-table.png
-   :scale: 80 %
+   :scale: 50 %
    :alt: A screenshot of the Input Term Table
    :align: center
 
@@ -285,7 +285,7 @@ In the Removed Term Table, a list of the term from the Input Term Table is displ
 
 .. _removed-term-table:
 .. figure:: figures/removed-term-table.png
-   :scale: 80 %
+   :scale: 50 %
    :alt: A screenshot of the Removed Term Table
    :align: center
 
@@ -297,7 +297,7 @@ Input Concept Selection Panel
 
 .. _input-concept-selection-panel:
 .. figure:: figures/input-concept-selection-panel.png
-   :scale: 80 %
+   :scale: 50 %
    :alt: Input Concept Selection Panel
    :align: center
 
@@ -317,7 +317,7 @@ Term List
 
 .. _input-concept-selection-panel-term-list:
 .. figure:: figures/input-concept-selection-panel-term-list.png
-   :scale: 80 %
+   :scale: 50 %
    :alt: Input Concept Selection Panel: Term List
    :align: center
 
@@ -347,7 +347,7 @@ Concept List
 
 .. _input-concept-selection-panel-concept-list:
 .. figure:: figures/input-concept-selection-panel-concept-list.png
-   :scale: 80 %
+   :scale: 50 %
    :alt: Input Concept Selection Panel: Concept List
    :align: center
 
@@ -361,7 +361,7 @@ Concept Information
 
 .. _input-concept-selection-panel-concept-info:
 .. figure:: figures/input-concept-selection-panel-concept-info.png
-   :scale: 80 %
+   :scale: 50 %
    :alt: Input Concept Selection Panel: Concept Information
    :align: center
 
@@ -382,7 +382,7 @@ Construct Concept Tree Option
 
 .. _input-concept-selection-panel-construct-concept-tree-option:
 .. figure:: figures/input-concept-selection-panel-construct-concept-tree-option.png
-   :scale: 80 %
+   :scale: 50 %
    :alt: Input Concept Selection Panel: Construct Concept Tree Option
    :align: center
 
@@ -402,7 +402,7 @@ Construct Class Tree Panel
 
 .. _construct-class-tree-panel:
 .. figure:: figures/construct-class-tree-panel.png
-   :scale: 80 %
+   :scale: 50 %
    :alt: Construct Class Tree Panel
    :align: center
 
@@ -423,7 +423,7 @@ Concept Information Panel
 
 .. _construct-class-tree-panel-concept-info:
 .. figure:: figures/construct-class-tree-panel-concept-info.png
-   :scale: 80 %
+   :scale: 50 %
    :alt: Construct Class Tree Panel: Concept Information Panel
    :align: center
 
@@ -443,7 +443,7 @@ Is-a and Has-a Hierarchy Panel
 
 .. _construct-class-tree-panel-isa-hasa-tree-panel:
 .. figure:: figures/construct-class-tree-panel-isa-hasa-tree-panel.png
-   :scale: 80 %
+   :scale: 50 %
    :alt: Construct Class Tree Panel: Is-a and Has-a Hierarchy Panel
    :align: center
 
@@ -455,7 +455,7 @@ Is-a and Has-a Hierarchy Panel
 
 .. _construct-class-tree-panel-popup-menu:
 .. figure:: figures/construct-class-tree-panel-popup-menu.png
-   :scale: 80 %
+   :scale: 50 %
    :alt: Construct Class Tree Panel: Popup menu
    :align: center
 
@@ -467,7 +467,7 @@ DODDLE-OWLにおける概念の削除は3 種類ある．「概念の削除」�
 
 .. _construct-class-tree-panel-node-icon:
 .. figure:: figures/construct-class-tree-panel-node-icon.png
-   :scale: 80 %
+   :scale: 50 %
    :alt: Construct Class Tree Panel: Node icon
    :align: center
 
@@ -481,7 +481,7 @@ Concept Drift Management Panel
 
 .. _construct-class-tree-panel-concept-drift-management-panel:
 .. figure:: figures/construct-class-tree-panel-concept-drift-management-panel.png
-   :scale: 80 %
+   :scale: 50 %
    :alt: Construct Class Tree Panel: Concept Drift Management Panel
    :align: center
 
@@ -499,7 +499,7 @@ Construct Property Tree Panel
 
 .. _construct-property-tree-panel:
 .. figure:: figures/construct-property-tree-panel.png
-   :scale: 80 %
+   :scale: 50 %
    :alt: Construct Property Tree Panel
    :align: center
 
@@ -509,7 +509,7 @@ Construct Property Tree Panel
 
 .. _construct-property-tree-panel-node-icon:
 .. figure:: figures/construct-property-tree-panel-node-icon.png
-   :scale: 80 %
+   :scale: 50 %
    :alt: Construct Property Tree Panel: Node icon
    :align: center
 
@@ -523,7 +523,7 @@ Construct Relationship Panel
 
 .. _construct-relationship-panel:
 .. figure:: figures/construct-relationship-panel.png
-   :scale: 80 %
+   :scale: 50 %
    :alt: Construct Relationship Panel
    :align: center
 
@@ -551,7 +551,7 @@ Basic Tab
 
 .. _option-dialog-basic:
 .. figure:: figures/option-dialog-basic.png
-   :scale: 80 %
+   :scale: 50 %
    :alt: Option Dialog: Basic Tab
    :align: center
 
@@ -585,7 +585,7 @@ perl.exe
 
 .. _option-dialog-folder:
 .. figure:: figures/option-dialog-folder.png
-   :scale: 80 %
+   :scale: 50 %
    :alt: Option Dialog: Folder Tab
    :align: center
 
@@ -597,7 +597,7 @@ Input Concept Selection Tab
 
 .. _option-dialog-input-concept-selection:
 .. figure:: figures/option-dialog-input-concept-selection.png
-   :scale: 80 %
+   :scale: 50 %
    :alt: Option Dialog: Input Concept Selection Tab
    :align: center
 
@@ -609,7 +609,7 @@ Comound Word Tab
 
 .. _option-dialog-compound-word:
 .. figure:: figures/option-dialog-compound-word.png
-   :scale: 80 %
+   :scale: 50 %
    :alt: Option Dialog: Compound Word Tab
    :align: center
 
@@ -622,7 +622,7 @@ Display Tab
 
 .. _option-dialog-display:
 .. figure:: figures/option-dialog-display.png
-   :scale: 80 %
+   :scale: 50 %
    :alt: Option Dialog: Display Tab
    :align: center
 

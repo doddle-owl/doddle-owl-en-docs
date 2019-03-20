@@ -19,7 +19,7 @@ First, as input of DODDLE-OWL, the users select several concepts in Input Module
 
 .. _system_flow:
 .. figure:: figures/system-flow.png
-   :scale: 80 %
+   :scale: 50 %
    :alt: System overview of DODDLE-OWL
    :align: center
 
@@ -80,7 +80,7 @@ The detail of step 5 is described in :ref:`extracting-ontological-elements` and 
 
 .. _ontology_ranking:
 .. figure:: figures/procedure_flow_of_acquiring_and_ranking_existing_ontologies.png
-   :scale: 80 %
+   :scale: 50 %
    :alt:  The procedure flow for acquiring and ranking existing ontologies for a target domain using Swoogle
    :align: center
 
@@ -112,7 +112,7 @@ the elements of ontology described in SPARQL query language for RDF [hommeaux08]
 
 .. _label_extraction:
 .. figure:: figures/label_extraction.png
-   :scale: 80 %
+   :scale: 50 %
    :alt: Difference of the labels of concepts among OWL Basic Vocabulary, SKOS, and the WordNet RDF/OWL scheme
    :align: center
 
@@ -217,7 +217,7 @@ Hierarchy Construction Module
 
 .. _process_of_perfectly_matched:
 .. figure:: figures/process_of_perfectly_matched_concept_tree_construction.png
-   :scale: 80 %
+   :scale: 50 %
    :alt: 完全照合概念の階層構築工程
    :align: center
 
@@ -232,7 +232,7 @@ Hierarchy Construction Module
 
 .. _process_of_partially_matched:
 .. figure:: figures/process_of_partially_matched_concept_tree_construction.png
-   :scale: 80 %
+   :scale: 50 %
    :alt: 部分照合概念の階層構築工程
    :align: center
 
@@ -256,7 +256,7 @@ WordSpace による概念対の抽出
 
 .. _wordspace:
 .. figure:: figures/extraction_of_related_concept_pairs_using_WordSpace.png
-   :scale: 80 %
+   :scale: 50 %
    :alt: 文脈類似概念対の獲得手順
    :align: center
 
@@ -358,7 +358,7 @@ Apriori アルゴリズムでは，要素数の少ないアイテム集合から
 
 .. _apriori:
 .. figure:: figures/apriori.png
-   :scale: 80 %
+   :scale: 50 %
    :alt: Apriori アルゴリズムによる多頻度アイテム集合抽出の例
    :align: center
 
@@ -392,7 +392,7 @@ Hierarchy Refinement Module
 
 .. _process-tree-refinement:
 .. figure:: figures/process_of_tree_refinement.png
-   :scale: 80 %
+   :scale: 50 %
    :alt:  概念階層洗練工程
    :align: center
 
@@ -414,7 +414,7 @@ STMの定義
 
 .. _matched-result-analysis:
 .. figure:: figures/matched_result_analysis.png
-   :scale: 80 %
+   :scale: 50 %
    :alt: Strategy1: Matched result analysis
    :align: center
            
@@ -431,7 +431,7 @@ Strategy2: Trimmed result analysis
 
 .. _trimmed-result-analysis:
 .. figure:: figures/trimmed_result_analysis.png
-   :scale: 80 %
+   :scale: 50 %
    :alt: Strategy2: Trimmed result analysis
    :align: center
            
@@ -447,7 +447,7 @@ WordNet やEDR 電子化辞書などの汎用オントロジーは，網羅的�
 
 .. _remove-multiple-inheritance:
 .. figure:: figures/remove_multiple_inheritance.png
-   :scale: 80 %
+   :scale: 50 %
    :alt: Strategy3: Removing multiple inheritance
    :align: center
            
@@ -483,7 +483,7 @@ Translation Module exports the taxonomic relationships and other relationships d
 
 .. _translation_module:
 .. figure:: figures/translation_module.png
-   :scale: 80 %
+   :scale: 50 %
    :alt: An example of exporting taxonomic relationships and other relationships in OWL
    :align: center
 
