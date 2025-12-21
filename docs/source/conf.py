@@ -15,7 +15,6 @@
 import sys
 import os
 import shlex
-import sphinx_rtd_theme
 
 # If extensions (or modules to document with autodoc) are in another directory,
 # add these directories to sys.path here. If the directory is relative to the
@@ -124,7 +123,7 @@ html_theme = 'sphinx_rtd_theme'
 #html_theme_options = {}
 
 # Add any paths that contain custom themes here, relative to this directory.
-html_theme_path = [sphinx_rtd_theme.get_html_theme_path()]
+#html_theme_path = [sphinx_rtd_theme.get_html_theme_path()]
 
 # The name for this set of Sphinx documents.  If None, it defaults to
 # "<project> v<release> documentation".
@@ -213,13 +212,13 @@ htmlhelp_basename = 'doddle-owl docs'
 # -- Options for LaTeX output ---------------------------------------------
 
 latex_docclass = {'manual': 'jsbook'}
-
+latex_engine = 'uplatex'
 latex_elements = {
 # The paper size ('letterpaper' or 'a4paper').
-#'papersize': 'letterpaper',
+'papersize': 'a4paper',
 
 # The font size ('10pt', '11pt' or '12pt').
-#'pointsize': '10pt',
+'pointsize': '10pt',
 
 # Additional stuff for the LaTeX preamble.
 #'preamble': '',
