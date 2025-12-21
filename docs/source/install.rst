@@ -126,11 +126,11 @@ How to install
 
 Windows
 ----------
-Download DODDLE-OWL_1.0RC2_win.zip from `the download page <http://doddle-owl.org/download-ja.html>`_ and extract the file to any directory.
+Download DODDLE-OWL_1.0RC2_win.zip from `the download page <http://doddle-owl.github.io/download.html>`_ and extract the file to any directory.
 
 macOS
 ----------
-Download DODDLE-OWL_1.0RC2_mac.zip from `the download page <http://doddle-owl.org/download-ja.html>`_ and extract the file to any directory.
+Download DODDLE-OWL_1.0RC2_mac.zip from `the download page <http://doddle-owl.github.io/download.html>`_ and extract the file to any directory.
 
 How to uninstall
 ========================================
