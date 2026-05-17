@@ -19,7 +19,7 @@ First, as input of DODDLE-OWL, the users select several concepts in Input Module
 
 .. _system_flow:
 .. figure:: figures/system-flow.png
-   :scale: 80 %
+   :scale: 60 %
    :alt: System overview of DODDLE-OWL
    :align: center
 

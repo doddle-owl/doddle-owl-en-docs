@@ -9,128 +9,109 @@ Requirements
 ==================
 The following are software and hardware requirements for DODDLE-OWL.
 
-* JRE (Java Runtime Environment) 8 or later
 * OS: Operating System running Java
-* CPU: Pentium4 2GHz or higher
 * Memory: 1GB or higher
 * HDD: 1GB or higher
 * Display Resolution: XGA(1024×768)
-
-We have tested the following environment.
-
-* JDK 8 
-* OS: macOS Sierra
-* CPU: Intel Core i7 4GHz
-* Memory: 32GB
-* Display Resolution: WUXGA (1920x1200)
 
 Acknowledgements
 ====================================
 DODDLE-OWL uses the following libraries. Since these libraries are included in DODDLE-OWL, users don't have to get the libraries.
 
-* `Apache Jena <http://jena.apache.org/>`_
+* `FlatLaf <https://www.formdev.com/flatlaf/>`_
+  * A modern open-source cross-platform Look and Feel for Java Swing desktop applications.
+  * License: `Apache License 2.0 <https://www.apache.org/licenses/LICENSE-2.0>`_
+
+* `Apache Jena <https://jena.apache.org/>`_
 
   * A library for RDF, RDFS, and OWL
-  * License: `Jena – License and Copyright <http://www.apache.org/licenses/LICENSE-2.0>`_
+  * License: `Apache License 2.0`_
 
-* `Lucene-Gosen <https://github.com/lucene-gosen/lucene-gosen>`_
+* `Kuromoji <https://github.com/atilika/kuromoji>`_
 
-  * Japanese analysis for Apache Lucene/Solr
-  * License: `LGPL (Lesser General Public License) <http://www.gnu.org/licenses/lgpl.html>`_
+  * An easy to use and self-contained Japanese morphological analyzer.
+  * License: `Apache License 2.0`_
 
 * `extJWNL <http://extjwnl.sourceforge.net/>`_
 
-  * A Java API for creating, reading and updating dictionaries in WordNet format
+  * A Java API for creating, reading and updating dictionaries in WordNet format.
   * License: `BSD <http://extjwnl.sourceforge.net/license.txt>`_
 
-* `GNU getopt – javaport 1.0.13 <http://www.urbanophile.com/arenn/hacking/download.html>`_
+* `Apache Commons CLI <https://commons.apache.org/proper/commons-cli/>`_
 
-  *  A Java library function used to parse command-line options
-  * License: LGPL(Lesser General Public License)
+  * An API for parsing command-line options passed to an application.
+  * License: `Apache License 2.0`_
 
 * `Apache POI <http://poi.apache.org/>`_
   
-  * The Java API for Microsoft Documents
-  * License: Apache
+  * The Java API for Microsoft Documents. 
+  * License: `Apache License 2.0`_
 
 * `Apache PDFBox <https://pdfbox.apache.org/>`_
 
-  * An open source Java tool for working with PDF documents
-  * License: BSD
+  * An open source Java tool for working with PDF documents.
+  * License: `Apache License 2.0`_
 
 * `Lombok <http://projectlombok.org/>`_
 
   * A java library that automatically plugs into your editor and build tools, spicing up your java
   * License： `The MIT License <http://opensource.org/licenses/mit-license.php>`_
 
-* `InfoNode Docking Windows <http://www.infonode.net/index.html?idw>`_
-
-  * A pure Java Swing based docking windows framework
-  * License: GPL (GNU General Public License)
-
-* `MySQL Connector/J 5.1.7 <http://dev.mysql.com/downloads/>`_
-
-  * JDBC Driver for MySQL
-  * License: GPL (GNU General Public License)
-
-* `SQLiteJDBC <https://bitbucket.org/xerial/sqlite-jdbc>`_
+* `SQLiteJDBC <https://github.com/xerial/sqlite-jdbc>`_
 
   * JDBC Driver for SQLite
-  * License: Apache License version 2.0
+  * License: `Apache License 2.0`_
 
 * `Stanford Parser <http://nlp.stanford.edu/software/lex-parser.shtml>`_
 
   * A statistical parser
-  * License： GPL (GNU General Public License)
+  * License： `GPL (GNU General Public License) <http://www.gnu.org/licenses/gpl-2.0.html>`_
 
-* `Silk Icons <http://www.famfamfam.com/>`_
+* `Material Design icons by Google <https://github.com/google/material-design-icons>`_
 
   * Free icon set
-  * License: `Creative Commons Attribution 2.5 License <http://creativecommons.org/licenses/by/2.5/>`_.
+  * License: `Apache License 2.0`_.
+
 
 Optional Software
 =======================================
 DODDLE-OWL uses the following software optionally.
 
-* `ChaSen <http://chasen-legacy.osdn.jp/>`_
-* `MeCab <http://mecab.googlecode.com/svn/trunk/mecab/doc/index.html>`_
+* `MeCab <https://github.com/taku910/mecab>`_
 * `CaboCha <http://taku910.github.io/cabocha/>`_
-* `ActivePerl <http://www.activestate.com/activeperl?mp=1>`_
 * `TermExtract <http://gensen.dl.itc.u-tokyo.ac.jp/termextract.html>`_
 
 .. warning::
-	* Beta6からは，ChaSen, MeCab, CaboChaは，UTF-8のみに対応しています．
+	* Since Beta 6, MeCab and CaboCha only support UTF-8.
 
-	  * ChaSenでUTF-8を利用する方法は，ChaSen’s Wiki FAQを参照してください．
-	  * MeCabおよびCaboChaは，2008年11月現在の最新版は，UTF-8に対応しています．（Windows版ではインストール時に辞書の文字コードとして「UTF-8」を選択します．Unix，Macでは，configureのオプションとして「–with-charset=utf8」を指定します．）
+	  * As of November 2008, the latest versions of MeCab and CaboCha support UTF-8. (For Windows, select "UTF-8" as the dictionary character code during installation. For Unix and Mac, specify --with-charset=utf8 as a configure option.)
 
 	* In order to extract Japanese compound words, Perl, Chasen (or MeCab), and CaboCha are required.
 	* In order to extract English compound words, Perl is required.
-	* In order to use EDR dictionary (EDR general vocaburary dictionary or EDR technical terminology dictionary) as general ontologies, EDR are required. You need to change EDR into a format for DODDLE using EDR2DODDLE_DIC_Converter.  EDR電子化辞書から領域オントロジーを構築したい場合には，EDR電子化辞書の概念体系辞書(必須)，日本語単語辞書(必須)，英語単語辞書(オプション)，概念記述辞書(オプション)が必要です．
+	* In order to use EDR dictionary (EDR general vocaburary dictionary or EDR technical terminology dictionary) as general ontologies, EDR are required. You need to change EDR into a format for DODDLE using EDR2DODDLE_DIC_Converter.  
 
 Reference Ontologies
 ===============================
 
 English General Ontology
 ------------------------------
-* `WordNet <http://wordnet.princeton.edu/>`_
+* `WordNet <https://wordnet.princeton.edu/>`_
 
 Japanese General Ontologies
 -------------------------------------
-* `EDR Electronic Dictionary <http://www2.nict.go.jp/ipp/EDR/ENG/indexTop.html>`_
-* `Japanese WordNet <http://compling.hss.ntu.edu.sg/wnja/>`_
-* `Japanese Wikipedia Ontology <https://osdn.jp/projects/wikipedia-ont/>`_
+* `EDR Electronic Dictionary <https://www2.nict.go.jp/ipp/EDR/ENG/indexTop.html>`_
+* `Japanese WordNet <https://bond-lab.github.io/wnja/>`_
 
 How to install
 =====================================
 
 Windows
 ----------
-Download DODDLE-OWL_1.0RC2_win.zip from `the download page <http://doddle-owl.github.io/download.html>`_ and extract the file to any directory.
+Download doddle-owl-26.5.1.msi from `the download page <https://github.com/doddle-owl/doddle-owl/releases>`_ and execute the file.
 
 macOS
 ----------
-Download DODDLE-OWL_1.0RC2_mac.zip from `the download page <http://doddle-owl.github.io/download.html>`_ and extract the file to any directory.
+Download doddle-owl-26.5.1.dmg from `the download page <https://github.com/doddle-owl/doddle-owl/releases>`_ and extract the file to any directory.
 
 How to uninstall
 ========================================
@@ -149,15 +130,14 @@ Option Dialog: Basic Tab
 
 * Language
 
-  * enまたはjaを指定することで，英語または日本語メニューを表示することができます．
+  * You can display the menu in English or Japanese by specifying “en” or “ja”.
 
 * Base prefix
 
-  * ユーザが定義した概念の接頭辞を設定します．
-
+  * You can set the prefix for concepts defined by the user.
 * Base URI
 
-  * オントロジー保存時のベースURIを設定します．
+  * You can set the base URI for the ontology when saving it.
 
 Option Dialog: Folder Tab
 -----------------------------------------------------------
@@ -165,50 +145,50 @@ Option Dialog: Folder Tab
 * Project folder
 
   * Default path: C:/DODDLE-OWL/DODDLEProject
-  * プロジェクトファイルを保存するフォルダを設定します．プロジェクトを保存・復元する際に このフォルダが基点となります．
+  * You can set the folder where project files are saved. This folder will be the starting point when saving or restoring projects.
       
 * Stop word list
 
   * Default path: C:/DODDLE-OWL/stop_word_list.txt
-  * 用語抽出時に無視する単語リストが保存されたファイルを設定します．
+  * You can set the file that contains the list of words to be ignored during term extraction.
 
 * EDR dic folder
 
   * Default path: C:/DODDLE-OWL/EDR_DIC
-  * EDR一般辞書のテキストデータをDODDLE用に変換したファイルを置いたフォルダを設定します．
+  * You can set the folder where the text data of the EDR general dictionary converted for DODDLE is stored.
 
 * EDRT dic folder
 
   * Default path: C:/DODDLE-OWL/EDRT_DIC
-  * EDR専門辞書のテキストデータをDODDLE用に変換したファイルを置いたフォルダを設定します．
+  * You can set the folder where the text data of the EDR technical dictionary converted for DODDLE is stored.
 
-* 日本語形態素解析器
+* Japanese morphological analyzer
 
   * Default path: C:/Program Files/ChaSen/chasen.exe
-  * 複合語抽出モジュール言選を利用する場合に必要です．（chasen21は不可）
+  * This is required when using the compound word extraction module. (chasen21 is not supported)
 
-* 日本語係り受け解析器
+* Japanese dependency parser
 
   * Default path: C:/Program Files/CaboCha/bin/cabocha.exe
-  * 複合語抽出する場合に必要です．
+  * This is required when extracting compound words.
 
 * perl.exe
 
   * Default path: C:/Perl/bin/perl.exe
-  * 言選(TermExtract)を利用する場合に必要です．
+  * This is required when using TermExtract.
 
 * Upper concept list
 
   * Default path: C:/DODDLE-OWL/upperConceptList.txt
-  * 上位概念のリストを設定します．ある単語がEDR上の指定した概念の下位にあるかどうかを提示するために利用します．
+  * You can set the list of upper concepts. This is used to check if a word is a subclass of a specified concept in the EDR.
 
 
 How to use EDR dictionary as general ontologies
 =========================================================
-DODDLE-OWLでEDR電子化辞書を汎用オントロジーとして参照するためには，EDR電子化辞書のテキストデータをDODDLE-OWLで参照する形式に変換する必要があります．
-以下では，その変換手順について説明します．
+To refer to the EDR Electronic Dictionary as a general-purpose ontology in DODDLE-OWL, the text data of the dictionary must be converted into a format compatible with DODDLE-OWL.
+The following section describes the procedure for this conversion.
 
-CPU: Intel Core i7 4GHz，メモリ: 32GBのiMacを用いてEDR一般辞書とEDR専門辞書をDODDLE-OWLで参照する形式に変換するためにかかる時間は以下の通りです．
+The time required to convert the EDR General Dictionary and EDR Technical Dictionary into a format compatible with DODDLE-OWL, using an iMac with a 4GHz Intel Core i7 processor and 32GB of RAM, is as follows:
 
 * EDR general vocaburary dictionary: about 3 minutes
 * EDR technical terminology dictionary: about 40 seconds
