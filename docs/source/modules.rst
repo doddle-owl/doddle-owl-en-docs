@@ -230,46 +230,66 @@ To simplify selection via partial matching, the module allows the selection resu
 
 Ontology Construction Modules
 =======================================
-The Construction Module automatically generates the basis of an ontology, an initial concept hierarchy and set of concept pairs, by referring to reference ontologies and documents. An initial concept hierarchy is constructed as taxonomic relationships. Set of concept pairs are extracted by using co-occurrency based statistic methods. These pairs are considered to be closely related and that they will be used as candidates to refine and add other relations. The users identify some relationships between concepts in the pairs. 
+The ontology construction module is composed of two sub-modules: the hierarchy construction module and the relation construction module.
 
-The Construction Module consists of the Hierarchy Construction and the Relationship Construction Module. The detail of each module is described below.
+In the hierarchy construction module, an initial model of the conceptual hierarchy is built by referencing the taxonomic structure of the reference ontology. Meanwhile, the relation construction module identifies a set of concept pairs based on co-occurrence analysis, utilizing the input documents and the set of input concepts.
+
+Together, the initial conceptual hierarchy and the set of concept pairs constitute the initial domain ontology. This initial ontology is subsequently refined through user interaction within the ontology refinement module.
+
+The following sections provide detailed descriptions of the hierarchy construction and relation construction modules.
+
 
 Hierarchy Construction Module
 -----------------------------------
-階層構築モジュールでは，参照オントロジーの概念階層を参照し，領域オントロジーの基礎となる概念階層初期モデルを構築する．入力モジュールにおいて，入力語と完全照合した入力概念（完全照合概念）と部分照合した入力概念（部分照合概念）により，階層構築方法が異なる．以下では，完全照合概念と部分照合概念のそれぞれについて，階層構築方法を説明する．
+In the hierarchy construction module, an initial model of the conceptual hierarchy—serving as the foundation of the domain ontology—is constructed based on the taxonomic structure of the reference ontology.
+
+The input module distinguishes between exactly-matched concepts (input concepts that perfectly match an input term) and partially-matched concepts (input concepts with only a partial match). Depending on this distinction, different hierarchy construction methods are applied. The following sections describe the respective hierarchy construction methodologies for both exactly-matched and partially-matched concepts.
 
 
-完全照合概念の階層構築
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+Hierarchy Construction for Exactly-Matched Concepts
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 .. _process_of_perfectly_matched:
 .. figure:: figures/process_of_perfectly_matched_concept_tree_construction.png
    :scale: 80 %
-   :alt: 完全照合概念の階層構築工程
+   :alt: Hierarchy Construction Process for Exactly-Matched Concepts
    :align: center
 
-   完全照合概念の階層構築工程
+   Hierarchy Construction Process for Exactly-Matched Concepts
 
-:numref:`process_of_perfectly_matched` に完全照合概念の階層構築工程を示す．はじめに，参照オントロジーから，入力モジュールにより獲得した完全照合概念を末端ノードとするルート概念までのパスを抽出し，合成する．これをベストマッチモデルと呼ぶ．
+The process of hierarchy construction for exactly-matched concepts is illustrated in :numref:`process_of_perfectly_matched`. In this process, the system extracts and integrates all paths from the reference ontology that lead from the exactly-matched concepts (treated as leaf nodes) to the root concept. The resulting conceptual hierarchy is referred to as the Best Match Model.
 
-:numref:`process_of_perfectly_matched` のベストマッチモデルは，1 重線で囲まれたノードである入力概念ノード，2 重線で囲まれたノードであるSIN (a Salient Internal Nodes)，点線で囲まれたノードである不要中間ノードの3 種類のノードから構成される．入力概念ノードは，ユーザが選択した入力語に対応する参照オントロジー中の概念であり，領域にとって必須である．参照オントロジーから抽出したノードのうち，入力概念ノード以外のノードはSIN または不要中間ノードとなる．SIN は，入力概念ノードを一つ以上子ノードとして持つノードである．SIN は，各入力概念間の位相関係（祖先・親子・兄弟関係）を保持することに貢献する．一方，不要中間ノードは，入力概念ノードを子ノードとして持たないノードである．不要中間ノードはSIN とは異なり，各入力概念間の位相関係を保持することに貢献しないため，階層構築モジュールは階層構築において不要な概念であると見なし，ベストマッチモデルから削除する．不要中間ノードを削除する工程を剪定と呼ぶ．剪定によって得られた入力概念ノードとSIN のみから構成される概念階層を概念階層初期モデルと呼ぶ．概念階層初期モデルは， **概念階層洗練手法** を用いて，ユーザとのインタラクションにより洗練され，最終的な領域オントロジーにおける概念階層となる．
+The Best Match Model in :numref:`process_of_perfectly_matched` consists of three types of nodes:
 
-部分照合概念の階層構築
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+#.	Input Concept Nodes (enclosed by a single line): Concepts in the reference ontology that correspond to user-selected input terms; these are indispensable for the domain ontology.
+#.	SIN (Salient Internal Nodes) (enclosed by double lines): Internal nodes identified as significant for the hierarchy.
+#.	Unnecessary Intermediate Nodes (enclosed by a dotted line): Nodes that do not contribute to the essential structure.
+
+Nodes extracted from the reference ontology that are not input concept nodes are categorized as either SINs or unnecessary intermediate nodes.
+
+A SIN is defined as a node that has one or more input concept nodes as its child nodes. SINs play a crucial role in preserving the topological relationships among input concepts—specifically, ancestral, parental, and sibling relationships. In contrast, unnecessary intermediate nodes are those that do not have any input concept nodes as children. Since these nodes do not contribute to maintaining the topological relationships between input concepts, the hierarchy construction module identifies them as redundant and removes them from the Best Match Model.
+
+The process of removing unnecessary intermediate nodes is called pruning. The conceptual hierarchy resulting from pruning, which consists solely of input concept nodes and SINs, is termed the initial model of the conceptual hierarchy. This initial model is further refined through user interaction using conceptual hierarchy refinement methods, ultimately becoming the final conceptual hierarchy in the domain ontology.
+
+
+Hierarchy Construction for Partially-Matched Concepts
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 .. _process_of_partially_matched:
 .. figure:: figures/process_of_partially_matched_concept_tree_construction.png
    :scale: 80 %
-   :alt: 部分照合概念の階層構築工程
+   :alt: Hierarchy Construction Process for Partially-Matched Concepts
    :align: center
 
-   部分照合概念の階層構築工程
+   Hierarchy Construction Process for Partially-Matched Concepts
 
-階層構築モジュールでは，部分照合概念について語尾および語頭による階層化を行う．図2 に部分照合概念の階層構築例を示す．ここで，部分照合概念とは，参照オントロジー中の概念の見出しと部分的に照合する入力語を概念化したものである．入力概念選択モジュールで説明したように，入力語が完全照合しなかった場合，入力語を形態素解析し，語尾を含むように部分照合を行っている．ここで，部分照合概念の見出しについて，語尾を含むように照合された部分を語尾部分，それ以前の部分を語頭部分と呼ぶことにする．例えば，「ゲージ情報」という入力語が参照オントロジー中の「情報」概念と部分照合した場合，「ゲージ」を語頭部分，「情報」を語尾部分と呼ぶ．また，入力概念選択モジュールにおいて，ユーザは部分照合した入力語を照合した概念の別見出しとするか，下位概念とするかを選択する．ここでは，下位概念とするほうをユーザが選択したものとして説明する．
+n the hierarchy construction module, a stratification method based on prefixes and suffixes is applied to partially-matched concepts. :numref:`process_of_partially_matched` illustrates an example of this process. A partially-matched concept is a conceptualized input term that only partially matches a label in the reference ontology. As described in the input concept selection module, if an exact match is not found, the system performs morphological analysis and attempts a partial match that includes the suffix. In this context, the part of the label containing the suffix is defined as the suffix portion, and the preceding part is defined as the prefix portion. For instance, if the input term "gauge information" matches the concept "information", "gauge" is the prefix portion and "information" is the suffix portion. During the input concept selection phase, the user chooses whether to treat the partially-matched term as an alias or a hyponym of the matched concept. The following explanation assumes the user has chosen to define it as a hyponym.
 
-:numref:`process_of_partially_matched` では，はじめに，ユーザは，入力語として「ゲージ」，「レーダー」，「ゲージ情報」，「レーダー情報」，「モデル情報」を選択した．「ゲージ」および「レーダー」は，参照オントロジー中にそれらを見出しとする概念が存在するため，図1に示した完全照合概念の階層構築工程に従って階層構築される．「ゲージ情報」，「レーダー情報」，「モデル情報」は，参照オントロジー中の「情報」概念と部分照合した．語尾による階層化により，はじめに，「情報」概念が完全照合概念の階層構築工程に従って階層構築され，次に，「ゲージ情報」，「レーダー情報」，「モデル情報」が概念化され，「情報」概念の下位概念として定義される．さらに，語頭による階層化では，部分照合概念の語頭部分に着目し，語頭部分を見出しとして持つ概念が構築中の概念階層内に存在する場合，その概念の上位概念と部分照合概念の語尾部分と照合した概念の見出しを組み合わせた見出しを持つ概念を新たに作成する．語頭部分が照合した部分照合概念は，新たに作成された概念の下位概念として階層関係が再定義される．部分照合概念の語頭部分は，部分照合概念を修飾していることが多い．そのため，語頭による階層化により，語尾による階層化のみに比べて，より詳細な階層構築を行うことができると考えられる．
+In the example shown in :numref:`process_of_partially_matched`, the user initially selects "gauge," "radar," "gauge information," "radar information," and "model information" as input terms. Since "gauge" and "radar" have identical labels in the reference ontology, they are processed according to the hierarchy construction for exactly-matched concepts. Conversely, "gauge information," "radar information," and "model information" are partially matched to the "information" concept. In the suffix-based stratification, the system first constructs the hierarchy for the "information" concept following the exactly-matched process, then defines the three "information" terms as hyponyms of the "information" concept.
 
-:numref:`process_of_partially_matched` の語尾による階層化により構築された概念階層では，部分照合概念である「ゲージ情報」概念および「レーダー情報」概念の語頭部分にあたる「ゲージ」および「レーダー」を見出しとして持つ，「ゲージ」概念および「レーダー」概念が「計器」概念の下位概念として定義されている．ここで，語頭による階層化により，「計器」概念と「情報」概念を組み合わせた「計器情報」概念が新規に作成され，「ゲージ情報」概念および「レーダー情報」概念の上位概念として，階層化が行われる．「計器情報」概念を定義することにより，「モデル情報」概念と「ゲージ情報」概念および「レーダー情報」概念という計器に関する情報を分類することができる．
+The prefix-based stratification focuses on the prefix portion of these partially-matched concepts. If a concept with the same label as the prefix portion already exists within the developing hierarchy, the system creates a new intermediate concept whose label combines the superconcept of that prefix and the label of the suffix-matched concept. Then, it redefines the hierarchy by placing the partially-matched concepts under this newly created intermediate concept. Since the prefix often serves to modify the suffix, combining prefix-based stratification with suffix-based methods allows for the construction of a more granular and detailed conceptual hierarchy.
+
+As shown in :numref:`process_of_perfectly_matched`, in the hierarchy built only through suffix-based stratification, the "gauge" and "radar" concepts (which correspond to the prefixes of "gauge information" and "radar information") are defined as hyponyms of the "instrument" concept. By applying prefix-based stratification here, a new concept "instrument information" —combining "instrument" and "information"—is created and defined as the superconcept of "gauge information" and "radar information." The introduction of this "instrument information" concept distinguishes these terms from "model information" and enables the systematic classification of information related to instruments.
 
 Relationship Construction Module
 ------------------------------------
