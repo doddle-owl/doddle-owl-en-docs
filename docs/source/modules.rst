@@ -28,55 +28,58 @@ First, as input of DODDLE-OWL, the users select several concepts in Input Module
 
 Ontology Selection Module
 =======================================
-In the Ontology Selection Module, you select reference ontologies. The reference ontologies are used in the other modules in DODDLE-OWL. WordNet [Miller95]_, Japanese WordNet [Isahara08]_ ，EDR [Yokoi95]_ ，and Japanese Wikipedia Ontology (JWO) [Tamagawa10]_, which are general ontologies in English and Japanese, can be used as reference ontologies in DODDLE-OWL. Furthermore, DODDLE-OWL can use existing ontologies, which are described in OWL, as reference ontologies. 
+In the ontology selection module, the user selects a reference ontology. A reference ontology serves as the foundation for building a domain ontology and is referenced by each module within DODDLE-OWL. DODDLE-OWL supports several reference ontologies, including WordNet [Miller95]_, Japanese WordNet [Isahara08]_, EDR [Yokoi95]_, and the Japanese Wikipedia Ontology (JWO) [Tamagawa10]_. Furthermore, existing ontologies described in OWL (Web Ontology Language) format can also be utilized as reference ontologies.
 
-WordNet やEDR などの汎用オントロジーは，一般的かつ網羅的に定義がなされているため，領域オントロジー構築に利用する際には，領域に特化した構造へ，階層関係の修正や不要概念の除去などの洗練を行う必要がある．このことはユーザの負担となる．
+General ontologies such as WordNet and EDR provide broad and exhaustive definitions. Consequently, when applying them to domain ontology construction, they require refinement into a domain-specific structure, involving tasks such as modifying hierarchical relationships and removing irrelevant concepts. This process imposes a significant burden on the user. On the other hand, if a domain ontology related to the target domain already exists, reusing it can reduce the cost of refinement compared to using a general ontology. Since ontologies constructed via DODDLE-OWL are exported in OWL format, they can also be reused as reference ontologies. Therefore, in DODDLE-OWL, general ontologies are utilized when no existing domain ontology is available or when existing ones do not sufficiently cover the target domain. Conversely, if a relevant domain ontology exists, using it as a reference ontology enables more efficient support for constructing the target domain ontology.
 
-It is considered that if the ontologies for a target domain exist on the web and can be reused, the cost of refining semi-automatically generated ontologies will be reduced. The ontologies constructed by DODDLE-OWL are described in OWL. Therefore, these ontologies can be reused as reference ontologies in DODDLE-OWL.
+To facilitate the reuse of existing ontologies available on the Web, the ontology selection module is equipped with a domain ontology acquisition function that utilizes ontology search engines. The following sections provide a brief overview of general ontologies, followed by a description of the methodology for acquiring existing domain ontologies using ontology search engines.
 
-よって，DODDLE-OWLでは，既存領域オントロジーが存在しない，または，既存領域オントロジーが，ユーザが構築対象とする領域オントロジーを網羅できていない場合には，汎用オントロジーを利用することができ，既存領域オントロジーが存在する場合には，より容易に対象とする領域オントロジーの構築支援を行うことができる．
-
-Web 上に存在する既存オントロジーを参照オントロジーとして再利用するために，オントロジー選択モジュールには，オントロジー検索エンジンを用いた既存領域オントロジーの獲得機能がある．以下では，はじめに汎用オントロジーについて簡単に説明した後，オントロジー検索エンジンを用いた既存領域オントロジー獲得方法について述べる．
-
+.. note::
+   Since `the Swoogle ontology search engine discontinued its service on May 1, 2010 <https://ebiquity.umbc.edu/project/html/id/53/Swoogle>`_, the domain ontology acquisition function utilizing Swoogle is currently unavailable.
 
 General Ontologies
 ----------------------------
-DODDLE-OWLでは，汎用オントロジーとしてWordNet, 日本語WordNet，EDR電子化辞書（一般辞書および専門辞書），日本語Wikipediaオントロジーを利用可能である．以下では簡単にそれぞれの汎用オントロジーについて説明する．
+DODDLE-OWL supports several general ontologies, including WordNet, Japanese WordNet, the EDR Electronic Dictionary (comprising both general and specialized dictionaries), and the Japanese Wikipedia Ontology (JWO). The following sections provide an overview of each of these ontologies.
 
 WordNet
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~
-WordNet [Miller95]_ は， プリンストン大学で開発されている英語シソーラス（汎用オントロジー）である．名詞句辞書，動詞句辞書，形容詞句辞書，副詞句辞書，および見出し句辞書か ら構成されており，総計約10万の語彙を保持している．見出し句辞書は，見出し句，意味情報としての概念ID，辞書編集情報，品詞情報などから構成されて いるが，概念IDが，見出し句辞書と各辞書の間のリンクとして機能している．名詞句辞書と動詞句辞書は，概念ID，辞書編集情報，対応する見出し句リスト から構成されているが，概念群は階層構造を有している．また，一部の概念IDには，反対概念の概念ID，part ofやmember ofやsubstance ofの概念IDなども与えられている．形容詞句辞書と副詞句辞書も，概念ID，辞書編集情報，対応する見出し句リストから構成されているが，階層構造は持たない．
+WordNet [Miller95]_ is an English thesaurus (general ontology) developed at Princeton University. It is composed of separate dictionaries for nouns, verbs, adjectives, and adverbs, as well as an index file (index of headwords), collectively containing approximately 100,000 lexical items.
+
+The index of headwords consists of the headword itself, a Concept ID (Synset offset) serving as semantic information, lexicographer information, and part-of-speech (POS) tags. The Concept ID functions as a link connecting the headword index to the respective syntactic category dictionaries.
+
+The noun and verb dictionaries consist of Concept IDs, lexicographer information, and a list of corresponding headwords. These concepts are organized into a hierarchical structure (taxonomy). Furthermore, specific Concept IDs are associated with relations such as Antonyms, as well as meronymous relations including part-of, member-of, and substance-of.
+While the adjective and adverb dictionaries also contain Concept IDs, lexicographer information, and corresponding headword lists, they do not possess a hierarchical structure.
 
 Japanese WordNet
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~
-日本語WordNet [Isahara08]_ は，WordNetの日本語版である．
+Japanese WordNet [Isahara08]_ is the Japanese counterpart of WordNet.
 
 EDR Electric Dictionary
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~
-EDR電子化辞書 [Yokoi95]_ は， 独立行政法人 情報通信研究機構が提供している汎用オントロジーである．EDR電子化辞書は，日本語単語辞書，英語単語辞書，概念辞書，日英対訳辞書，英日対訳辞書，日 本語共起辞書，英語共起辞書，日本語コーパス，英語コーパス，専門用語辞書（情報処理）から構成される．DODDLE-OWLでは，これらの辞書の中から，日本語単語辞書，英語単語辞書，概念辞書，専門用語辞書（情報処理）を利用している．
+The EDR Electronic Dictionary [Yokoi95]_ is a general ontology provided by the National Institute of Information and Communications Technology (NICT). The EDR Electronic Dictionary is a comprehensive resource consisting of the following components: Japanese Word Dictionary, English Word Dictionary, Headconcept Dictionary, Japanese-English Bilingual Dictionary, English-Japanese Bilingual Dictionary, Japanese Co-occurrence Dictionary, English Co-occurrence Dictionary, Japanese Corpus, English Corpus, and the Technical Terminology Dictionary (Information Processing). Among these resources, DODDLE-OWL specifically utilizes the Japanese Word Dictionary, English Word Dictionary, Headconcept Dictionary, and the Technical Terminology Dictionary (Information Processing).
 
 Japanese Wikipedia Ontology
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-日本語Wikipediaオントロジー [Tamagawa10]_ は，日本語Wikipedia における様々なリソース（カテゴリツリー，一覧記事，リダイレクトリンク，Infobox, Infoboxテンプレート）から構築した大規模な日本語汎用オントロジーである．
-
+Japanese Wikipedia Ontology (JWO) [Tamagawa10]_ is a large-scale Japanese general ontology constructed from various resources within the Japanese version of Wikipedia, such as category trees, list-style articles, redirect links, Infoboxes, and Infobox templates.
 
 Aquiring existing domain ontologies using an ontology search engine
 ------------------------------------------------------------------------
-In order to reuse existing domain ontologies, the user needs to find domain ontologies for the target domain on the web. OntoSelect [Buitelaar04]_ supports the search, selection, and browsing of ontologies on the web. Our proposed method for ranking existing ontologies is similar to the method for selecting appropriate ontology in [Buitelaar04]_ .
+To reuse existing domain ontologies, it is necessary to search the Web for ontologies relevant to the target domain. OntoSelect [Buitelaar04]_ and Swoogle [Ding05]_ are well-known examples of ontology search engines. OntoSelect is a system designed to support the searching, selection, and browsing of ontologies on the Web. As of 2007, Swoogle had indexed over 10,000 ontologies, enabling searches at the class and property levels, as well as the discovery of inverse link relationships that are not explicitly defined within the ontologies.
 
-Swoogle [Ding05]_  is an ontology search engine which indexes over 10,000 ontologies as of 2007. Swoogle can find classes and properties in ontologies, and also find implicit links and relations which are not defined in the ontologies. Swoogle also provides REST(Representational State Transfer) web-service interface for machine agents to avoid html-scraping. Swoogle uses OntoRank to rank ontologies and TermRank to rank classes and properties by their popularity as in the PageRank algorithm. From the viewpoint of domain ontology construction, not all popular ontologies are reusable. In order to find reusable ontologies appropriately, the mechanism to find existing ontologies for the target domain is necessary. In addition, since it is difficult to reuse the existing ontologies without modifying, it seems preferable to be able to collaborate with the domain ontology development environment and the ontology search engine.
+While these existing search engines can be used to find domain-related ontologies, they present several challenges from the perspective of domain ontology construction. Although they support searches for individual classes or properties, they do not sufficiently support the retrieval of entire ontologies encompassing multiple relevant classes and properties, nor do they adequately filter for ontologies with high relevance to a specific target domain. Swoogle introduces OntoRank, an ontology-specific ranking method similar to Google's PageRank [Page98]_, and TermRank, which targets classes and properties. In both OntoRank and TermRank, classes and properties referenced by a large number of Semantic Web documents receive higher evaluations. However, for the purpose of domain ontology construction, an ontology that is frequently referenced across the Semantic Web is not necessarily the most suitable for a specific target domain. Therefore, a mechanism is required to appropriately search for existing ontologies relevant to the user’s target domain. Furthermore, it is rare that an existing ontology can be reused without modification. Consequently, it is desirable for a domain ontology construction support environment to be seamlessly integrated with an ontology search engine.
 
-Swoogle provides 19 types of REST web-service interfaces (Swoogle Web Services). DODDLE-OWL acquires and ranks existing ontologies for a target domain using Swoogle by the following procedures depicted in :numref:`ontology_ranking`. 
+Swoogle provides 19 types of RESTful Web services (Swoogle Web Services) for ontology retrieval. Since reusing existing ontologies within DODDLE-OWL necessitates automated searching via software, Swoogle—which provides these Web services—is utilized for the acquisition of existing domain ontologies.
+The ontology selection module performs the acquisition and ranking of existing ontologies using Swoogle, according to the procedure shown in :numref:`ontology_ranking`.
 
-#. Acquiring the classes and properties which have the input terms (important terms for a domain from domain specific texts) as their URI’s local name or as the value of rdfs:label property. These classes and properties are named input concepts.
-#. Acquiring the properties which have the classes acquired from step 1 as their value of rdfs:domain or rdfs:range property.
-#. Acquiring the value of rdfs:domain and rdfs:range of the properties which are acquired from step 1 and 2.
-#. Acquiring the ontologies which define the classes and properties acquired from step 1 through 3.
-#. Referringtheontologiesacquiredfromstep4,removingthepropertieswhichare acquired from step 1 and 2, where the value of rdfs:domain or rdfs:range is neither the input concept nor the upper concept of the input concept.
-#. Gathering ontological elements from the acquired ontologies using templates described in SPARQL.
-#. Ranking the acquired ontologies mainly using the ratio of input concept in the ontology.
+#.	**Acquisition of Input Concepts**: Acquire classes and properties (input concepts) that contain the input terms as their URI local names or as values of the rdfs:label property.
+#.	**Property Acquisition based on Input Classes**: Acquire properties that have the classes obtained in Step 1 defined as their domain (rdfs:domain) or range (rdfs:range).
+#.	**Class Acquisition based on Property Context**: Acquire classes that correspond to the domain and range of the properties obtained in Steps 1 and 2.
+#.	**Acquisition of Defining Ontologies**: Acquire the ontologies that define the classes and properties obtained in Steps 1 through 3.
+#.	**Element Extraction**: Extract specific elements from the ontologies acquired in Step 4.
+#.	**Property Filtering**: Among the properties defined in the ontologies acquired in Step 4, remove those whose domain and range are neither the input concepts nor superconcepts of the input concepts.
+#.	**Ranking**: Rank the existing ontologies acquired in Step 4.
 
-The detail of step 5 is described in :ref:`extracting-ontological-elements` and the details of step 7 is described in ranking-existing-ontologies.
+Details regarding Step 5 are provided in the section :ref:`extracting-ontological-elements`, and details regarding Step 7 are provided in :ref:`ranking-existing-ontologies`.
 
 .. _ontology_ranking:
 .. figure:: figures/procedure_flow_of_acquiring_and_ranking_existing_ontologies.png
@@ -90,25 +93,30 @@ The detail of step 5 is described in :ref:`extracting-ontological-elements` and 
 
 Extracting ontological elements from existing ontologies
 -------------------------------------------------------------------
- In order to reuse existing ontologies for domain ontology construction, it is necessary to extract reusable elements from existing ontologies. DODDLE-OWL supports the
- construction of taxonomic and other relationships in the domain ontology. The elements constructing taxonomic and other relationships are concepts (classes and properties), labels of concepts, descriptions of concepts, super-subrelations, and other relations. Concept is absolutely essential for the domain ontology construction. Labels of concepts are necessary to find concepts related to input terms. Descriptions of concepts are necessary for word sense disambiguation. Super-subrelations are necessary to construct taxonomic relationships. Other relations include the definitions of the properties and their **rdfs:domain** and **rdfs:range**. Other relations are necessary to construct other relationships. Ontology languages (e.g. RDFS, DAML, and OWL) provide the vocabularies to define the above elements of ontology.
 
-In Swoogle, the user can search ontologies based on the vocabularies provided by RDFS, DAML, and OWL. 
+In order to utilize OWL ontologies as reference ontologies for domain ontology construction support, it is necessary to extract elements that can be leveraged for this purpose. DODDLE-OWL facilitates the definition of taxonomic (hierarchical) relations and non-taxonomic relations within a domain ontology. The essential elements of an OWL ontology required for defining these relations include concepts (classes and properties), lexical labels (headings), concept definitions (descriptions), hierarchical relations, and other semantic relations.
 
-例えば，Swoogle ではクラスを，次の(X, Y, Z) というステートメントを満たすXと定義している．
+The extraction of concepts is indispensable for domain ontology construction. Lexical labels are required for input concept selection, where input terms are mapped to their corresponding concepts. Concept definitions provide the necessary context for the user to make an informed decision when multiple candidate concepts exist for a single input term. Hierarchical relations are essential for building class hierarchies and property hierarchies. To define other semantic relations, it is necessary to extract the domain (rdfs:domain) and range (rdfs:range) of the properties. Ontology description languages such as RDFS, DAML, and OWL provide the fundamental classes and properties required to define these elements.
 
-* X は匿名リソース（空白ノード）ではない
-* Y はrdf:type プロパティである
-* Zは以下のいずれかのクラスである- rdfs:Class, owl:Class, owl:Restriction, owl:DataRange, daml:Class, daml:Datatype, daml:Restriction
+Swoogle enables ontology retrieval based on the fundamental classes and properties provided by RDFS, DAML, and OWL. For instance, Swoogle defines a **class** as any resource :math:`X` that satisfies the following statement :math:`(X, Y, Z)`:
 
-Most of the existing ontologies are described in basic vocabularies of RDFS, DAML, and OWL. However, some general ontologies and thesauruses are described based on other schemes. `WordNet RDF/OWL <http://www.w3.org/TR/wordnet-rdf/>`_ provides a standard conversion of WordNet for direct use by Semantic Web application developers. The WordNet RDF/OWL schema is different from the OWL basic vocabularies. SKOS (Simple Knowledge Organisation System) [Miles05]_ provides a model for expressing the basic structure and the content of concept schemes. Some thesauruses are converted to SKOS. SKOS is also different from the OWL basic vocabularies.
+* :math:`X` is not an anonymous resource (blank node).
+* :math:`Y` is the ``rdf:type`` property.
+* :math:`Z` is one of the following classes:
+  
+  .. math::
+
+     Z \in \{ \text{rdfs:Class, owl:Class, owl:Restriction, owl:DataRange, } \\
+     \text{daml:Class, daml:Datatype, daml:Restriction} \}
+
+If the goal were only to extract classes and properties within the scope handled by Swoogle, following Swoogle's definitions would suffice. However, there are general ontologies and thesauri defined in other formats. [Koide06]_ discusses the conversion of WordNet and EDR into OWL, noting that their structures differ from the classes and properties defined in Swoogle. :numref:`label_extraction` illustrates the different representation methods for "lexical labels" in the OWL base vocabulary, SKOS (Simple Knowledge Organisation System) [Miles05]_, and `WordNet RDF/OWL <http://www.w3.org/TR/wordnet-rdf/>`_.
+
+[Nakayama06]_ proposes Wikipedia mining as a method for applying Web mining to Wikipedia and has constructed a thesaurus dictionary (wikipedia-lab). SKOS is employed as the vocabulary to represent this Wikipedia thesaurus. In SKOS, vocabularies such as skos:Concept for representing concepts and skos:broader for representing broader (superordinate) concepts are defined, which differ from the OWL base vocabulary. :numref:`class_and_property_identifying_ontology_elements` lists the classes and properties used to identify ontology elements in the OWL base vocabulary, SKOS, and WordNet RDF/OWL.
+
+To extract ontology elements from diverse formats, DODDLE-OWL utilizes five types of templates: Class Extraction, Property Extraction, Label/Description Extraction, Hierarchical Relation Extraction, and Other Relation Extraction. These templates are described using the RDF query language SPARQL [hommeaux08]_ and are mapped to the respective OWL ontologies.
 
 :numref:`label_extraction` shows the difference of the labels of concepts among OWL basic vocabulary, SKOS, and the WordNet RDF/OWL scheme. In :numref:`label_extraction`, we regard a synset in WordNet as a concept. 
 
-表1 にOWL基本語彙，SKOS, WordNet RDF/OWLにおけるオントロジーの要素を特定するクラスおよびプロパティ一覧を示す．
-
-From the viewpoint of domain ontology construction reusing existing ontologies in various schemes, including thesauruses, we use five types of templates for extracting
-the elements of ontology described in SPARQL query language for RDF [hommeaux08]_ . The five types of templates each extract one of the following elements: Classes, properties, labels and descriptions, super-subrelations, and other relations. 
 
 .. _label_extraction:
 .. figure:: figures/label_extraction.png
@@ -119,36 +127,52 @@ the elements of ontology described in SPARQL query language for RDF [hommeaux08]
    Difference of the labels of concepts among OWL Basic Vocabulary, SKOS, and the WordNet RDF/OWL scheme
 
 
-OWL 基本語彙，SKOS, WordNet RDF/OWL におけるオントロジーの要素を特定するクラスおよびプロパティ一覧
 
-=====================  =============================================================
-Ontological Elements     オントロジーの要素を特定するクラスおよびプロパティ一覧
-=====================  =============================================================
-概念                   | rdfs:Class, owl:Class, rdf:Property, owl:ObjectProperty, etc
-                       | skos:Concept
-                       | wn20schema:WordSense, wn20schema:NounWordSense, etc
-概念の見出し           | rdfs:label
-                       | skos:prefLabel, skos:altLabel, skos:hiddenLabel
-                       | wn20schema:lexicalForm
-概念の説明             | rdfs:comment
-                       | skos:definition
-                       | wn20schema:gloss
-階層関係               | rdfs:subClassOf, rdfs:subPropertyOf
-                       | skos:broader, skos:narrower
-                       | wn20schema:hypernymOf, wn20schema:hyponymOf
-その他の関係           | rdfs:domain, rdfs:range
-                       | skos:related
-                       | wn20schema:antonymOf, wn20schema:partMeronymOf, etc
-=====================  =============================================================
+.. _class_and_property_identifying_ontology_elements:
+.. list-table:: Classes and properties identifying ontology elements
+   :header-rows: 1
+
+   * - Ontological Elements
+     - Classes and properties for identifying ontology elements
+   * - Concept
+     - | ``rdfs:Class``, ``owl:Class``, ``rdf:Property``, ``owl:ObjectProperty``, etc.
+       | ``skos:Concept``
+       | ``wn20schema:WordSense``, ``wn20schema:NounWordSense``, etc.
+   * - Concept Labels
+     - | ``rdfs:label``
+       | ``skos:prefLabel``, ``skos:altLabel``, ``skos:hiddenLabel``
+       | ``wn20schema:lexicalForm``
+   * - Concept Descriptions
+     - | ``rdfs:comment``
+       | ``skos:definition``
+       | ``wn20schema:gloss``
+   * - Hierarchical Relations
+     - | ``rdfs:subClassOf``, ``rdfs:subPropertyOf``
+       | ``skos:broader``, ``skos:narrower``
+       | ``wn20schema:hypernymOf``, ``wn20schema:hyponymOf``
+   * - Other Relations
+     - | ``rdfs:domain``, ``rdfs:range``
+       | ``skos:related``
+       | ``wn20schema:antonymOf``, ``wn20schema:partMeronymOf``, etc.
+ 
+.. _ranking-existing-ontologies:
 
 Ranking existing ontologies
 ----------------------------------------------------
-DODDLE-OWL uses **OntoRank**, **TermRank**, and the ratio of input concept in the ontology as the ranking measures for the extracted ontologies. **OntoRank** is the
-ranking measure for ontologies proposed in [Ding05]_, and **TermRank** is the ranking measure for classes and properties also proposed in [Ding05]_. We assume that the more the ontology includes input concepts, the more it relates to the target domain. If two ontologies include the same number of input concepts, the user can select the more popular ontology according to their **OntoRank**. When there are multiple candidates for the input concept due to the ambiguity of the input term, the user can select the more popular concept according to their **TermRank**.
+
+Currently, DODDLE-OWL employs four metrics for ranking ontologies: **OntoRank**, **TermRank**, the coverage ratio of input concepts within the ontology, and the number of non-taxonomic relations pertaining to those input concepts. OntoRank and TermRank are metrics proposed in [Ding05]_ specifically designed for ranking ontologies, classes, and properties.
+
+In this study, we hypothesize that an ontology containing a higher number of input concepts is more likely to be relevant to the target domain. Furthermore, we assume that an ontology defining a greater number of non-taxonomic relations related to these input concepts also possesses higher domain relevance. For ontologies with a similar coverage ratio of input concepts, OntoRank serves as a reference, allowing users to prioritize and reuse ontologies that are frequently referenced across various Semantic Web documents.
+
+In cases where multiple candidates for an input concept exist due to lexical ambiguity, users can refer to TermRank to select and reuse input concepts that are more widely referenced by other ontologies.
 
 Issues for reusing ontologies
 ----------------------------------------------------
-DODDLE-OWLでは，階層関係構築支援を行うために，参照オントロジーから入力概念に関連するパスを抽出し，合成および不要概念の剪定を行う．Web 上に散在する異種のオントロジーのパスを合成する際には，上位概念階層の構造の違いにより単純に合成することは困難である．そのため，オントロジーアライメントによる類似概念の同定が必要となる．現状では，オントロジーアライメントを用いた階層関係構築支援は実現できていない．オントロジーアライメントについては，オントロジーアライメントのコンテスト が活発に行われており，ツールも多数公開されている．オントロジーアライメントツールとDODDLE-OWLの連携については，今後の課題である．
+
+To support hierarchy construction, DODDLE-OWL extracts paths relevant to the input concepts from the reference ontologies, integrates them, and prunes unnecessary concepts. When integrating paths derived from heterogeneous ontologies scattered across the Web, simple merging is difficult due to discrepancies in the structures of their superconcept hierarchies. Therefore, it is necessary to identify similar concepts through ontology alignment.
+
+Currently, hierarchy construction support utilizing ontology alignment has not yet been implemented. Regarding ontology alignment, various tools have been made public, and competitive evaluations (contests) are actively being held. The integration of such ontology alignment tools with DODDLE-OWL remains a subject for future work.
+
 
 Input Modules
 ========================
