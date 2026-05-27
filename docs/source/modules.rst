@@ -381,8 +381,8 @@ Apriori Algorithm for Association Rule Extraction
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 Association rules are extracted through the following two steps.
 
-**Step 1:** Acquire frequent itemsets.
-**Step 2:** Derive association rules with confidence greater than or equal to the minimum confidence from :math:`F`.
+* **Step 1:** Acquire frequent itemsets.  
+* **Step 2:** Derive association rules with confidence greater than or equal to the minimum confidence from :math:`F`.
 
 Step 2 is the process of deriving rules from :math:`F` obtained in Step 1, and its computational load is relatively small. Step 1, on the other hand, carries a heavy load because it repeatedly scans :math:`T` and examines the support of numerous itemsets. For this reason, it has long been considered that developing an efficient algorithm for Step 1 is the key to a practical association rule mining algorithm. The first method to address this challenge was the Apriori algorithm [Agrawal94]_, proposed by Rakesh Agrawal et al. at the IBM Almaden Research Center. The Apriori algorithm is currently the most widely used association rule mining algorithm, and is also employed in this study for the implementation of the relationship construction module.
 
