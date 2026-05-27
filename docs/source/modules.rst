@@ -292,94 +292,93 @@ The prefix-based stratification focuses on the prefix portion of these partially
 As shown in :numref:`process_of_perfectly_matched`, in the hierarchy built only through suffix-based stratification, the "gauge" and "radar" concepts (which correspond to the prefixes of "gauge information" and "radar information") are defined as hyponyms of the "instrument" concept. By applying prefix-based stratification here, a new concept "instrument information" —combining "instrument" and "information"—is created and defined as the superconcept of "gauge information" and "radar information." The introduction of this "instrument information" concept distinguishes these terms from "model information" and enables the systematic classification of information related to instruments.
 
 Relationship Construction Module
-------------------------------------
-その他の関係の定義を支援するために，関係構築モジュールでは，WordSpace と相関ルールの二つの共起性に基づく手法を用いて，入力文書および入力語彙からその他の関係の候補となる概念対を獲得する．
+---------------------------------------------
+To assist in defining other relations, the relationship construction module employs two co-occurrence-based methods - WordSpace and association rules - to extract candidate concept pairs for other relations from the input documents and input vocabulary.
 
-WordSpace による概念対の抽出
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-共起統計の計算手法としてWordSpace [Hearst96]_ を利用する．WordSpace とは，語彙の共起統計から大規模な単語群の意味表現を誘導するコーパスに基づく方法である．WordSpaceによって，出現語句を共起情報を含むベクトルとして表現できる．この単語ベクトルの集合である多次元ベクトル空間がWordSpace であり，2 ベクトル間の内積は出現語句の文脈類似度の指標となる．WordSpace から得られる共起情報を基に，文脈類似概念対を入力文書から獲得し，その他の関係定義に関わる可能性のある概念対として利用する．“文脈の類似は，その語句間の何らかの概念関係の存在を示唆している” と仮定する．　
+Extraction of Concept Pairs via WordSpace
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+WordSpace [Hearst96]_ is employed as a method for computing co-occurrence statistics. WordSpace is a corpus-based approach that induces semantic representations of large word sets from the co-occurrence statistics of a vocabulary. Through WordSpace, each occurring term can be represented as a vector encoding co-occurrence information. The multidimensional vector space formed by this collection of word vectors constitutes the WordSpace, and the inner product between two vectors serves as a measure of contextual similarity between occurring terms. Based on the co-occurrence information obtained from WordSpace, contextually similar concept pairs are extracted from the input documents and utilized as candidate concept pairs potentially relevant to the definition of other relations. We assume that "similarity of context suggests the existence of some conceptual relationship between the terms."
 
-以下では，WordSpace に基づく文脈類似概念対の獲得手順（ :numref:`wordspace` ）について説明する．
+The following describes the procedure for extracting contextually similar concept pairs based on WordSpace ( :numref:`wordspace` ).
 
 .. _wordspace:
 .. figure:: figures/extraction_of_related_concept_pairs_using_WordSpace.png
    :scale: 80 %
-   :alt: 文脈類似概念対の獲得手順
+   :alt: Procedure for Extracting Contextually Similar Concept Pairs
    :align: center
 
-   文脈類似概念対の獲得手順
+   Procedure for Extracting Contextually Similar Concept Pairs
 
-1. 高頻度単語N-gram の抽出
-"""""""""""""""""""""""""""""""""""""""""
-専門文書中からN 個の単語から構成される句（単語N-gram）を抽出し，共起の最小単位として用いる．文字単位のN-gram 統計を取るのに比べ意味の無い文字列の共起情報を除外でき，より専門文書の文脈表現に役立つ情報が抽出できる．この際抽出される句は，標準形に変換し，同形のものをまとめることで重複を排除している．ここで抽出された単語N-gram 集合の中から，専門文書における出現頻度の高い単語N-gram（高頻度単語N-gram）をWordSpace の構築に用いる．これにより入力文書は高頻度単語N-gram の配列とみなせる．関係構築モジュールでは，高頻度単語N-gram を抽出する際に，単語N-gram の単語数N および出現数をユーザは設定することができる．
+1. Extraction of High-Frequency Word N-grams
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+Phrases composed of N words (word N-grams) are extracted from domain documents and used as the minimal unit of co-occurrence. Compared to computing N-gram statistics at the character level, this approach allows co-occurrence information for meaningless character sequences to be excluded, enabling the extraction of information more useful for representing the context of domain documents. The extracted phrases are converted to their canonical forms, and duplicates are eliminated by consolidating identical forms. From the resulting set of word N-grams, those with high occurrence frequency in the domain documents (high-frequency word N-grams) are selected for use in constructing the WordSpace. This allows the input documents to be treated as sequences of high-frequency word N-grams. In the relationship construction module, users can configure both the word count N and the minimum occurrence count when extracting high-frequency word N-grams.
 
 .. note::
-    [Hearst96]_ においては文字単位の共起を用いてWordSpace の構築を行っているが，関係構築モジュールでは単語単位N-gram の共起を最小単位として扱う．従って，通常のWordSpace 構築時に文字単位共起をある程度まとまった形で表現するために行う4-gram ベクトル構築工程は行わない．
+   While [Hearst96]_ constructs WordSpace using character-level co-occurrences, the relationship construction module treats word-level N-gram co-occurrences as the minimal unit. Consequently, the 4-gram vector construction step - performed in standard WordSpace construction to represent character-level co-occurrences in a consolidated form - is omitted.
 
-2. 文脈ベクトルの構築
-"""""""""""""""""""""
-次に，ある二つの入力語の文脈を比較するために，文脈ベクトル(context vector)を構築する．文脈ベクトルとは，ある入力語周辺の高頻度単語N-gram の出現回数をベクトルで表現したものである．文脈ベクトル :math:`\overrightarrow{w_i}` の要素 :math:`a_{i,j}` は，入力語 :math:`w_i` の出現場所周辺（ **文脈スコープ** ）の高頻度単語N-gram :math:`g_j` の出現回数である．関係構築モジュールでは，文脈スコープとして，入力語 :math:`w_i` の前後何語以内に含まれる高頻度単語N-gram を文脈ベクトルの構築に用いるかをユーザは設定することができる．
+2. Construction of Context Vectors
+"""""""""""""""""""""""""""""""""""""""""""""""""
+Next, context vectors are constructed in order to compare the contexts of two given input terms. A context vector represents, as a vector, the occurrence counts of high-frequency word N-grams in the vicinity of a given input term. The element :math:`a_{i,j}` of context vector :math:`\overrightarrow{w_i}` is the occurrence count of high-frequency word N-gram :math:`g_j` within the surrounding region of the occurrences of input term :math:`w_i` (the **context scope**). In the relationship construction module, users can configure the context scope by specifying the number of words before and after input term :math:`w_i` within which high-frequency word N-grams are included in the construction of the context vector.
 
-3. 入力語ベクトルの構築
-"""""""""""""""""""""""
-次に，文脈ベクトルから入力語のベクトル表現である **入力語ベクトル(input term vector)**  を導く．入力語ベクトル :math:`\overrightarrow{W_i}` は，専門文書において，入力語 :math:`w_i` の全出現場所についての文脈ベクトル :math:`\overrightarrow{w_i}` の和によって表される．
+3. Construction of Input Term Vectors
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+Next, the **input term vector** is derived from the context vectors as a vector representation of each input term. The input term vector :math:`\overrightarrow{W_i}` is represented by the sum of the context vectors :math:`\overrightarrow{w_i}` across all occurrences of input term :math:`w_i` in the domain documents.
 
-4. 概念ベクトルの構築
-"""""""""""""""""""""
-次に，入力語ベクトルから入力概念のベクトル表現である **概念ベクトル(concept vector)** を導く．入力概念選択モジュールによって，入力語に対応する参照オントロジー中の概念（入力概念）は特定されている．入力概念の見出し（入力語）における入力語ベクトルの和が概念ベクトルとなる．概念ベクトル :math:`\overrightarrow{C}` は， :eq:`concept_vector` で表される． :math:`\mathcal{A}(w)` は，入力語 :math:`w` の専門文書における全出現場所を表す．:math:`\overrightarrow{w}(i)` は，入力語 :math:`w` の専門文書中の位置 :math:`i` における文脈ベクトルを表す．:math:`synset(C)` は，概念 における見出し集合を表す．
+4. Construction of Concept Vectors
+""""""""""""""""""""""""""""""""""""""""""""""""""""""
+Next, **concept vectors** are derived from the input term vectors as vector representations of the input concepts. The input concept selection module has already identified the concepts in the reference ontology that correspond to the input terms (input concepts). The concept vector is obtained as the sum of the input term vectors over the headwords (input terms) of the input concept. The concept vector :math:`\overrightarrow{C}` is expressed by :eq:`concept_vector`. :math:`\mathcal{A}(w)` denotes the set of all occurrences of input term :math:`w` in the domain documents. :math:`\overrightarrow{w}(i)` denotes the context vector at position :math:`i` of input term :math:`w` in the domain documents. :math:`synset(C)` denotes the set of headwords of concept :math:`C`.
 
 .. math:: \overrightarrow{C} = \sum_{w \in {synset(C)}} (\sum_{i \in \mathcal{A}(w)}\overrightarrow{w}(i))
    :label: concept_vector
 
-5. 文脈類似概念対の獲得
-"""""""""""""""""""""""
-以上の処理より，全入力概念について概念ベクトルを得ることができる．概念ベクトル間の内積は，概念間の文脈類似度となる．関係構築モジュールでは，文脈類似度に対してある一定の閾値をユーザは設定することができる．ユーザが指定した閾値を越える値を持つ概念対を文脈類似概念対として獲得する．
-概念ベクトル :math:`\overrightarrow{C_1}` ， :math:`\overrightarrow{C_2}` ，間の文脈類似度 :math:`sim(\overrightarrow{C_1}, \overrightarrow{C_2})` は， :eq:`context_similarity` を用いて計算する．
+5. Extraction of Contextually Similar Concept Pairs
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+Through the processing described above, concept vectors can be obtained for all input concepts. The inner product between concept vectors yields the contextual similarity between concepts. In the relationship construction module, users can set a threshold value against which contextual similarity is measured. Concept pairs whose contextual similarity exceeds the user-specified threshold are extracted as contextually similar concept pairs.
 
+The contextual similarity :math:`sim(\overrightarrow{C_1}, \overrightarrow{C_2})` between concept vectors :math:`\overrightarrow{C_1}` and :math:`\overrightarrow{C_2}` is computed using :eq:`context_similarity`.
 
 .. math:: sim(\overrightarrow{C_1}, \overrightarrow{C_2}) = \frac{\sum_i c_{1,i}c_{2,i}}{\sqrt{\sum_i {c_{1,i}}^2 \sum_i {c_{2,i}}^2}}
    :label: context_similarity
 
-概念間の関係を明示する概念関係子は推定されていないため，推定前の初期値として概念関係子 **non-TAXONOMY** を割当てる．獲得された文脈類似概念対の中には，階層関係が含まれる可能性がある．そのため，概念階層において既に定義されている階層関係については，文脈類似概念対集合の中から除外する．
+Since no concept relation has yet been inferred to explicitly characterise the relationship between concepts, the concept relation **non-TAXONOMY** is assigned as the initial value prior to inference. The extracted contextually similar concept pairs may include hierarchical relationships. Accordingly, any hierarchical relationships already defined in the concept hierarchy are excluded from the set of contextually similar concept pairs.
 
-相関ルールによる概念対の抽出
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-専門文書からその他の関係定義の候補となる概念対を獲得するもう一つの方法として，相関ルールを利用する．相関とは，ある事象が発生すると別の事象が発生しやすいという共起性を意味する．また， :math:`A \Rightarrow B` という相関ルールは， :math:`A` という事象が起こると :math:`B` という事象も起こりやすいことを意味する．相関ルールの抽出は代表的なデータマイニング技術の一つであり，その他の関係定義にも利用されている [Agrawal94]_ ．ここでは，入力文書内の1 文中に同時に出現する入力語の組み合わせを相関ルールとして抽出し，その他の関係定義の候補となる概念対として利用する．抽出された相関ルールに含まれる概念間に，何らかの概念関係が存在すると仮定する．
+Extraction of Concept Pairs via Association Rules
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+Association rules are employed as a second method for extracting candidate concept pairs for the definition of other relations from domain documents. Correlation denotes a co-occurrence property whereby the occurrence of one event tends to be accompanied by the occurrence of another. Furthermore, an association rule of the form :math:`A \Rightarrow B` signifies that the occurrence of event :math:`A` tends to be followed by the occurrence of event :math:`B`. The extraction of association rules is one of the representative data mining techniques and has also been applied to the definition of other relations [Agrawal94]_. Here, combinations of input terms co-occurring within a single sentence in the input documents are extracted as association rules and utilised as candidate concept pairs for the definition of other relations. It is assumed that some conceptual relationship exists between the concepts included in the extracted association rules.
 
-以下では，相関ルールの定義および相関ルール抽出アルゴリズムApriori について述べる．相関ルールおよびApriori アルゴリズムの説明は，データマイニングの基礎 [Motoda06]_ 2.5節を参考にした．
+The following describes the definition of association rules and the Apriori algorithm for association rule extraction. The explanations of association rules and the Apriori algorithm are based on Section 2.5 of *Fundamentals of Data Mining* [Motoda06]_.
 
-相関ルールの定義
-""""""""""""""""""""""""""""""
-相関ルールは， :eq:`transaction_set` に示す **トランザクション集合(transaction set)** :math:`T` から抽出される． **トランザクション(transaction)** :math:`t_i` は，データベース内でのデータのまとまりの単位を表す．ここでは，入力文書内の1 文をデータのまとまりの単位としているため，トランザクション集合の要素数 :math:`n` は，入力文書に含まれる文の数を表す．
+Definition of Association Rules
+""""""""""""""""""""""""""""""""""""""""""""""""""""""
+Association rules are extracted from the **transaction set** :math:`T` shown in :eq:`transaction_set`. A **transaction** :math:`t_i` represents the unit of data grouping in a database. Here, since a single sentence in the input documents is taken as the unit of data grouping, the number of elements :math:`n` in the transaction set corresponds to the number of sentences contained in the input documents.
 
 .. math:: T := \{t_i \mid i=1 \ldots n\}
    :label: transaction_set
 
-
-:math:`T` の要素 :math:`t_i` は，アイテム集合(item set) である．ここでは，アイテムは入力語とする．つまり， :math:`t_i` は，入力文書の :math:`i` 番目の文に含まれる入力語の集合として表される． :math:`t_i` は， :eq:`transaction` で表される． :eq:`transaction` の :math:`C` は，入力文書に含まれる全入力語の集合を表す．
+Each element :math:`t_i` of :math:`T` is an item set. Here, items are taken to be input terms. That is, :math:`t_i` is represented as the set of input terms contained in the :math:`i`-th sentence of the input documents. :math:`t_i` is expressed by :eq:`transaction`. The :math:`C` in :eq:`transaction` denotes the set of all input terms contained in the input documents.
 
 
 .. math:: t_i=\{a_{i,j} \mid j = 1 \ldots m, a_{i,j} \in C\}
    :label: transaction
 
-:math:`k` 個のアイテムを含むアイテム集合 :math:`X_k` と :math:`Y_k` について，相関ルールは，:math:`X_k \Rightarrow Y_k (X_k,Y_k \subset C, X_k \cap Y_k = \emptyset)` で表される．ここで，:math:`X_k` を条件部， :math:`Y_k` を結論部と呼ぶ．条件部，結論部共に複数アイテムを含んでいてもよい．
+For item sets :math:`X_k` and :math:`Y_k` each containing :math:`k` items, an association rule is expressed as :math:`X_k \Rightarrow Y_k (X_k, Y_k \subset C, X_k \cap Y_k = \emptyset)`. Here, :math:`X_k` is referred to as the antecedent and :math:`Y_k` as the consequent. Both the antecedent and the consequent may contain multiple items.
 
-相関ルールの重要性を測る指標として， **支持度** (support) と **確信度** (confidence) がある．支持度とは，相関ルールが全トランザクションでどの程度出現するかを表す割合である．:math:`X_k \Rightarrow Y_k` の支持度 :math:`support(X_k \Rightarrow Y_k)` は，の中でとを共に含むトランザクションの割合により定義される :eq:`support` ．
+Two metrics for measuring the significance of association rules are **support** and **confidence**. Support denotes the proportion of all transactions in which a given association rule appears. The support :math:`support(X_k \Rightarrow Y_k)` of :math:`X_k \Rightarrow Y_k` is defined as the proportion of transactions containing both :math:`X_k` and :math:`Y_k` in :math:`T`, as expressed by :eq:`support`.
 
 .. math:: support(X_k \Rightarrow Y_k) = \frac{\mid \{t_i \mid X_k \cup Y_k \subseteq t_i \} \mid}{n}
    :label: support
 
-確信度とは，条件部が起こったときに結論部が起こる割合である． :math:`X_k \Rightarrow Y_k` の確信度 :math:`confidence(X_k \Rightarrow Y_k)` は， :math:`T` において :math:`X_k` を含むトランザクションの中で， :math:`Y_k` が出現する割合により定義される :eq:`confidence` ．
+Confidence denotes the proportion of cases in which the consequent occurs given that the antecedent has occurred. The confidence :math:`confidence(X_k \Rightarrow Y_k)` of :math:`X_k \Rightarrow Y_k` is defined as the proportion of transactions containing :math:`X_k` in :math:`T` in which :math:`Y_k` also appears, as expressed by :eq:`confidence`.
 
 .. math:: confidence(X_k \Rightarrow Y_k) = \frac{\mid \{t_i \mid X_k \cup Y_k \subseteq t_i \} \mid}{\mid \{t_i \mid X_k \subseteq t_i\} \mid}
    :label: confidence
 
-相関ルールの抽出では，支持度と確信度にある一定の閾値を設けないと，組み合わせ爆発を起こし，多数の無意味なルールが生成されてしまう．そのため，相関ルールの抽出では，支持度と確信度に閾値を設け，その値以上の支持度と確信度を有する相関ルールのみを抽出する．ここで，それぞれの閾値を **最小支持度** (minimum support)， **最小確信度** (minimum confidence) と呼ぶ．また，ユーザから与えられた最小支持度以上の支持度を有するアイテム集合を **多頻度アイテム集合** (frequent item set) と呼ぶ．
+In association rule extraction, unless threshold values are imposed on both support and confidence, a combinatorial explosion occurs and a large number of meaningless rules are generated. Therefore, thresholds are set for both support and confidence in association rule extraction, and only association rules whose support and confidence meet or exceed these values are extracted. These respective thresholds are referred to as **minimum support** and **minimum confidence**. Furthermore, item sets whose support meets or exceeds the user-specified minimum support are referred to as **frequent item sets**.
 
-通常，相関ルールの条件部には複数のアイテムを許すが，ここでは概念対を抽出したいため，条件部と結論部共に一つずつのアイテム，つまり入力語の対を獲得する．WordSpaceを用いた概念対の抽出と同様に，概念間の関係を明示する概念関係子は推定されていないため，初期値として概念関係子 **non-TAXONOMY** を割当てる．
+Although association rules generally permit multiple items in the antecedent, since the goal here is to extract concept pairs, a single item is admitted in both the antecedent and the consequent - that is, pairs of input terms are extracted. As with the extraction of concept pairs using WordSpace, since no concept relation has yet been inferred to explicitly characterise the relationship between concepts, the concept relation **non-TAXONOMY** is assigned as the initial value.
 
-相関ルール抽出アルゴリズム Apriori
-""""""""""""""""""""""""""""""""""
+Apriori Algorithm for Association Rule Extraction
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 
 相関ルールは，次の二つのステップにより抽出される．
 
@@ -412,19 +411,18 @@ Apriori アルゴリズムでは，要素数の少ないアイテム集合から
    Apriori アルゴリズムによる多頻度アイテム集合抽出の例
 
 
-EDR概念記述辞書を用いたプロパティ階層の構築およびその他の関係定義
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-オントロジー構築モジュールは，EDR 概念記述辞書を用いてプロパティ階層の構築およびその他の関係定義を行うことができる．EDR 概念記述辞書には動詞的概念が名詞的概念を支配する場合の格関係を中心に，agent，object， goal， implement，a-object，place， scene， cause の8 種類の概念関係が定義されている．オントロジー構築モジュールはEDR 概念記述辞書に定義されている動詞的概念およびその下位概念をOWLにおけるオブジェクトプロパティとみなし，階層構築時に名詞的概念階層（クラス階層）とは分離してプロパティ階層構築を行う．
+Construction of Property Hierarchies and Definition of Other Relations Using the EDR Concept Description Dictionary
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+The ontology construction module is capable of constructing property hierarchies and defining other relations using the EDR Concept Description Dictionary. The EDR Concept Description Dictionary defines eight types of conceptual relationships, centred on case relationships in which verbal concepts govern nominal concepts: agent, object, goal, implement, a-object, place, scene, and cause. The ontology construction module treats verbal concepts defined in the EDR Concept Description Dictionary and their subordinate concepts as OWL object properties, and constructs the property hierarchy separately from the nominal concept hierarchy (class hierarchy) during hierarchy construction.
 
-また，オントロジー構築モジュールは，8 種類の概念関係のうちagent 関係がある名詞的概念をプロパティの定義域，object 関係がある名詞的概念をプロパティの値域として定義する．
+Furthermore, among the eight types of conceptual relationships, the ontology construction module defines nominal concepts bearing an agent relationship as the domain of a property, and nominal concepts bearing an object relationship as the range of a property.
 
-プロパティ階層構築にも，クラス階層構築における完全および部分照合概念階層化と同様のアルゴリズムが適用可能である．完全照合概念を階層化する際には，不要概念の剪定が行われる．そのため，以下の場合にその他の関係定義の整合性が保持できなかったり，その他の関係定義が欠落してしまう問題が発生する．
+The same algorithm applied to exact-match and partial-match concept hierarchisation in class hierarchy construction is also applicable to property hierarchy construction. When hierarchising exact-match concepts, unnecessary concepts are pruned. This gives rise to the following cases in which either the consistency of other relation definitions cannot be maintained, or other relation definitions are lost entirely:
 
-1. クラス階層中の剪定された概念がagent またはobject の値として定義されている場合
-2. プロパティ階層中の剪定された概念にagent またはobject 関係が定義されている場合
+1. A pruned concept in the class hierarchy is defined as the value of an agent or object relationship.
+2. An agent or object relationship is defined for a pruned concept in the property hierarchy.
 
-オントロジー構築モジュールでは，1. については，agent またはobject の値を，剪定された概念の下位概念に置換することで整合性を保持している．2. については，剪定されたプロパティの下位概念に定義域および値域を継承させることによりその他の関係定義が欠落しないようにしている．
-
+In the ontology construction module, case 1 is addressed by substituting the value of the agent or object relationship with a subordinate concept of the pruned concept, thereby preserving consistency. Case 2 is addressed by having the domain and range inherited by the subordinate concepts of the pruned property, thereby preventing the loss of other relation definitions.
 
 Ontology Refinement Module
 ================================
