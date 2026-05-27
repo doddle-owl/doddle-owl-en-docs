@@ -379,36 +379,35 @@ Although association rules generally permit multiple items in the antecedent, si
 
 Apriori Algorithm for Association Rule Extraction
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+Association rules are extracted through the following two steps.
 
-相関ルールは，次の二つのステップにより抽出される．
+**Step 1:** Acquire frequent itemsets.
+**Step 2:** Derive association rules with confidence greater than or equal to the minimum confidence from :math:`F`.
 
-**ステップ1:** 多頻度アイテム集合を獲得する．
-**ステップ2:**  から最小確信度以上の確信度を有する相関ルールを導出する．
+Step 2 is the process of deriving rules from :math:`F` obtained in Step 1, and its computational load is relatively small. Step 1, on the other hand, carries a heavy load because it repeatedly scans :math:`T` and examines the support of numerous itemsets. For this reason, it has long been considered that developing an efficient algorithm for Step 1 is the key to a practical association rule mining algorithm. The first method to address this challenge was the Apriori algorithm [Agrawal94]_, proposed by Rakesh Agrawal et al. at the IBM Almaden Research Center. The Apriori algorithm is currently the most widely used association rule mining algorithm, and is also employed in this study for the implementation of the relationship construction module.
 
-ステップ2 は，ステップ1 により求めた :math:`F` からルールを導出する処理であり，その負荷は比較的小さい．一方，ステップ1 は， :math:`T` を繰り返し検索し，数多くのアイテム集合の支持度を調べるため，その負荷は大きい．そのため，ステップ1 の効率の良いアルゴリズムを開発することが，実用的な相関ルール抽出アルゴリズムにつながると考えられてきた．この課題をはじめて解決した方法が，IBM アルマデン研究所のRakesh Agrawal らによって提案されたApriori アルゴリズム [Agrawal94]_ である．Apriori アルゴリズムは，現在最も広く利用されている相関ルール抽出アルゴリズムであり，本研究でも関係構築モジュールの実装に用いている．
+The Apriori algorithm is described below.
 
-以下では，Apriori アルゴリズムについて説明する．
+The Apriori algorithm exploits the anti-monotonicity property of itemset support: "if :math:`A` is a frequent itemset, then all of its subsets are also frequent itemsets," and conversely, its contrapositive: "if :math:`B` is not a frequent itemset, then any itemset :math:`A` that contains :math:`B` is also not a frequent itemset." By leveraging these properties, the algorithm can efficiently perform pruning to discover frequent itemsets. For example, if {1, 2} is not a frequent itemset, then no itemset containing {1, 2} (such as {1, 2, 3}) can be a frequent itemset either, and therefore its support does not need to be examined.
 
-Apriori アルゴリズムでは，「 :math:`A` が多頻度アイテム集合であれば，その部分集合は多頻度アイテム集合である」および，その対偶をとって「 :math:`B` が多頻度アイテム集合でなければ， :math:`B` を含むような集合 :math:`A` も多頻度アイテム集合でない」というアイテム集合の支持度の逆単調性を利用している．これらの性質を利用することにより，効率よく枝刈りを実行して，多頻度アイテム集合を求めることができる．例えば，{1,2}が多頻度アイテム集合でなければ，{1,2}を含むいかなるアイテム集合（{1,2,3}など）も多頻度アイテム集合ではないため，その支持度を調べる必要はない．
+In the Apriori algorithm, support is computed starting from itemsets with fewer elements. When the support of a given itemset falls below the minimum support threshold, the anti-monotonicity property is applied to prune all itemsets that contain it — that is, they are excluded from consideration as frequent itemset candidates.
 
-Apriori アルゴリズムでは，要素数の少ないアイテム集合から支持度を計算し，あるアイテム集合の支持度が最小支持度より小さくなったとき，この逆単調性を利用して，そのアイテム集合を含むようなアイテム集合は，多頻度アイテム集合の候補とはせずに枝狩りする．
+Let :math:`F_k` denote the set of frequent itemsets of size :math:`k`, and :math:`C_k` denote the set of candidate frequent itemsets of size :math:`k`. The procedural steps of the Apriori algorithm are as follows.
 
-要素数 :math:`k` の多頻度アイテム集合を :math:`F_k` ，多頻度アイテム集合の候補集合を :math:`C_k` とする時，Apriori アルゴリズムの処理手順は以下のようになる．
+1. Generate :math:`C_{k+1}` from :math:`F_k`. For each element of :math:`C_{k+1}`, check whether every subset of size :math:`k` is contained in :math:`F_k`; if not, remove that element from :math:`C_{k+1}`.
+2. Scan :math:`T` to compute the support of each element in :math:`C_{k+1}`.
+3. Extract :math:`F_{k+1}` from :math:`C_{k+1}` by retaining only those elements whose support meets the minimum support threshold.
+4. Repeat steps (1) through (3) until no new frequent itemsets are found.
 
-1. :math:`F_k` から :math:`C_{k+1}` を作成する．この際に，:math:`C_{k+1}` の各要素について，要素数 :math:`k` のアイテム集合からなる各部分集合がすべて :math:`F_k` に含まれるかどうかを点検し，そうでなければその要素を :math:`C_{k+1}` から削除する．
-2. :math:`T` を検索し， :math:`C_{k+1}` における各要素の支持度を求める．
-3. :math:`C_{k+1}` から :math:`F_{k+1}` を抽出する．
-4. 新たな多頻度アイテム集合が空となるまで，(1) から(3) の処理を繰り返す．
-
-:numref:`apriori` に，最小支持度0.50 (2/4 = 0.50) における，Apriori アルゴリズムによる多頻度アイテム集合抽出の例を示す． :numref:`apriori` では， :math:`T` には四つのトランザクションが含まれているため， :math:`T` の中で2 回以上出現するアイテム集合が，多頻度アイテム集合となる．はじめに :math:`T` ，から要素数1 のアイテム集合がトランザクションに含まれる回数を数え上げ， :math:`C_1` を作成する．:math:`C_1` の中から最小支持度以上の支持度を有するアイテム集合を抽出し， :math:`F_1` を求める．次に， :math:`F_1` から :math:`C_2` を作成する．ここでは， :math:`C_2` の各要素について，要素数1 のアイテム集合からなる各部分集合は，すべて多頻度アイテム集合となるため，要素の削除は行われない． :math:`T` を検索し， :math:`C_2` から :math:`F_2` を求める．次に， :math:`F_2` から :math:`C_3` を作成する．ここで， :math:`F_2` からは，{1,2,3}および{1,3,5}といったアイテム集合も :math:`C_3` の候補として抽出される．しかし，これらの部分集合である{1,2}および{1,5}は，それぞれ多頻度アイテム集合ではないため，{1,2,3}および{1,3,5}も多頻度アイテム集合ではないことがわかり， :math:`C_3` から削除される．よって， :math:`C_3` は{2,3,5}のみとなる． :math:`T` を検索すると，{2,3,5}の出現数が2であり，支持度は0.50 以上となる．よって， :math:`F_3` は{2,3,5}となる．{2,3,5}からは， :math:`C_4` を作成することができないため，ここで停止することとなる．
+:numref:`apriori` shows an example of frequent itemset extraction using the Apriori algorithm with a minimum support of 0.50 (2/4 = 0.50). In :numref:`apriori`, since :math:`T` contains four transactions, any itemset appearing two or more times in :math:`T` qualifies as a frequent itemset. First, the occurrences of all size-1 itemsets in the transactions of :math:`T` are counted to construct :math:`C_1`. Itemsets in :math:`C_1` that meet or exceed the minimum support threshold are extracted to obtain :math:`F_1`. Next, :math:`C_2` is generated from :math:`F_1`. At this stage, no elements are pruned from :math:`C_2`, because every size-1 subset of each element in :math:`C_2` is already a frequent itemset. :math:`T` is then scanned to derive :math:`F_2` from :math:`C_2`. Next, :math:`C_3` is generated from :math:`F_2`. At this point, itemsets such as {1, 2, 3} and {1, 3, 5} are initially extracted as candidates for :math:`C_3`. However, their respective subsets {1, 2} and {1, 5} are not frequent itemsets; consequently, {1, 2, 3} and {1, 3, 5} cannot be frequent itemsets either, and are pruned from :math:`C_3`. As a result, :math:`C_3` contains only {2, 3, 5}. Scanning :math:`T` reveals that {2, 3, 5} occurs twice, giving it a support of 0.50, which meets the threshold. Therefore, :math:`F_3` = {2, 3, 5}. Since no :math:`C_4` can be generated from {2, 3, 5}, the algorithm terminates here.
 
 .. _apriori:
 .. figure:: figures/apriori.png
    :scale: 80 %
-   :alt: Apriori アルゴリズムによる多頻度アイテム集合抽出の例
+   :alt: An Example of Frequent Itemset Extraction Using the Apriori Algorithm
    :align: center
 
-   Apriori アルゴリズムによる多頻度アイテム集合抽出の例
+   An Example of Frequent Itemset Extraction Using the Apriori Algorithm
 
 
 Construction of Property Hierarchies and Definition of Other Relations Using the EDR Concept Description Dictionary
