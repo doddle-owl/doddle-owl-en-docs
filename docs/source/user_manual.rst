@@ -294,7 +294,7 @@ In the Removed Term Table, a list of the term from the Input Term Table is displ
 
 Input Concept Selection Panel
 ==================================
-:numref:`input-concept-selection-panel` に入力概念選択パネルを示す．入力概念選択パネルでは，入力語と参照オントロジー中の概念との対応付けを行う．語には多義性があり，ある入力語を見出しとして持つ概念が複数存在する可能性がある．入力概念選択パネルでは，対象領域にとって最も適切な入力語に対応する概念を選択する際の支援を行う．以下に入力概念選択パネルの構成要素の説明を示す．
+:numref:`input-concept-selection-panel` shows the Input Concept Selection Panel. This panel is used to establish correspondences between input terms and concepts in a reference ontology. Since terms can be polysemous, there may be multiple concepts that share a given input term as their label. The Input Concept Selection Panel assists users in selecting the concept that most appropriately corresponds to an input term within the target domain. The components of the Input Concept Selection Panel are described below.
 
 .. _input-concept-selection-panel:
 .. figure:: figures/input-concept-selection-panel.png
@@ -304,17 +304,17 @@ Input Concept Selection Panel
 
    Input Concept Selection Panel
 
-#. **用語リスト**: 入力語彙の中で参照オントロジー中の概念見出しと完全照合または部分照合した用語のリストを表示する．
-#. **概念リスト**: 1で選択された語を見出しとしてもつ参照オントロジー中の概念のリストを表示する．
-#. **概念情報**: 	2で選択された概念の見出しおよび説明を言語ごとに分類して表示する．
-#. **未定義語リスト**: 参照オントロジー中の概念の見出しと照合しなかった入力語（未定義語）を表示する．
-#. **概念階層**: 2で選択された概念の参照オントロジー中の概念階層を表示する．
-#. **入力文書**: 1で選択された語の入力文書中の出現箇所を表示する．
-#. **階層構築オプション**: 階層構築における条件を設定する．
+#. **Term List**: Displays a list of terms from the input vocabulary that have matched — either exactly or partially — against concept labels in the reference ontology.
+#. **Concept List**: Displays a list of concepts in the reference ontology whose labels match the term selected in (1).
+#. **Concept Information**: Displays the labels and descriptions of the concept selected in (2), organized by language.
+#. **Undefined Term List**: Displays input terms (undefined terms) that did not match any concept label in the reference ontology.
+#. **Concept Hierarchy**: Displays the position of the concept selected in (2) within the concept hierarchy of the reference ontology.
+#. **Input Document**: Displays the occurrences of the term selected in (1) within the input document.
+#. **Hierarchy Construction Options**: Configures the conditions used during hierarchy construction.
 
 Term List
 -----------------------
-:numref:`input-concept-selection-panel-term-list` は :numref:`input-concept-selection-panel` -1 用語リストを拡大した図である．以下では，入力概念選択パネルの用語リストの各部分について説明する．
+:numref:`input-concept-selection-panel-term-list` is an enlarged view of the Term List (1) shown in :numref:`input-concept-selection-panel`. The following describes each part of the Term List in the Input Concept Selection Panel.
 
 .. _input-concept-selection-panel-term-list:
 .. figure:: figures/input-concept-selection-panel-term-list.png
@@ -324,27 +324,27 @@ Term List
 
    Input Concept Selection Panel: Term List
 
-#. テキストフィールドに検索キーワードを入力し，検索ボタンを押すと2および3の完全照合語リストおよび部分照合語リストに検索キーワードを含む入力語のみが表示される．
-#. 完全照合語リストを表示する．1番目の括弧内には，入力語を見出しとする参照オントロジー中の概念の数が表示される．システムが自動的に追加した入力語は，2番目の括弧内に「自動追加」と表示される．
-#. 部分照合語リストを表示する．1 番目の括弧内には，部分照合語を形態素解析し，各形態素を「+」記号で結合した結果が表示される．2 番目の括弧内には，参照オントロジー中の概念の見出しと照合した部分照合語内の語が表示される．3 番目の括弧内には，2 番目の括弧内に表示された語を見出しとする参照オントロジー中の概念の数が表示される．
-#. 完全照合語リストに関する設定を行うことができる． 
+#. Entering a search keyword in the text field and pressing the search button causes only input terms containing that keyword to be displayed in the exact-match term list (2) and partial-match term list (3).
+#. Displays the exact-match term list. The first set of parentheses shows the number of concepts in the reference ontology whose label matches the input term. Input terms that were automatically added by the system are indicated by the label "Auto-added" in the second set of parentheses.
+#. Displays the partial-match term list. The first set of parentheses shows the result of morphologically analyzing the partial-match term and joining each morpheme with a "+" symbol. The second set of parentheses shows the morpheme(s) within the partial-match term that matched a concept label in the reference ontology. The third set of parentheses shows the number of concepts in the reference ontology whose label matches the term shown in the second set of parentheses.
+#. Allows configuration of settings related to the exact-match term list.
 
-    #. 「意味数」チェックボックスは，完全照合語リスト中の各語を見出しとする参照オントロジー中の概念の数を表示するかどうかを設定するオプションである．
-    #. 「システムが追加した入力語」チェックボックスは，システムが自動的に追加した語かどうかを完全照合語リスト中の語に提示するかどうかを設定するオプションである．部分照合語の中で参照オントロジー中の概念と照合した語を，ユーザが入力語として追加していなかった場合に，システムはその語を自動的に完全照合語として完全照合語リストに追加する．例えば，「資格取得日」をユーザが入力語として選択した場合，「資格取得日」自体は参照オントロジー中の概念の見出しに存在しないため，部分照合語となる．「資格取得日」の「日」に対して部分照合したとする．ここで，ユーザが「日」を入力語として選択している場合には問題ない．しかし，「日」をユーザが入力語として選択していなかった場合には，「日」が自動的に完全照合語リストに追加される．システムが自動的に追加した語には，「（自動追加）」と表示される．
-    #. 「入力概念選択結果を対応する部分照合語リストに適用」チェックボックスは，完全照合語の入力概念選択結果を，その完全照合語に照合した部分照合語リストの入力概念選択に反映させるかどうかを設定するためのオプションである．例えば，完全照合語「日」に対して入力概念選択を行った結果を，部分照合語リスト中の「資格取得日」や「研究日」などにも反映させるかどうかを設定することができる．
+    #. The "Number of Senses" checkbox controls whether to display, for each term in the exact-match term list, the number of concepts in the reference ontology that have that term as their label.
+    #. The "System-added Input Terms" checkbox controls whether to indicate, for each term in the exact-match term list, whether it was automatically added by the system. If a morpheme within a partial-match term matches a concept in the reference ontology but has not been explicitly selected by the user as an input term, the system automatically adds it to the exact-match term list as an exact-match term. For example, if the user selects "資格取得日" (qualification acquisition date) as an input term, the term itself does not appear as a concept label in the reference ontology and is therefore treated as a partial-match term. Suppose "日" (day) within "資格取得日" yields a partial match. If the user has already selected "日" as an input term, no action is needed. However, if "日" has not been selected by the user, it is automatically added to the exact-match term list. Terms added automatically by the system are labeled "(Auto-added)".
+    #. The "Apply Input Concept Selection Results to Corresponding Partial-Match Term List" checkbox controls whether the input concept selection result for an exact-match term is propagated to the input concept selection of partial-match terms that contain that exact-match term. For example, this option determines whether the concept selected for the exact-match term "日" is also applied to partial-match terms in the list such as "資格取得日" and "研究日".
 
-#. 部分照合語リストに関する設定を行うことができる．
+#. Allows configuration of settings related to the partial-match term list.
 
-    #. 「意味数」チェックボックスは4の完全照合語リストのオプションにおける「意味数」と同様である． 
-    #. 「形態素リスト」チェックボックスは，部分照合語を形態素解析器で形態素に分割したときの分割のされ方を表示するか否かを設定するためのオプションである．このオプションを有効にした場合，例えば，「資格取得日」に対して，「（資格+取得+日）」が表示される．「+」記号は形態素の区切りをあらわす． 
-    #. 「照合結果」チェックボックスは，部分照合語の形態素リストの中で，参照オントロジー中の概念と照合した形態素リストを表示するか否かを設定するオプションである．このオプションを有効にした場合，例えば，「資格取得日」は，「日」で照合しているため，「（日）」と表示される． 
-    #. 「選択中の完全照合語に対応する複合語のみ表示」チェックボックスは，完全照合語リストで選択した語を照合語とする部分照合語のみを表示するか否かを設定するためのオプションである．このオプションを有効にした場合，例えば，完全照合語リスト中の「日」を選択した場合，「資格取得日」や「研究日」など「日」と照合した部分照合語のみが部分照合語リストに表示される．
+    #. The "Number of Senses" checkbox functions identically to the "Number of Senses" option in the exact-match term list settings described in (4).
+    #. The "Morpheme List" checkbox controls whether to display how a partial-match term is segmented into morphemes by the morphological analyzer. When this option is enabled, for example, "資格取得日" is displayed as "(資格+取得+日)". The "+" symbol denotes boundaries between morphemes.
+    #. The "Match Results" checkbox controls whether to display, from among the morphemes of a partial-match term, those that matched a concept in the reference ontology. When this option is enabled, for example, "資格取得日" is displayed as "(日)", since it matched via "日".
+    #. The "Show Only Compound Terms Corresponding to Selected Exact-Match Term" checkbox controls whether to display only those partial-match terms whose matched morpheme is the term currently selected in the exact-match term list. When this option is enabled, for example, selecting "日" in the exact-match term list causes only partial-match terms that matched via "日" — such as "資格取得日" and "研究日" — to be shown in the partial-match term list.
 
-#. 入力語の追加および削除を行うことができる．
+#. Allows input terms to be added and removed.
 
 Concept List
 -------------------
-:numref:`input-concept-selection-panel-concept-list` は :numref:`input-concept-selection-panel` -2「概念リスト」を拡大した図である．
+:numref:`input-concept-selection-panel-concept-list` is an enlarged view of the Concept List (2) shown in :numref:`input-concept-selection-panel`.
 
 .. _input-concept-selection-panel-concept-list:
 .. figure:: figures/input-concept-selection-panel-concept-list.png
@@ -354,7 +354,7 @@ Concept List
 
    Input Concept Selection Panel: Concept List
 
-概念リストは，:numref:`input-concept-selection-panel-term-list` -2 または-3で選択した完全照合語または部分照合語を見出しとして持つ参照オントロジー中の概念のリストを表示する．:numref:`input-concept-selection-panel-concept-list` は，「エネルギー」を見出しとして持つ参照オントロジー（この例では日本語WordNetを参照オントロジーとしている）中の概念リストを示している．リストの項目は，三つの部分から構成されている．左側は，入力モジュールの設計で述べた，自動概念選択方法により求めた，入力語に対応する概念候補の評価値を示す．入力語に対応する概念候補は，評価値の降順に並び替えて表示される．評価値が高い概念ほど，より入力概念となる可能性が高い概念となる．中央は概念のID をあらわす．概念のID はURIで表され，画面上には修飾名が表示される．jwn は日本語WordNet の名前空間接頭辞を示しており，ここで表示される接頭辞は，汎用オントロジー選択パネル ( :numref:`ontology-selection-panel` -2) で示した名前空間テーブルで設定した名前空間接頭辞となる．右側には，概念の見出しが複数ある場合，そのうちのいずれか一つが表示される．
+The Concept List displays a list of concepts in the reference ontology whose labels match the exact-match term or partial-match term selected in (2) or (3) of :numref:`input-concept-selection-panel-term-list`. :numref:`input-concept-selection-panel-concept-list` shows the concept list for concepts in the reference ontology (Japanese WordNet is used as the reference ontology in this example) that have "エネルギー" (energy) as their label. Each entry in the list consists of three parts. The left part shows the evaluation score of the concept candidate corresponding to the input term, as computed by the automatic concept selection method described in the design of the input module. Concept candidates are sorted in descending order of their evaluation score; a higher score indicates a greater likelihood of the concept being selected as the input concept. The center part shows the concept ID, which is expressed as a URI and displayed on screen in qualified name form. The namespace prefix "jwn" denotes the namespace of Japanese WordNet; the prefix displayed here corresponds to the namespace prefix configured in the namespace table of the General Ontology Selection Panel (:numref:`ontology-selection-panel` -2). The right part displays one of the concept's labels when the concept has multiple labels.
 
 Concept Information
 --------------------
@@ -543,12 +543,12 @@ Construct Relationship Panel
 
 Option Dialog
 ================================
-「ツール」→「オプションダイアログを表示」メニューを選択するとオプションダイアログが表示される．オプションダイアログでは，DODDLE- OWLにおける様々な設定を行うことができる．オプションダイアログは，「基本」，「フォルダ」，「入力概念選択」，「複合語」，「表示」の各タブから構成 されている． オプションダイアログの下部にある4つのボタンは，それぞれ，設定の保存，設定の適用，設定の削除，オプションダイアログを閉じるために用意されている．「保存」ボタンは，オプションダイアログで設定した内容をWindowsのレジストリに保存することができる（Unixの場合はXML形式 等でユーザごとのフォルダに保存される）．ここで保存した内容は，DODDLE-OWLを再起動後も有効となる．「削除」ボタンによりレジストリに保存された設定を削除できる．以下では，それぞれのタブについて説明する．
+The Options dialog can be opened by selecting "Tools"  :math:`\rightarrow` "Show Options Dialog" from the menu. The Options dialog allows users to configure various settings in DODDLE-OWL. It consists of the following tabs: "General," "Folders," "Input Concept Selection," "Compound Words," and "Display." The four buttons at the bottom of the Options dialog are provided for saving settings, applying settings, deleting settings, and closing the Options dialog, respectively. The "Save" button stores the configurations made in the Options dialog to the Windows registry (on Unix systems, settings are saved in XML format or similar in a per-user directory). Settings saved in this way remain effective after restarting DODDLE-OWL. The "Delete" button removes the settings stored in the registry. Each tab is described below.
 
 
 Basic Tab
 ---------------------
-:numref:`option-dialog-basic` にオプションダイアログの基本タブを示す．基本タブでは，「言語」，「基本接頭辞」，「基本URI」の設定を行うことができる．「言語」では DODDLE-OWLユーザインタフェースのメニュー等の表示言語や概念の見出しが複数言語用意されていた場合のデフォルト言語を設定するために用いる． 「基本接頭辞」では，OWL形式で領域オントロジーを保存する際の基本URIの接頭辞を設定する．「基本URI」では，OWL形式で領域オントロジーを保 存する際の基本URIを設定する．
+:numref:`option-dialog-basic` shows the General tab of the Options dialog. The General tab allows users to configure the following settings: "Language," "Base Prefix," and "Base URI." The "Language" setting is used to specify the display language for menus and other elements of the DODDLE-OWL user interface, as well as the default language to be used when concept labels are available in multiple languages. The "Base Prefix" setting defines the prefix for the base URI used when saving a domain ontology in OWL format. The "Base URI" setting specifies the base URI itself used when saving a domain ontology in OWL format.
 
 .. _option-dialog-basic:
 .. figure:: figures/option-dialog-basic.png
@@ -560,29 +560,24 @@ Basic Tab
 
 Folder Tab
 ---------------------
-:numref:`option-dialog-folder` にオプションダイアログのフォルダタブを示す．フォルダタブでは，DODDLE-OWLが参照する外部プログラムや辞書データなどのパスを設定する．以下にフォルダタブで設定する項目を示す．
+:numref:`option-dialog-folder` shows the Folders tab of the Options dialog. The Folders tab is used to configure the paths to external programs and dictionary data referenced by DODDLE-OWL. The configurable items in the Folders tab are listed below.
 
-プロジェクトフォルダ
-	DODDLE-OWLのプロジェクトファイルを保存する際に最初に開かれるフォルダのパスを設定．
-ストップワードリスト
-	ストップワードリストを保存したファイルのパスを設定．ストップワードリストは，入力文書から単語を抽出する際に抽出を行うべきではない単語集合を保存するファイル．
-EDR辞書フォルダ
-  EDR概念体系辞書とEDR概念記述辞書をDODDLE-OWLが参照する形式に変換したファイルを置いたフォルダを設定．
-EDRT辞書フォルダ
-  EDR専門辞書をDODDLE-OWLが参照する形式に変換したファイルを置いたフォルダを設定．
-日本語形態素解析器
-  ChasenまたはMecabの実行ファイルのパスを設定．
-日本語係り受け解析器
-  Cabochaの実行ファイルのパスを設定．
+Project Folder
+   Sets the path to the folder that is opened by default when saving a DODDLE-OWL project file.
+Stop Word List
+   Sets the path to the file containing the stop word list. The stop word list is a file that stores a set of words that should be excluded during word extraction from input documents.
+EDR Dictionary Folder
+   Sets the path to the folder containing the files converted from the EDR Concept System Dictionary and EDR Concept Description Dictionary into a format referenced by DODDLE-OWL.
+EDRT Dictionary Folder
+   Sets the path to the folder containing the files converted from the EDR Technical Dictionary into a format referenced by DODDLE-OWL.
+Japanese Morphological Analyzer
+   Sets the path to the executable file of Chasen or MeCab.
+Japanese Dependency Parser
+   Sets the path to the executable file of CaboCha.
 perl.exe
-  perlの実行ファイルのパスを設定．
-上位概念リスト
-  上位概念リストを保存したファイルのパスを設定．上位概念リストは入力単語を選択する際に参照される．ある入力単語が設定した上位概念の下位概念の見出しとして存在する場合に入力単語テーブルに表示される．
-  
-.. Swoogleクエリー結果フォルダ
-.. 	（実装中のため現バージョンでは使用しない）オントロジー検索エンジンSwoogleからオントロジーを獲得する際に実行したクエリー結果をローカルにキャッシュする際に用いるフォルダを設定．
-.. OWLオントロジーフォルダ
-.. 	（実装中のため現バージョンでは使用しない）オントロジー検索エンジンSwoogleから獲得したオントロジーを保存するフォルダを設定．
+   Sets the path to the Perl executable file.
+Upper Concept List
+   Sets the path to the file containing the upper concept list. The upper concept list is referenced when selecting input words. An input word is displayed in the input word table if it exists as a label of a subordinate concept under one of the configured upper concepts.
 
 .. _option-dialog-folder:
 .. figure:: figures/option-dialog-folder.png
@@ -594,7 +589,7 @@ perl.exe
 
 Input Concept Selection Tab
 --------------------------------
-:numref:`option-dialog-input-concept-selection` にオプションダイアログの多義性解消タブを示す．入力概念選択タブでは，半自動的に入力概念選択を行う際のオプションを設定する．詳細は，入力概念選択の半自動化を参照．
+:numref:`option-dialog-input-concept-selection` shows the Input Concept Selection tab of the Options dialog. The Input Concept Selection tab is used to configure options for performing semi-automatic input concept selection. For details, refer to Semi-Automatic Input Concept Selection.
 
 .. _option-dialog-input-concept-selection:
 .. figure:: figures/option-dialog-input-concept-selection.png
@@ -606,7 +601,7 @@ Input Concept Selection Tab
 
 Comound Word Tab
 ---------------------------------
-:numref:`option-dialog-compound-word` にオプションダイアログの複合語タブを示す．複合語タブでは，多義性解消パネルにおける部分照合単語のオプションを設定する．ユーザがこのオ プションを選択しない場合に，デフォルト状態として，部分照合単語を階層構築時に照合した概念の「下位概念」とするか「同一概念」とするかをラジオボタン で設定できる．
+:numref:`option-dialog-compound-word` shows the Compound Words tab of the Options dialog. The Compound Words tab is used to configure options for partially matched words in the disambiguation panel. When the user has not explicitly selected an option, the default behavior can be set via radio buttons to treat a partially matched word either as a "subordinate concept" or as an "identical concept" of the concept matched during hierarchy construction.
 
 .. _option-dialog-compound-word:
 .. figure:: figures/option-dialog-compound-word.png
@@ -618,7 +613,7 @@ Comound Word Tab
 
 Display Tab
 -------------------------
-:numref:`option-dialog-display` にオプションダイアログの表示タブを示す．表示タブでは，クラス階層構築パネル及びプロパティ階層構築パネルにおいて，クラスまたはプロパ ティのノードを表示する際に，接頭辞を表示するかどうかを選択することができる．「修飾名を表示」にチェックをいれた場合，クラスまたはプロパティの名前 空間接頭辞がそれぞれのパネルに表示される．
+:numref:`option-dialog-display` shows the Display tab of the Options dialog. The Display tab allows users to choose whether to show namespace prefixes when displaying class or property nodes in the Class Hierarchy Construction panel and the Property Hierarchy Construction panel. When the "Show Qualified Names" checkbox is enabled, the namespace prefix of each class or property is displayed in the respective panel.
 
 
 .. _option-dialog-display:
@@ -644,27 +639,27 @@ File menu
   * Open the project folder or project file of DODDLE-OWL
 
 * Open recent project
-* Open->Inut Term List
-* Open->Input Term Table
-* Open->Concept Definition
-* Open->Input Concept Selection Results
-* Open->Correspondence between input terms and concepts
-* Open->OWL Ontology
-* Open->FreeMind Ontology
-* Open->Correspondence between concepts and priority labels
+* Open :math:`\rightarrow` Inut Term List
+* Open :math:`\rightarrow` Input Term Table
+* Open :math:`\rightarrow` Concept Definition
+* Open :math:`\rightarrow` Input Concept Selection Results
+* Open :math:`\rightarrow` Correspondence between input terms and concepts
+* Open :math:`\rightarrow` OWL Ontology
+* Open :math:`\rightarrow` FreeMind Ontology
+* Open :math:`\rightarrow` Correspondence between concepts and priority labels
 * Save Project
 * Save Project As
 
   * Save the project of DODDLE-OWL with a name. Select the DODDLE project folder as the file format if the users want to check the intermediate result file being processed. If the users want to save it in one file, select the DODDLE project file (.ddl).
 
-* Save->Input Term List
-* Save->Input Term Table
-* Save->Concept Definition
-* Save->Input Concept Selection Results
-* Save->Correspondence between input terms and concepts
-* Save->OWL Ontology
-* Save->FreeMind Ontology
-* Save->Correspondence between concepts and priority labels
+* Save :math:`\rightarrow` Input Term List
+* Save :math:`\rightarrow` Input Term Table
+* Save :math:`\rightarrow` Concept Definition
+* Save :math:`\rightarrow` Input Concept Selection Results
+* Save :math:`\rightarrow` Correspondence between input terms and concepts
+* Save :math:`\rightarrow` OWL Ontology
+* Save :math:`\rightarrow` FreeMind Ontology
+* Save :math:`\rightarrow` Correspondence between concepts and priority labels
 
 * Quit
 
@@ -675,37 +670,37 @@ Tool menu
 * Show all terms
 * Automatically select input concepts
 
-  * 入力語集合から自動的に入力語に対応する汎用オントロジー中の概念をランキングする．入力概念選択パネル中で入力語を選択した際に，ランキング順に対応する概念を表示する．
+  * Automatically ranks the concepts in the general-purpose ontology that correspond to input words from the input word set. When an input word is selected in the Input Concept Selection panel, the corresponding concepts are displayed in ranked order.
 
 * Construct Class Hierarchy
 * Construct Class and Property Hierarchy
 * DODDLE Dic Converter
 
-  * EDR電子化辞書と日本語WordNetの辞書ファイルををDODDLE-OWLで利用可能な形式に変換するためのダイアログを表示する．
+  * Displays a dialog for converting the EDR Electronic Dictionary and Japanese WordNet dictionary files into a format usable by DODDLE-OWL.
 
 * Show Log Console
 
-  * 標準出力と標準エラー出力を画面上に表示する．
+  * Displays standard output and standard error output on screen.
 
 * XGA Layout
 
-  * 1024x768の解像度に合わせてウィンドウをレイアウトする．
+  * Arranges the window layout to fit a resolution of 1024x768.
 
 * UXGA Layout
 
-  * 1600 x 1200の解像度に合わせてウィンドウをレイアウトする．
+  * Arranges the window layout to fit a resolution of 1600x1200.
 
 * Show the Option Dialog
 
 Project menu
 ------------------------
-* 開いているプロジェクトをサブメニューとして表示し，切り替えることができる．
+* Displays the open projects as a submenu, allowing the user to switch between them.
 
-Help menu
+Help Menu
 ----------------------------
-* バージョン
-  
-  * バージョン番号や利用ライブラリなどを確認するためのダイアログを表示する．
+* Version
+
+  * Displays a dialog for checking the version number and the libraries in use.
 
 Toolbar
 ==========================
@@ -722,7 +717,7 @@ Toolbar
   * - .. figure:: figures/toolbar/disk.png
     - Save Project
   * - .. figure:: figures/toolbar/page_save.png
-    - Save Project Asプロジェクトを名前を付けて保存
+    - Save Project As — Save the project with a specified name
   * - .. figure:: figures/toolbar/plugin.png
     - DODDLE Dic Converter
   * - .. figure:: figures/toolbar/cog.png
