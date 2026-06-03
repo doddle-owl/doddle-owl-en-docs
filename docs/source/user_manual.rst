@@ -236,7 +236,7 @@ We describe the details of each part in :numref:`input-document-selection-panel`
 
 Input Term Selection Panel
 =================================
-The Input Term Selection Panel is composed of the Input Document Viewer, the Input Term Table, and the Removed Term Table. Each component will be described below.
+The Input Term Selection Panel is composed of the Input Document Viewer, the Input Term Information Table, and the Removed Term Information Table. Each component will be described below.
 
 Input Document Viewer
 --------------------------
@@ -258,39 +258,39 @@ In the Input Document Viewer, the user can select input terms while viewing the 
 #. The users can manually add terms that could not be extracted. By selecting the range in 3 and right clicking on the mouse, the users can add terms manually as well. For added terms, a blue hyperlink is established in 3.
 #. Select a type (compound words, nouns, verbs, other parts of speech) of the term that makes a hyperlink to the content of the input document displayed in 3.
 
-Input Term Table
+Input Term Information Table
 ---------------------------------
-In the Input Term Table, it is possible to select input terms from terms automatically extracted from the input documents. :numref:`input-term-table` shows a screenshot of the Input Term Table. The details of eatch part of the Input Term Table are shown below.
+In the Input Term Information Table, it is possible to select input terms from terms automatically extracted from the input documents. :numref:`input-term-table` shows a screenshot of the Input Term Information Table. The details of eatch part of the Input Term Information Table are shown below.
 
 .. _input-term-table:
 .. figure:: figures/input-term-table.png
    :scale: 60 %
-   :alt: A screenshot of the Input Term Table
+   :alt: A screenshot of the Input Term Information Table
    :align: center
 
-   A screenshot of the Input Term Table
+   A screenshot of the Input Term Information Table
 
 #. Narrows down the term list displayed in 3 by the term entered by the user.
 #. Narrows down the term list displayed in 3 by the part of speech entered by the user. 
 #. Display terms automatically extracted from input documents. The term information includes a term name, part of speech, TF, IDF, TF-IDF, and an upper concept of the term, and it is possible to sort the list from each viewpoint. If an extracted term is included in the heading of a subconcept within a reference ontology prepared in advance by the user, that concept’s heading is displayed as a superordinate concept. By preconfiguring superordinate concepts within the concept hierarchy, extracted terms can be classified and displayed as “things,” “places,” “times,” and so on, thereby assisting the user in selecting input terms.
 #. Display the occurrence of the term selected in 3 in the input documents.
 #. A list of input terms finally decided by the users. Since it is a text area, the users can add input terms that did not appear in the input documents.
-#. When "Add to input term list" button is pushed, the term of the line selected in 3 is added to the input term list of 5. When the "remove" button is pushed, the term selected in 3 is transferred to the "removed term table".
+#. When "Add to input term list" button is pushed, the term of the line selected in 3 is added to the input term list of 5. When the "remove" button is pushed, the term selected in 3 is transferred to the "Removed Term Information Table".
 #. Set the input terms entered in Step 5, then proceed to the Input Concept Selection Panel. If you click the "Set Input Vocabulary" button, a new list of input terms will be set in the Input Concept Selection Panel. If you click the "Add Input Vocabulary" button, new input terms will be added to the existing list of input terms.
 
 
-Removed Term Table
+Removed Term Information Table
 ------------------------------------
-In the Removed Term Table, a list of the term from the Input Term Table is displayed．:numref:`removed-term-table` shows a screenshot of the Removed Term Table. Each section of the Removed Term Table is identical to that of the Input Terms table. The only differences are the "Restore" button and the "Permanently Delete" button. The "Restore" button allows you to return term information that was accidentally moved to the Removed Term Table back to the Input Term table. The "Permanently Delete" button allows you to permanently remove term information from the list.
+In the Removed Term Information Table, a list of the term from the Input Term Information Table is displayed．:numref:`removed-term-table` shows a screenshot of the Removed Term Information Table. Each section of the Removed Term Information Table is identical to that of the Input Terms table. The only differences are the "Restore" button and the "Permanently Delete" button. The "Restore" button allows you to return term information that was accidentally moved to the Removed Term Information Table back to the Input Term Information Table. The "Permanently Delete" button allows you to permanently remove term information from the list.
 
 
 .. _removed-term-table:
 .. figure:: figures/removed-term-table.png
    :scale: 60 %
-   :alt: A screenshot of the Removed Term Table
+   :alt: A screenshot of the Removed Term Information Table
    :align: center
 
-   A screenshot of the Removed Term Table
+   A screenshot of the Removed Term Information Table
 
 Input Concept Selection Panel
 ==================================
@@ -307,7 +307,7 @@ Input Concept Selection Panel
 #. **Term List**: Displays a list of terms from the input vocabulary that have matched — either exactly or partially — against concept labels in the reference ontology.
 #. **Concept List**: Displays a list of concepts in the reference ontology whose labels match the term selected in (1).
 #. **Concept Information**: Displays the labels and descriptions of the concept selected in (2), organized by language.
-#. **Undefined Term List**: Displays input terms (undefined terms) that did not match any concept label in the reference ontology.
+#. **Unmatched Term List**: Displays input terms (unmatched terms) that did not match any concept label in the reference ontology.
 #. **Concept Hierarchy**: Displays the position of the concept selected in (2) within the concept hierarchy of the reference ontology.
 #. **Input Document**: Displays the occurrences of the term selected in (1) within the input document.
 #. **Hierarchy Construction Options**: Configures the conditions used during hierarchy construction.
@@ -403,21 +403,21 @@ The "Partial Match Options" in :numref:`input-concept-selection-panel-construct-
 Clicking the "Build Class Hierarchy" button at the right end of :numref:`input-concept-selection-panel-construct-concept-tree-option` builds only the class hierarchy in the class hierarchy construction panel, based on the hierarchy construction options described above. Clicking the "Build Class and Property Hierarchies" button builds both the class hierarchy and the property hierarchy in the class hierarchy construction panel and the property hierarchy construction panel respectively, based on the hierarchy construction options described above. In order to build both the class hierarchy and the property hierarchy, either the EDR General Dictionary or an OWL ontology containing a property hierarchy must be set as the reference ontology.
 
 
-Construct Class Tree Panel
+Class Tree Construction Panel
 =================================================
 :numref:`construct-class-tree-panel` shows the class hierarchy construction panel.
 
 .. _construct-class-tree-panel:
 .. figure:: figures/construct-class-tree-panel.png
    :scale: 60 %
-   :alt: Construct Class Tree Panel
+   :alt: Class Tree Construction Panel
    :align: center
 
-   Construct Class Tree Panel
+   Class Tree Construction Panel
 
 The following describes each component.
 
-#. **Undefined Term List**: A list of input terms that did not match any concept in the reference ontology. By selecting a term from the list and dragging and dropping it onto the "Is-a Hierarchy Panel", the undefined term can be added as a concept to the Is-a hierarchy.
+#. **Unmatched Term List**: A list of input terms that did not match any concept in the reference ontology. By selecting a term from the list and dragging and dropping it onto the "Is-a Hierarchy Panel", the unmatched term can be added as a concept to the Is-a hierarchy.
 #. **Concept Information Panel**: Displays the URI, preferred label (the label shown in the hierarchy), labels, descriptions, and concept change management information for the concept selected in the concept hierarchy. Labels and descriptions can be assigned language attributes, and can be added, edited, and deleted.
 #. **Concept Hierarchy Panel**: Comprises the Is-a hierarchy and the Has-a hierarchy. Concepts can be searched, added, deleted, and otherwise managed.
 #. **Concept Change Management Panel**: Displays lists of matching result analysis results, pruning result analysis results, and concepts involved in multiple inheritance; selecting an item in any list highlights the corresponding candidate location for correction in the Is-a hierarchy.
@@ -431,10 +431,10 @@ Concept Information Panel
 .. _construct-class-tree-panel-concept-info:
 .. figure:: figures/construct-class-tree-panel-concept-info.png
    :scale: 60 %
-   :alt: Construct Class Tree Panel: Concept Information Panel
+   :alt: Class Tree Construction Panel: Concept Information Panel
    :align: center
 
-   Construct Class Tree Panel: Concept Information Panel
+   Class Tree Construction Panel: Concept Information Panel
 
 The following describes each component of the Concept Information Panel.
 
@@ -451,10 +451,10 @@ Is-a and Has-a Hierarchy Panel
 .. _construct-class-tree-panel-isa-hasa-tree-panel:
 .. figure:: figures/construct-class-tree-panel-isa-hasa-tree-panel.png
    :scale: 60 %
-   :alt: Construct Class Tree Panel: Is-a and Has-a Hierarchy Panel
+   :alt: Class Tree Construction Panel: Is-a and Has-a Hierarchy Panel
    :align: center
 
-   Construct Class Tree Panel: Is-a and Has-a Hierarchy Panel
+   Class Tree Construction Panel: Is-a and Has-a Hierarchy Panel
 
 #. This is the area for searching concepts in the concept hierarchy. Entering a search keyword in the text field and clicking the "Search" button selects concepts that satisfy the search options. When multiple candidates exist, the "Next" button or the "Previous" button can be used to navigate to another candidate concept. The available search options include language, concept label, and concept description. When the "Exact Match Search" checkbox is checked, only concepts whose labels or descriptions exactly match the entered search keyword are retrieved. When the "Exact Match Search" checkbox is unchecked, a partial match search is performed, retrieving concepts whose labels or descriptions contain the search keyword as a substring. When the "URI Search" checkbox is checked, concept URIs are also included as search targets. When the "Case-Sensitive" checkbox is checked, searches against English labels or descriptions are performed in a case-sensitive manner.
 #. A toolbar available for editing the Is-a hierarchy and the Has-a hierarchy. The toolbar provides the same functionality as the popup menu shown in :numref:`construct-class-tree-panel-popup-menu`, which is displayed when a concept in the hierarchy is right-clicked with the mouse.
@@ -463,10 +463,10 @@ Is-a and Has-a Hierarchy Panel
 .. _construct-class-tree-panel-popup-menu:
 .. figure:: figures/construct-class-tree-panel-popup-menu.png
    :scale: 60 %
-   :alt: Construct Class Tree Panel: Popup menu
+   :alt: Class Tree Construction Panel: Popup menu
    :align: center
 
-   Construct Class Tree Panel: Popup menu
+   Class Tree Construction Panel: Popup menu
 
 :numref:`construct-class-tree-panel-popup-menu` shows the popup menu of the Is-a Hierarchy Panel. The main difference between the Is-a Hierarchy Panel and the Has-a Hierarchy Panel is that the Has-a Hierarchy Panel defines Has-a relationships using concepts defined in the Is-a Hierarchy Panel. In addition, the "Delete Concept" operation described below cannot be performed in the Has-a hierarchy.
 
@@ -475,10 +475,10 @@ DODDLE-OWL provides three types of concept deletion. "Delete Concept" deletes al
 .. _construct-class-tree-panel-node-icon:
 .. figure:: figures/construct-class-tree-panel-node-icon.png
    :scale: 60 %
-   :alt: Construct Class Tree Panel: Node icon
+   :alt: Class Tree Construction Panel: Node icon
    :align: center
 
-   Construct Class Tree Panel: Node icon
+   Class Tree Construction Panel: Node icon
 
 The classes in the Is-a Hierarchy Panel and the Has-a Hierarchy Panel of the class hierarchy construction panel are of four types, as shown in :numref:`construct-class-tree-panel-node-icon`.
 
@@ -489,10 +489,10 @@ Concept Drift Management Panel
 .. _construct-class-tree-panel-concept-drift-management-panel:
 .. figure:: figures/construct-class-tree-panel-concept-drift-management-panel.png
    :scale: 60 %
-   :alt: Construct Class Tree Panel: Concept Drift Management Panel
+   :alt: Class Tree Construction Panel: Concept Drift Management Panel
    :align: center
 
-   Construct Class Tree Panel: Concept Drift Management Panel
+   Class Tree Construction Panel: Concept Drift Management Panel
 
 The following describes each component of the Concept Change Management Panel.
 
@@ -500,42 +500,42 @@ The following describes each component of the Concept Change Management Panel.
 #. Displays the results of pruning result analysis as a list. The "Pruned Concept List" at the bottom of component 2 presents the concepts that were pruned during concept hierarchy construction — specifically, the concepts that lay between the selected concept and its superordinate concept. Clicking the "Pruning Result Analysis" button displays in the list those concepts from which more intermediate concepts were removed than the number specified in the text field to the left of the button. When it has been confirmed that a pruning result analysis result requires no correction, or after a correction has been made, clicking the "Confirm Pruning Result Analysis Result" button removes the selected item from the list. (The number of pruned concepts for the concept in question becomes zero.)
 #. Displays a list of concepts involved in multiple inheritance. Selecting an item from the list displays at the bottom of component 3 a list of nodes that are involved in multiple inheritance. Selecting one of these nodes navigates to the corresponding concept in the Is-a Hierarchy Panel and selects the node. Clicking the "Delete Link to Superordinate Concept" button removes the relationship between the selected concept and its superordinate concept.
 
-Construct Property Tree Panel
+Property Tree Construction Panel
 ========================================================
 :numref:`construct-property-tree-panel` shows the property hierarchy construction panel.
 
 .. _construct-property-tree-panel:
 .. figure:: figures/construct-property-tree-panel.png
    :scale: 60 %
-   :alt: Construct Property Tree Panel
+   :alt: Property Tree Construction Panel
    :align: center
 
-   Construct Property Tree Panel
+   Property Tree Construction Panel
 
 The majority of the components of the property hierarchy construction panel are the same as those of the class hierarchy construction panel. The difference is the presence of the Concept Definition Panel at  :numref:`construct-property-tree-panel`-1. When the EDR General Dictionary is specified as the general ontology and a property hierarchy is built, the Concept Definition Panel automatically defines the concepts that are in an agent or object relationship in the EDR Concept Description Dictionary as the domain and range respectively. It is also possible to reference the class hierarchy to add domains and ranges manually.
 
 .. _construct-property-tree-panel-node-icon:
 .. figure:: figures/construct-property-tree-panel-node-icon.png
    :scale: 60 %
-   :alt: Construct Property Tree Panel: Node icon
+   :alt: Property Tree Construction Panel: Node icon
    :align: center
 
-   Construct Property Tree Panel: Node icon
+   Property Tree Construction Panel: Node icon
 
 The properties in the Is-a Hierarchy Panel and the Has-a Hierarchy Panel of the property hierarchy construction panel are of four types, as shown in :numref:`construct-property-tree-panel-node-icon`.
 
 
-Construct Relationship Panel
+Relationship Construction Panel
 =============================================
 :numref:`construct-relationship-panel` shows a screenshot of the relationship construction panel.
 
 .. _construct-relationship-panel:
 .. figure:: figures/construct-relationship-panel.png
    :scale: 60 %
-   :alt: Construct Relationship Panel
+   :alt: Relationship Construction Panel
    :align: center
 
-   Construct Relationship Panel
+   Relationship Construction Panel
 
 The following describes each component of the relationship construction panel.
 
@@ -647,7 +647,7 @@ File menu
 
 * Open recent project
 * Open :math:`\rightarrow` Inut Term List
-* Open :math:`\rightarrow` Input Term Table
+* Open :math:`\rightarrow` Input Term Information Table
 * Open :math:`\rightarrow` Concept Definition
 * Open :math:`\rightarrow` Input Concept Selection Results
 * Open :math:`\rightarrow` Correspondence between input terms and concepts
@@ -660,7 +660,7 @@ File menu
   * Save the project of DODDLE-OWL with a name. Select the DODDLE project folder as the file format if the users want to check the intermediate result file being processed. If the users want to save it in one file, select the DODDLE project file (.ddl).
 
 * Save :math:`\rightarrow` Input Term List
-* Save :math:`\rightarrow` Input Term Table
+* Save :math:`\rightarrow` Input Term Information Table
 * Save :math:`\rightarrow` Concept Definition
 * Save :math:`\rightarrow` Input Concept Selection Results
 * Save :math:`\rightarrow` Correspondence between input terms and concepts
