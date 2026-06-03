@@ -358,7 +358,7 @@ The Concept List displays a list of concepts in the reference ontology whose lab
 
 Concept Information
 --------------------
-:numref:`input-concept-selection-panel-concept-info` は :numref:`input-concept-selection-panel` -3「概念情報」を拡大した図である．
+:numref:`input-concept-selection-panel-concept-info` is an enlarged view of the "Concept Information" in :numref:`input-concept-selection-panel` -3.
 
 .. _input-concept-selection-panel-concept-info:
 .. figure:: figures/input-concept-selection-panel-concept-info.png
@@ -368,18 +368,19 @@ Concept Information
 
    Input Concept Selection Panel: Concept Information
 
-「概念情報」には，:numref:`input-concept-selection-panel-concept-list` の「概念リスト」で選択された概念の見出しと説明が表示される．「言語」リストで選択した言語の見出しおよび説明が「見出し」リストおよび「説明」リストに表示される．:numref:`input-concept-selection-panel-concept-info` 下部の「構築オプション」では，概念階層の構築方法を設定することができる．「構築オプション」には，:numref:`input-concept-selection-panel-term-list` 「用語リスト」で選択する用語の種類に応じて3 種類の表示方法がある．:numref:`input-concept-selection-panel-term-list` -2で完全照合語を選択した場合，:numref:`input-concept-selection-panel-concept-info` 左側のように「構築オプション」には何も表示されない．:numref:`input-concept-selection-panel-term-list` -2でシステムが自動的に追加した完全照合語（「自動追加」が表示される完全照合語）を選択した場合には，:numref:`input-concept-selection-panel-concept-info` 中央のように「構築オプション」には「下位概念に置換」するかどうかを選択するチェックボックスが表示される．:numref:`input-concept-selection-panel-term-list` -3で部分照合語を選択した場合には :numref:`input-concept-selection-panel-concept-info` 右側のように「構築オプション」には，「同一概念」か「下位概念」かの選択をするためのラジオボタンが表示される．
+"Concept Information" displays the label and description of the concept selected in the "Concept List" of :numref:`input-concept-selection-panel-concept-list`. The label and description in the language selected from the "Language" list are shown in the "Label" list and the "Description" list respectively. The "Construction Options" at the bottom of :numref:`input-concept-selection-panel-concept-info` allows the user to configure how the concept hierarchy is built. "Construction Options" has three display variations depending on the type of term selected in the "Term List" of :numref:`input-concept-selection-panel-term-list`. When an exact match term is selected at :numref:`input-concept-selection-panel-term-list`-2, nothing is displayed in "Construction Options", as shown on the left side of :numref:`input-concept-selection-panel-concept-info`. When an exact match term automatically added by the system (an exact match term labeled "Auto Added") is selected at :numref:`input-concept-selection-panel-term-list`-2, a checkbox for selecting whether to "Replace with Subordinate Concept" is displayed in "Construction Options", as shown in the center of :numref:`input-concept-selection-panel-concept-info`. When a partial match term is selected at :numref:`input-concept-selection-panel-term-list`-3, radio buttons for selecting either "Same Concept" or "Subordinate Concept" are displayed in "Construction Options", as shown on the right side of :numref:`input-concept-selection-panel-concept-info`.
 
 .. note::
-	部分照合語の照合部分の語をユーザが入力語としていない場合には，システムは自動的にその語を入力語として追加する．これを完全照合語（自動追加）と呼ぶ．
+  If the matching portion of a partial match term has not been entered by the user as an input term, the system automatically adds that term as an input term. This is referred to as an exact match term (auto-added).
 
-:numref:`input-concept-selection-panel-concept-info` 中央の「構築オプション」の例として，「火力発電」のみを入力語とした場合を考える．この場合，「火力発電」は部分照合語となり，「発電」と照合するため，「発電」はシステムにより自動的に完全照合語リストに追加される．「発電」の入力概念選択を行う際に，:numref:`input-concept-selection-panel-concept-info` 中央の「構築オプション」として「下位概念に置換」というチェックボックスが表示される．ここでは，「発電」はシステムが自動的に追加した語であるため，ユーザがあえて「発電」を入力語としなかったのか，入力語にし忘れたかの確認をしている．ユーザがあえて「発電」を入力語にしなかった場合，概念階層中に「発電」は含まれるべきではない．「構築オプション」の「下位概念に置換」をチェックすることにより，「火力発電」は「発電」の下位概念とはならず，概念階層中に表示されない．ユーザが「発電」を入力語に追加し忘れた場合には，「構築オプション」の「下位概念に置換」にチェックをいれなければ，「火力発電」は「発電」の下位概念として概念階層が構築される．
+As an example of the "Construction Options" shown in the center of :numref:`input-concept-selection-panel-concept-info`, consider the case where "Thermal Power Generation" is the only input term. In this case, "Thermal Power Generation" becomes a partial match term and matches against "Power Generation"; as a result, "Power Generation" is automatically added to the exact match term list by the system. When performing input concept selection for "Power Generation", the "Replace with Subordinate Concept" checkbox is displayed as the "Construction Options" in the center of :numref:`input-concept-selection-panel-concept-info`. Here, since "Power Generation" was automatically added by the system, this option is provided to confirm whether the user deliberately chose not to include "Power Generation" as an input term, or simply forgot to do so. If the user deliberately chose not to include "Power Generation" as an input term, then "Power Generation" should not appear in the concept hierarchy. By checking "Replace with Subordinate Concept" in "Construction Options", "Thermal Power Generation" will not be placed as a subordinate concept of "Power Generation" and will not appear in the concept hierarchy. If the user forgot to add "Power Generation" as an input term and leaves "Replace with Subordinate Concept" unchecked, the concept hierarchy will be built with "Thermal Power Generation" as a subordinate concept of "Power Generation".
 
-:numref:`input-concept-selection-panel-concept-info` 右側の「構築オプション」の例として，「発電」と「火力発電」を入力語とした場合を考える．上記と同様に「火力発電」は「発電」で照合する部分照合語である．「火力発電」の入力概念選択を行う際に，:numref:`input-concept-selection-panel-concept-info` 右側の「構築オプション」が表示される．「同一概念」のほうを選択した場合は，概念階層構築時に「火力発電」は「発電」と同一概念として扱われる．つまり，「火力発電」は「発電」概念に対応する参照オントロジー中の概念の別見出しとして概念階層が構築される．一方，「下位概念」のほうを選択した場合は，「火力発電」は「発電」とは異なる概念，ここでは，「発電」の下位概念として概念階層が構築される．初期状態において，部分照合語を「同一概念」とみなすか，「下位概念」とみなすかは，オプションダイアログにより設定することができる．
+As an example of the "Construction Options" shown on the right side of :numref:`input-concept-selection-panel-concept-info`, consider the case where both "Power Generation" and "Thermal Power Generation" are input terms. As in the case above, "Thermal Power Generation" is a partial match term that matches against "Power Generation". When performing input concept selection for "Thermal Power Generation", the "Construction Options" on the right side of :numref:`input-concept-selection-panel-concept-info` is displayed. If "Same Concept" is selected, "Thermal Power Generation" is treated as the same concept as "Power Generation" during concept hierarchy construction. That is, the concept hierarchy is built with "Thermal Power Generation" as an alternative label of the concept in the reference ontology that corresponds to the "Power Generation" concept. On the other hand, if "Subordinate Concept" is selected, "Thermal Power Generation" is treated as a concept distinct from "Power Generation" — specifically, as a subordinate concept of "Power Generation" — and the concept hierarchy is built accordingly. In the initial state, whether a partial match term is treated as a "Same Concept" or a "Subordinate Concept" by default can be configured via the options dialog.
+
 
 Construct Concept Tree Option
 -------------------------------
-:numref:`input-concept-selection-panel-construct-concept-tree-option` は :numref:`input-concept-selection-panel` -7「階層構築オプション」を拡大した図である．
+:numref:`input-concept-selection-panel-construct-concept-tree-option` is an enlarged view of "Hierarchy Construction Options" in :numref:`input-concept-selection-panel`.
 
 .. _input-concept-selection-panel-construct-concept-tree-option:
 .. figure:: figures/input-concept-selection-panel-construct-concept-tree-option.png
@@ -389,17 +390,22 @@ Construct Concept Tree Option
 
    Input Concept Selection Panel: Construct Concept Tree Option
 
-「階層構築オプション」では，クラスおよびプロパティ階層構築モジュールにおいて，クラスおよびプロパティ階層を構築する際のパラメータの設定を行う．「階層構築オプション」は，「完全照合オプション」および「部分照合オプション」から構成される．
 
-:numref:`input-concept-selection-panel-construct-concept-tree-option` の「完全照合オプション」では，完全照合語リストから概念階層を構築する際の設定を行う．「構築」チェックボックスでは，完全照合語リストから概念階層を構築するかどうかを選択する．「剪定」チェックボックスでは，概念階層構築時に剪定を行うかどうかを選択する．「参照オントロジーの概念見出しを追加」チェックボックスでは，概念階層構築時に，各概念の見出しとして，入力語として与えた語のみを概念の見出しとするか，対応する参照オントロジー中の概念の見出しをすべて利用するかどうかを選択する．
+"Hierarchy Construction Options" is used to configure the parameters applied when building class and property hierarchies in the class and property hierarchy construction modules. "Hierarchy Construction Options" consists of "Exact Match Options" and "Partial Match Options".
 
-:numref:`input-concept-selection-panel-construct-concept-tree-option` の「部分照合オプション」では，部分照合語リストから概念階層を構築する際の設定を行う．「構築」チェックボックスでは，部分照合語リストから概念階層を構築するかどうかを選択する．「剪定」チェックボックスでは，概念階層構築時に剪定を行うかどうかを選択する．「抽象概念を追加」チェックボックスでは，部分照合語リストから概念階層を構築する際に，語頭による階層化を行うかどうかを選択する．このチェックボックス右側のテキストフィールドには，いくつ以上グループ化できる場合に共通の上位概念を挿入するかを設定する．
 
-:numref:`input-concept-selection-panel-construct-concept-tree-option` 右端にある「クラス階層構築」ボタンを押すと，上記の階層構築オプションに基づいて，クラス階層構築パネルにクラス階層のみが構築される．「クラスおよびプロパティ階層構築」ボタンを押すと，上記の階層構築オプションに基づいて，クラス階層構築パネルおよびプロパティ階層構築パネルに，クラス階層およびプロパティ階層が構築される．クラス階層とプロパティ階層の両方を構築するためには，参照オントロジーとしてEDR一般辞書またはプロパティ階層を含むOWLオントロジーを設定しなければならない．
+The "Exact Match Options" in :numref:`input-concept-selection-panel-construct-concept-tree-option` provides settings for building a concept hierarchy from the exact match term list. The "Build" checkbox specifies whether to build a concept hierarchy from the exact match term list. The "Pruning" checkbox specifies whether to apply pruning during concept hierarchy construction. The "Add Reference Ontology Concept Labels" checkbox specifies whether, during concept hierarchy construction, each concept's labels should be limited to only the input terms provided, or whether all labels of the corresponding concept in the reference ontology should also be used.
+
+
+The "Partial Match Options" in :numref:`input-concept-selection-panel-construct-concept-tree-option` provides settings for building a concept hierarchy from the partial match term list. The "Build" checkbox specifies whether to build a concept hierarchy from the partial match term list. The "Pruning" checkbox specifies whether to apply pruning during concept hierarchy construction. The "Add Abstract Concepts" checkbox specifies whether to apply prefix-based hierarchization when building a concept hierarchy from the partial match term list. The text field to the right of this checkbox sets the minimum number of terms that must be groupable under a common prefix before an abstract superordinate concept is inserted.
+
+
+Clicking the "Build Class Hierarchy" button at the right end of :numref:`input-concept-selection-panel-construct-concept-tree-option` builds only the class hierarchy in the class hierarchy construction panel, based on the hierarchy construction options described above. Clicking the "Build Class and Property Hierarchies" button builds both the class hierarchy and the property hierarchy in the class hierarchy construction panel and the property hierarchy construction panel respectively, based on the hierarchy construction options described above. In order to build both the class hierarchy and the property hierarchy, either the EDR General Dictionary or an OWL ontology containing a property hierarchy must be set as the reference ontology.
+
 
 Construct Class Tree Panel
 =================================================
-:numref:`construct-class-tree-panel` にクラス階層構築パネルを示す．
+:numref:`construct-class-tree-panel` shows the class hierarchy construction panel.
 
 .. _construct-class-tree-panel:
 .. figure:: figures/construct-class-tree-panel.png
@@ -409,18 +415,18 @@ Construct Class Tree Panel
 
    Construct Class Tree Panel
 
-以下に各部分の説明を示す．
+The following describes each component.
 
-#. **未定義語リスト**: 参照オントロジー中の概念に照合しなかった入力語リスト．リストから語を選択し，「Is-a 階層パネル」にドラッグ＆ドロップすると，未定義語を概念としてIs-a 階層に追加できる．
-#. **概念情報パネル**: 概念階層中の選択された概念のURI，優先見出し（階層中に表示する見出し），見出し，説明，概念変動管理情報を表示する．見出しと説明については，言語属性の付与と追加，編集，削除ができる．
-#. **概念階層パネル**: Is-a 階層とHas-a 階層．概念の検索，追加，削除などを行うことができる．
-#. **概念変動管理パネル**: 照合結果分析結果，剪定結果分析結果，多重継承している概念をリストで表示し，各項目を選択するとIs-a 階層中の修正候補箇所が選択される．
+#. **Undefined Term List**: A list of input terms that did not match any concept in the reference ontology. By selecting a term from the list and dragging and dropping it onto the "Is-a Hierarchy Panel", the undefined term can be added as a concept to the Is-a hierarchy.
+#. **Concept Information Panel**: Displays the URI, preferred label (the label shown in the hierarchy), labels, descriptions, and concept change management information for the concept selected in the concept hierarchy. Labels and descriptions can be assigned language attributes, and can be added, edited, and deleted.
+#. **Concept Hierarchy Panel**: Comprises the Is-a hierarchy and the Has-a hierarchy. Concepts can be searched, added, deleted, and otherwise managed.
+#. **Concept Change Management Panel**: Displays lists of matching result analysis results, pruning result analysis results, and concepts involved in multiple inheritance; selecting an item in any list highlights the corresponding candidate location for correction in the Is-a hierarchy.
 
-以下では， :numref:`construct-class-tree-panel` 2から4の詳細を説明する．
+The following sections describe components 2 through 4 of :numref:`construct-class-tree-panel` in detail.
 
 Concept Information Panel
 -------------------------------
-:numref:`construct-class-tree-panel-concept-info` は :numref:`construct-class-tree-panel` -2. 概念情報パネルを拡大した図である．
+:numref:`construct-class-tree-panel-concept-info` is an enlarged view of the Concept Information Panel, in :numref:`construct-class-tree-panel`-2.
 
 .. _construct-class-tree-panel-concept-info:
 .. figure:: figures/construct-class-tree-panel-concept-info.png
@@ -430,17 +436,17 @@ Concept Information Panel
 
    Construct Class Tree Panel: Concept Information Panel
 
-以下では，概念情報パネルの各部分について説明する．
+The following describes each component of the Concept Information Panel.
 
-#. 名前空間接頭辞をコンボボックスから選択し，ローカル名をテキストフィールドに入力し，「URI の設定」ボタンを押すことで，選択した概念のURI を変更することができる．汎用オントロジー選択パネル ( :numref:`ontology-selection-panel` -2) で示した名前空間テーブルに定義された名前空間接頭辞が選択可能である． 
-#. 概念の見出しを編集するための領域である．「言語」リストの項目を選択することで，選択した言語の見出しが「見出し」リストに表示される．:numref:`construct-class-tree-panel-concept-info` -2 では，日本語見出しとして「発電」が表示されている．:numref:`construct-class-tree-panel-concept-info` -2 下部の「言語」と「テキスト」テキストフィールドに追加したい見出しの言語とテキストを入力し，「追加」ボタンを押すことで概念の見出しを追加することができる．また，選択した見出しを編集したい場合には「編集」ボタンを，削除したい場合には「削除」ボタンを押すことにより，見出しの編集および削除を行うことができる．また，「優先見出しの設定」ボタンを押すことで，選択された見出しがIs-a 階層およびHas-a 階層パネルの概念の表示用の見出しとなる． 
-#. 概念の説明を編集するための領域である．見出しと同様に「言語」リストの項目を選択することで，選択した言語の説明が「説明」リストに表示される． 
-#. 概念変動管理情報を表示・編集するための領域である．「ノードのタイプ」は，編集対象のノードがSIN（参照オントロジーから抽出した概念）かベストマッチノード（入力概念）かを表示する．SIN の中でベストマッチノードとしたいノードについては，ここでノードのタイプをSIN からベストマッチに変更することができる．「剪定概念数」は，階層構築時の剪定により，選択された概念とその上位概念の間の概念がいくつ削除されたかを表示している．「多重継承」は，編集対象のノードが多重継承をしているかしていないかを表している．多重継承をしている場合は「true」，していない場合は「false」と表示される． 
-#. 3 の「追加」または「編集」ボタンを押すと表示される．「言語」と「説明」を入力し，「OK」ボタンを押すと，概念の説明の追加や編集を行うことができる．また，「削除」ボタンにより選択された概念の説明を削除することができる．
+#. The URI of the selected concept can be changed by selecting a namespace prefix from the combo box, entering a local name in the text field, and clicking the "Set URI" button. The namespace prefixes defined in the namespace table shown in the General Ontology Selection Panel (:numref:`ontology-selection-panel`-2) are available for selection.
+#. This is the area for editing the labels of a concept. Selecting an item from the "Language" list displays the labels in the selected language in the "Label" list. In :numref:`construct-class-tree-panel-concept-info`-2, "発電" is shown as the Japanese label. A new label can be added by entering the desired language and text in the "Language" and "Text" text fields at the bottom of :numref:`construct-class-tree-panel-concept-info`-2 and clicking the "Add" button. To edit a selected label, click the "Edit" button; to delete it, click the "Delete" button. In addition, clicking the "Set Preferred Label" button makes the selected label the display label for concepts in the Is-a hierarchy and Has-a hierarchy panels.
+#. This is the area for editing the descriptions of a concept. As with labels, selecting an item from the "Language" list displays the descriptions in the selected language in the "Description" list.
+#. This is the area for displaying and editing concept change management information. "Node Type" indicates whether the node being edited is a SIN (a concept extracted from the reference ontology) or a best-match node (an input concept). For a SIN node that the user wishes to designate as a best-match node, the node type can be changed here from SIN to best-match. "Number of Pruned Concepts" indicates how many concepts between the selected concept and its superordinate concept were removed during pruning at hierarchy construction time. "Multiple Inheritance" indicates whether the node being edited is involved in multiple inheritance. It displays "true" if multiple inheritance is present, and "false" if it is not.
+#. This area is displayed when the "Add" or "Edit" button in component 3 is clicked. A description can be added or edited by entering the "Language" and "Description" and clicking the "OK" button. The description of the selected concept can also be deleted using the "Delete" button.
 
 Is-a and Has-a Hierarchy Panel
 ----------------------------------------
-:numref:`construct-class-tree-panel-isa-hasa-tree-panel` は :numref:`construct-class-tree-panel` -3を拡大した図である．:numref:`construct-class-tree-panel-isa-hasa-tree-panel` の左側がIs-a 階層パネルを右側がHas-a階層パネルを示している．
+:numref:`construct-class-tree-panel-isa-hasa-tree-panel` is an enlarged view of  :numref:`construct-class-tree-panel`-3. The left side of :numref:`construct-class-tree-panel-isa-hasa-tree-panel` shows the Is-a Hierarchy Panel, and the right side shows the Has-a Hierarchy Panel.
 
 .. _construct-class-tree-panel-isa-hasa-tree-panel:
 .. figure:: figures/construct-class-tree-panel-isa-hasa-tree-panel.png
@@ -450,9 +456,9 @@ Is-a and Has-a Hierarchy Panel
 
    Construct Class Tree Panel: Is-a and Has-a Hierarchy Panel
 
-#. 概念階層中の概念を検索するための領域である．テキストフィールドに検索キーワードを入力し，「検索」ボタンを押すと検索オプションを満たす概念が選択される．候補が複数ある場合には，「次」ボタンまたは「前」ボタンで別の概念候補に移動できる．検索オプションとしては，言語，概念の見出し，概念の説明が選択できる．また，「完全一致検索」チェックボックスにチェックをいれると，入力した検索キーワードと完全に一致する見出しや説明を含む概念のみが検索される．「完全一致検索」チェックボックスにチェックが入っていない場合は部分一致検索となり，検索キーワードを見出しまたは説明の一部に含む概念が検索される．「URI 検索」チェックボックスにチェックをいれると，概念のURI も検索対象となる．「大文字と小文字の区別」チェックボックスにチェックをいれると，英語見出しまたは説明を検索する際に，大文字と小文字を区別して検索する．
-#. Is-a 階層およびHas-a 階層の編集に利用可能なツールバー．ツールバーは，階層中の概念をマウスで右クリックした際に表示される， :numref:`construct-class-tree-panel-popup-menu` のポップアップメニューと同様の機能を持つ．
-#. Is-a 階層とHas-a 階層を表示・編集するためのパネル．2のツールバーまたは概念を選択して，マウスを右クリックすることで表示されるポップアップメニューから，概念の追加，削除などを行うことができる．
+#. This is the area for searching concepts in the concept hierarchy. Entering a search keyword in the text field and clicking the "Search" button selects concepts that satisfy the search options. When multiple candidates exist, the "Next" button or the "Previous" button can be used to navigate to another candidate concept. The available search options include language, concept label, and concept description. When the "Exact Match Search" checkbox is checked, only concepts whose labels or descriptions exactly match the entered search keyword are retrieved. When the "Exact Match Search" checkbox is unchecked, a partial match search is performed, retrieving concepts whose labels or descriptions contain the search keyword as a substring. When the "URI Search" checkbox is checked, concept URIs are also included as search targets. When the "Case-Sensitive" checkbox is checked, searches against English labels or descriptions are performed in a case-sensitive manner.
+#. A toolbar available for editing the Is-a hierarchy and the Has-a hierarchy. The toolbar provides the same functionality as the popup menu shown in :numref:`construct-class-tree-panel-popup-menu`, which is displayed when a concept in the hierarchy is right-clicked with the mouse.
+#. A panel for displaying and editing the Is-a hierarchy and the Has-a hierarchy. Concepts can be added, deleted, and otherwise managed via the toolbar in component 2 or via the popup menu displayed by selecting a concept and right-clicking with the mouse.
 
 .. _construct-class-tree-panel-popup-menu:
 .. figure:: figures/construct-class-tree-panel-popup-menu.png
@@ -462,9 +468,9 @@ Is-a and Has-a Hierarchy Panel
 
    Construct Class Tree Panel: Popup menu
 
-:numref:`construct-class-tree-panel-popup-menu`  はIs-a 階層パネルのポップアップメニューを示している．Is-a 階層パネルとHas-a階層パネルの主な違いとして，Has-a 階層パネルではIs-a 階層パネルで定義された概念を用いてHas-a 関係を定義する点が異なる．また，Has-a 階層では，以下で説明する「概念の削除」を行うことはできない．
+:numref:`construct-class-tree-panel-popup-menu` shows the popup menu of the Is-a Hierarchy Panel. The main difference between the Is-a Hierarchy Panel and the Has-a Hierarchy Panel is that the Has-a Hierarchy Panel defines Has-a relationships using concepts defined in the Is-a Hierarchy Panel. In addition, the "Delete Concept" operation described below cannot be performed in the Has-a hierarchy.
 
-DODDLE-OWLにおける概念の削除は3 種類ある．「概念の削除」は削除対象のノードと同一URI を持つノードおよびその下位ノードをすべて削除する．「上位概念へのリンクを削除」は，多重継承している場合に削除対象のノードとその上位ノードの間の関係を削除する．「中間概念の削除」は，削除対象のノードを削除し，その下位ノードを削除対象のノードの上位ノードの下位ノードとして定義する．
+DODDLE-OWL provides three types of concept deletion. "Delete Concept" deletes all nodes that share the same URI as the target node, along with all of their subordinate nodes. "Delete Link to Superordinate Concept" removes the relationship between the target node and its superordinate node when the target node is involved in multiple inheritance. "Delete Intermediate Concept" deletes the target node and redefines its subordinate nodes as subordinate nodes of the target node's superordinate node.
 
 .. _construct-class-tree-panel-node-icon:
 .. figure:: figures/construct-class-tree-panel-node-icon.png
@@ -474,11 +480,11 @@ DODDLE-OWLにおける概念の削除は3 種類ある．「概念の削除」�
 
    Construct Class Tree Panel: Node icon
 
-クラス階層構築パネルにおけるIs-a 階層パネルとHas-a 階層パネルのクラスには， :numref:`construct-class-tree-panel-node-icon` に示す4 種類がある．
+The classes in the Is-a Hierarchy Panel and the Has-a Hierarchy Panel of the class hierarchy construction panel are of four types, as shown in :numref:`construct-class-tree-panel-node-icon`.
 
 Concept Drift Management Panel
 ---------------------------------
-:numref:`construct-class-tree-panel-concept-drift-management-panel` は :numref:`construct-class-tree-panel` -4 概念変動管理パネルの各タブを展開し，拡大した図である．
+:numref:`construct-class-tree-panel-concept-drift-management-panel` is an enlarged view of the Concept Change Management Panel in :numref:`construct-class-tree-panel`-4, with each tab expanded.
 
 .. _construct-class-tree-panel-concept-drift-management-panel:
 .. figure:: figures/construct-class-tree-panel-concept-drift-management-panel.png
@@ -488,15 +494,15 @@ Concept Drift Management Panel
 
    Construct Class Tree Panel: Concept Drift Management Panel
 
-以下では，概念変動管理パネルの各部分について説明する．
+The following describes each component of the Concept Change Management Panel.
 
-#. 照合結果分析の結果をリストで表示する．リストの項目はSIN ノードであり，項目を選択するとIs-a 階層中の該当する部分木が選択される．また，照合結果分析結果を確認し修正する必要がない場合，もしくは，修正後に「照合結果分析結果の確認」ボタンを押すことで，選択した項目をリストから削除することができる．
-#. 剪定結果分析の結果をリストで表示する．2下部の「剪定概念リスト」は，概念階層構築時に剪定された，選択した概念とその上位概念の間の概念が提示されている．「剪定結果分析」ボタンを押すと，ボタン左側のテキストフィールドに指定した数よりも多くの中間概念が削除された概念をリストに表示する．また，剪定結果分析結果を確認し，修正する必要がない場合，もしくは，修正後に「剪定結果分析結果の確認」ボタンを押すことで，選択した項目をリストから削除することができる．（当該概念の剪定概念数がゼロとなる）
-#. 多重継承している概念のリストを表示する．リストの項目を選択すると，3下部に多重継承しているノードのリストが表示される．このノードを選択すると，Is-a 階層パネル中の概念に移動し，ノードを選択する．「上位概念へのリンクを削除」ボタンを押すと，選択した概念と上位概念の間の関係が削除される．
+#. Displays the results of matching result analysis as a list. The items in the list are SIN nodes; selecting an item highlights the corresponding subtree in the Is-a hierarchy. When it has been confirmed that a matching result analysis result requires no correction, or after a correction has been made, clicking the "Confirm Matching Result Analysis Result" button removes the selected item from the list.
+#. Displays the results of pruning result analysis as a list. The "Pruned Concept List" at the bottom of component 2 presents the concepts that were pruned during concept hierarchy construction — specifically, the concepts that lay between the selected concept and its superordinate concept. Clicking the "Pruning Result Analysis" button displays in the list those concepts from which more intermediate concepts were removed than the number specified in the text field to the left of the button. When it has been confirmed that a pruning result analysis result requires no correction, or after a correction has been made, clicking the "Confirm Pruning Result Analysis Result" button removes the selected item from the list. (The number of pruned concepts for the concept in question becomes zero.)
+#. Displays a list of concepts involved in multiple inheritance. Selecting an item from the list displays at the bottom of component 3 a list of nodes that are involved in multiple inheritance. Selecting one of these nodes navigates to the corresponding concept in the Is-a Hierarchy Panel and selects the node. Clicking the "Delete Link to Superordinate Concept" button removes the relationship between the selected concept and its superordinate concept.
 
 Construct Property Tree Panel
 ========================================================
-:numref:`construct-property-tree-panel` にプロパティ階層構築パネルを示す．
+:numref:`construct-property-tree-panel` shows the property hierarchy construction panel.
 
 .. _construct-property-tree-panel:
 .. figure:: figures/construct-property-tree-panel.png
@@ -506,7 +512,7 @@ Construct Property Tree Panel
 
    Construct Property Tree Panel
 
-プロパティ階層構築パネルの構成要素の大部分は，クラス階層構築パネルと同様である．異なる点は， :numref:`construct-property-tree-panel` -1の概念定義パネルがある点である．概念定義パネルは，汎用オントロジーとしてEDR 一般辞書を指定し，プロパティ階層を構築した場合，EDR 概念記述辞書における，agent およびobject の関係にある概念を定義域および値域として自動的に定義している．また，クラス階層を参照し，定義域および値域の追加を行うことも可能である．
+The majority of the components of the property hierarchy construction panel are the same as those of the class hierarchy construction panel. The difference is the presence of the Concept Definition Panel at  :numref:`construct-property-tree-panel`-1. When the EDR General Dictionary is specified as the general ontology and a property hierarchy is built, the Concept Definition Panel automatically defines the concepts that are in an agent or object relationship in the EDR Concept Description Dictionary as the domain and range respectively. It is also possible to reference the class hierarchy to add domains and ranges manually.
 
 .. _construct-property-tree-panel-node-icon:
 .. figure:: figures/construct-property-tree-panel-node-icon.png
@@ -516,11 +522,12 @@ Construct Property Tree Panel
 
    Construct Property Tree Panel: Node icon
 
-プロパティ階層構築パネルにおけるIs-a 階層パネルとHas-a 階層パネルのプロパティには， :numref:`construct-property-tree-panel-node-icon`  に示す4 種類がある．
+The properties in the Is-a Hierarchy Panel and the Has-a Hierarchy Panel of the property hierarchy construction panel are of four types, as shown in :numref:`construct-property-tree-panel-node-icon`.
+
 
 Construct Relationship Panel
 =============================================
-:numref:`construct-relationship-panel` に，関係構築パネルのスクリーンショットを示す．
+:numref:`construct-relationship-panel` shows a screenshot of the relationship construction panel.
 
 .. _construct-relationship-panel:
 .. figure:: figures/construct-relationship-panel.png
@@ -530,16 +537,16 @@ Construct Relationship Panel
 
    Construct Relationship Panel
 
-以下では，関係構築パネルの各部分について説明する．
+The following describes each component of the relationship construction panel.
 
-#. WordSpace パラメータの設定を行う．WordSpace のパラメータとしては，N-gram，N-gram 出現頻度，文脈スコープ（前，後N 語），文脈類似度の閾値を設定できる．「WordSpace の実行」ボタンを押すと結果が5に表示される．
-#. Apriori パラメータの設定を行う．Apriori のパラメータとしては，最小支持度および最小確信度を設定できる．「Apriori」の実行ボタンを押すと結果が5に表示される．
-#. 入力語選択パネルで選択した入力語が表示される．
-#. 入力文書選択パネルで選択した入力文書が表示される．
-#. 3で選択した入力語と関連のある入力語を関係値と共に表示する．関係値の高い順に表示される．WordSpace，Apriori，WordSpace およびApriori のアルゴリズムの関係値をタブで切り替えて表示することができる．
-#. 3で選択した入力語と関連のある5で選択された語を表示し，正解概念対または不正解概念対として7または8に追加する．矢印の向きによって，定義域と値域が変化する．
-#. 定義域，プロパティ，値域が表示される．プロパティは，プロパティ階層構築パネルから選択することができる．
-#. 不要な概念対が表示される．不要な概念対は，概念定義の候補となる概念対集合から削除されるため，残りの概念定義を行いやすくなっている．
+#. Configures the WordSpace parameters. The available WordSpace parameters include N-gram, N-gram occurrence frequency, context scope (N words before and after), and context similarity threshold. Clicking the "Run WordSpace" button displays the results in component 5.
+#. Configures the Apriori parameters. The available Apriori parameters include minimum support and minimum confidence. Clicking the "Run Apriori" button displays the results in component 5.
+#. Displays the input terms selected in the input term selection panel.
+#. Displays the input documents selected in the input document selection panel.
+#. Displays input terms related to the input term selected in component 3, together with their association values, in descending order of association value. The association values produced by the WordSpace algorithm, the Apriori algorithm, and a combination of both can be switched between using tabs.
+#. Displays the term selected in component 5 that is related to the input term selected in component 3, and adds the pair to component 7 as a correct concept pair or to component 8 as an incorrect concept pair. The direction of the arrow determines which concept serves as the domain and which serves as the range.
+#. Displays the domain, property, and range. The property can be selected from the property hierarchy construction panel.
+#. Displays unnecessary concept pairs. Since unnecessary concept pairs are removed from the set of candidate concept pairs for concept definition, the remaining concept definitions become easier to manage.
 
 Option Dialog
 ================================
