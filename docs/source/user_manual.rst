@@ -378,42 +378,42 @@ As an example of the "Construction Options" shown in the center of :numref:`inpu
 As an example of the "Construction Options" shown on the right side of :numref:`input-concept-selection-panel-concept-info`, consider the case where both "Power Generation" and "Thermal Power Generation" are input terms. As in the case above, "Thermal Power Generation" is a partial match term that matches against "Power Generation". When performing input concept selection for "Thermal Power Generation", the "Construction Options" on the right side of :numref:`input-concept-selection-panel-concept-info` is displayed. If "Same Concept" is selected, "Thermal Power Generation" is treated as the same concept as "Power Generation" during concept hierarchy construction. That is, the concept hierarchy is built with "Thermal Power Generation" as an alternative label of the concept in the reference ontology that corresponds to the "Power Generation" concept. On the other hand, if "Subordinate Concept" is selected, "Thermal Power Generation" is treated as a concept distinct from "Power Generation" — specifically, as a subordinate concept of "Power Generation" — and the concept hierarchy is built accordingly. In the initial state, whether a partial match term is treated as a "Same Concept" or a "Subordinate Concept" by default can be configured via the options dialog.
 
 
-Construct Concept Tree Option
--------------------------------
-:numref:`input-concept-selection-panel-construct-concept-tree-option` is an enlarged view of "Hierarchy Construction Options" in :numref:`input-concept-selection-panel`.
+Concept Hierarchy Construction Option
+--------------------------------------------------------
+:numref:`input-concept-selection-panel-concept-hierarchy-construction-option` is an enlarged view of "Hierarchy Construction Options" in :numref:`input-concept-selection-panel`.
 
-.. _input-concept-selection-panel-construct-concept-tree-option:
-.. figure:: figures/input-concept-selection-panel-construct-concept-tree-option.png
+.. _input-concept-selection-panel-concept-hierarchy-construction-option:
+.. figure:: figures/input-concept-selection-panel-concept-hierarchy-construction-option.png
    :scale: 60 %
-   :alt: Input Concept Selection Panel: Construct Concept Tree Option
+   :alt: Input Concept Selection Panel: Concept Hierarchy Construction Option
    :align: center
 
-   Input Concept Selection Panel: Construct Concept Tree Option
+   Input Concept Selection Panel: Concept Hierarchy Construction Option
 
 
 "Hierarchy Construction Options" is used to configure the parameters applied when building class and property hierarchies in the class and property hierarchy construction modules. "Hierarchy Construction Options" consists of "Exact Match Options" and "Partial Match Options".
 
 
-The "Exact Match Options" in :numref:`input-concept-selection-panel-construct-concept-tree-option` provides settings for building a concept hierarchy from the exact match term list. The "Build" checkbox specifies whether to build a concept hierarchy from the exact match term list. The "Pruning" checkbox specifies whether to apply pruning during concept hierarchy construction. The "Add Reference Ontology Concept Labels" checkbox specifies whether, during concept hierarchy construction, each concept's labels should be limited to only the input terms provided, or whether all labels of the corresponding concept in the reference ontology should also be used.
+The "Exact Match Options" in :numref:`input-concept-selection-panel-concept-hierarchy-construction-option` provides settings for building a concept hierarchy from the exact match term list. The "Build" checkbox specifies whether to build a concept hierarchy from the exact match term list. The "Pruning" checkbox specifies whether to apply pruning during concept hierarchy construction. The "Add Reference Ontology Concept Labels" checkbox specifies whether, during concept hierarchy construction, each concept's labels should be limited to only the input terms provided, or whether all labels of the corresponding concept in the reference ontology should also be used.
 
 
-The "Partial Match Options" in :numref:`input-concept-selection-panel-construct-concept-tree-option` provides settings for building a concept hierarchy from the partial match term list. The "Build" checkbox specifies whether to build a concept hierarchy from the partial match term list. The "Pruning" checkbox specifies whether to apply pruning during concept hierarchy construction. The "Add Abstract Concepts" checkbox specifies whether to apply prefix-based hierarchization when building a concept hierarchy from the partial match term list. The text field to the right of this checkbox sets the minimum number of terms that must be groupable under a common prefix before an abstract superordinate concept is inserted.
+The "Partial Match Options" in :numref:`input-concept-selection-panel-concept-hierarchy-construction-option` provides settings for building a concept hierarchy from the partial match term list. The "Build" checkbox specifies whether to build a concept hierarchy from the partial match term list. The "Pruning" checkbox specifies whether to apply pruning during concept hierarchy construction. The "Add Abstract Concepts" checkbox specifies whether to apply prefix-based hierarchization when building a concept hierarchy from the partial match term list. The text field to the right of this checkbox sets the minimum number of terms that must be groupable under a common prefix before an abstract superordinate concept is inserted.
 
 
-Clicking the "Build Class Hierarchy" button at the right end of :numref:`input-concept-selection-panel-construct-concept-tree-option` builds only the class hierarchy in the class hierarchy construction panel, based on the hierarchy construction options described above. Clicking the "Build Class and Property Hierarchies" button builds both the class hierarchy and the property hierarchy in the class hierarchy construction panel and the property hierarchy construction panel respectively, based on the hierarchy construction options described above. In order to build both the class hierarchy and the property hierarchy, either the EDR General Dictionary or an OWL ontology containing a property hierarchy must be set as the reference ontology.
+Clicking the "Build Class Hierarchy" button at the right end of :numref:`input-concept-selection-panel-concept-hierarchy-construction-option` builds only the class hierarchy in the class hierarchy construction panel, based on the hierarchy construction options described above. Clicking the "Build Class and Property Hierarchies" button builds both the class hierarchy and the property hierarchy in the class hierarchy construction panel and the property hierarchy construction panel respectively, based on the hierarchy construction options described above. In order to build both the class hierarchy and the property hierarchy, either the EDR General Dictionary or an OWL ontology containing a property hierarchy must be set as the reference ontology.
 
 
-Class Tree Construction Panel
+Class Hierarchy Construction Panel
 =================================================
-:numref:`construct-class-tree-panel` shows the class hierarchy construction panel.
+:numref:`class-hierarchy-construction-panel` shows the class hierarchy construction panel.
 
-.. _construct-class-tree-panel:
-.. figure:: figures/construct-class-tree-panel.png
+.. _class-hierarchy-construction-panel:
+.. figure:: figures/class-hierarchy-construction-panel.png
    :scale: 60 %
-   :alt: Class Tree Construction Panel
+   :alt: Class Hierarchy Construction Panel
    :align: center
 
-   Class Tree Construction Panel
+   Class Hierarchy Construction Panel
 
 The following describes each component.
 
@@ -422,77 +422,77 @@ The following describes each component.
 #. **Concept Hierarchy Panel**: Comprises the Is-a hierarchy and the Has-a hierarchy. Concepts can be searched, added, deleted, and otherwise managed.
 #. **Concept Change Management Panel**: Displays lists of matching result analysis results, pruning result analysis results, and concepts involved in multiple inheritance; selecting an item in any list highlights the corresponding candidate location for correction in the Is-a hierarchy.
 
-The following sections describe components 2 through 4 of :numref:`construct-class-tree-panel` in detail.
+The following sections describe components 2 through 4 of :numref:`class-hierarchy-construction-panel` in detail.
 
 Concept Information Panel
 -------------------------------
-:numref:`construct-class-tree-panel-concept-info` is an enlarged view of the Concept Information Panel, in :numref:`construct-class-tree-panel`-2.
+:numref:`class-hierarchy-construction-panel-concept-info` is an enlarged view of the Concept Information Panel, in :numref:`class-hierarchy-construction-panel`-2.
 
-.. _construct-class-tree-panel-concept-info:
-.. figure:: figures/construct-class-tree-panel-concept-info.png
+.. _class-hierarchy-construction-panel-concept-info:
+.. figure:: figures/class-hierarchy-construction-panel-concept-info.png
    :scale: 60 %
-   :alt: Class Tree Construction Panel: Concept Information Panel
+   :alt: Class Hierarchy Construction Panel: Concept Information Panel
    :align: center
 
-   Class Tree Construction Panel: Concept Information Panel
+   Class Hierarchy Construction Panel: Concept Information Panel
 
 The following describes each component of the Concept Information Panel.
 
 #. The URI of the selected concept can be changed by selecting a namespace prefix from the combo box, entering a local name in the text field, and clicking the "Set URI" button. The namespace prefixes defined in the namespace table shown in the General Ontology Selection Panel (:numref:`ontology-selection-panel`-2) are available for selection.
-#. This is the area for editing the labels of a concept. Selecting an item from the "Language" list displays the labels in the selected language in the "Label" list. In :numref:`construct-class-tree-panel-concept-info`-2, "発電" is shown as the Japanese label. A new label can be added by entering the desired language and text in the "Language" and "Text" text fields at the bottom of :numref:`construct-class-tree-panel-concept-info`-2 and clicking the "Add" button. To edit a selected label, click the "Edit" button; to delete it, click the "Delete" button. In addition, clicking the "Set Preferred Label" button makes the selected label the display label for concepts in the Is-a hierarchy and Has-a hierarchy panels.
+#. This is the area for editing the labels of a concept. Selecting an item from the "Language" list displays the labels in the selected language in the "Label" list. In :numref:`class-hierarchy-construction-panel-concept-info`-2, "発電" is shown as the Japanese label. A new label can be added by entering the desired language and text in the "Language" and "Text" text fields at the bottom of :numref:`class-hierarchy-construction-panel-concept-info`-2 and clicking the "Add" button. To edit a selected label, click the "Edit" button; to delete it, click the "Delete" button. In addition, clicking the "Set Preferred Label" button makes the selected label the display label for concepts in the Is-a hierarchy and Has-a hierarchy panels.
 #. This is the area for editing the descriptions of a concept. As with labels, selecting an item from the "Language" list displays the descriptions in the selected language in the "Description" list.
 #. This is the area for displaying and editing concept change management information. "Node Type" indicates whether the node being edited is a SIN (a concept extracted from the reference ontology) or a best-match node (an input concept). For a SIN node that the user wishes to designate as a best-match node, the node type can be changed here from SIN to best-match. "Number of Pruned Concepts" indicates how many concepts between the selected concept and its superordinate concept were removed during pruning at hierarchy construction time. "Multiple Inheritance" indicates whether the node being edited is involved in multiple inheritance. It displays "true" if multiple inheritance is present, and "false" if it is not.
 #. This area is displayed when the "Add" or "Edit" button in component 3 is clicked. A description can be added or edited by entering the "Language" and "Description" and clicking the "OK" button. The description of the selected concept can also be deleted using the "Delete" button.
 
-Is-a and Has-a Hierarchy Panel
-----------------------------------------
-:numref:`construct-class-tree-panel-isa-hasa-tree-panel` is an enlarged view of  :numref:`construct-class-tree-panel`-3. The left side of :numref:`construct-class-tree-panel-isa-hasa-tree-panel` shows the Is-a Hierarchy Panel, and the right side shows the Has-a Hierarchy Panel.
+Is-a and Has-a Class Hierarchy Panel
+-------------------------------------------------------
+:numref:`class-hierarchy-construction-panel-isa-hasa-tree-panel` is an enlarged view of  :numref:`class-hierarchy-construction-panel`-3. The left side of :numref:`class-hierarchy-construction-panel-isa-hasa-tree-panel` shows the Is-a Class Hierarchy Panel, and the right side shows the Has-a Class Hierarchy Panel.
 
-.. _construct-class-tree-panel-isa-hasa-tree-panel:
-.. figure:: figures/construct-class-tree-panel-isa-hasa-tree-panel.png
+.. _class-hierarchy-construction-panel-isa-hasa-tree-panel:
+.. figure:: figures/class-hierarchy-construction-panel-isa-hasa-tree-panel.png
    :scale: 60 %
-   :alt: Class Tree Construction Panel: Is-a and Has-a Hierarchy Panel
+   :alt: Class Hierarchy Construction Panel: Is-a and Has-a Class Hierarchy Panel
    :align: center
-
-   Class Tree Construction Panel: Is-a and Has-a Hierarchy Panel
+  
+   Class Hierarchy Construction Panel: Is-a and Has-a Class Hierarchy Panel
 
 #. This is the area for searching concepts in the concept hierarchy. Entering a search keyword in the text field and clicking the "Search" button selects concepts that satisfy the search options. When multiple candidates exist, the "Next" button or the "Previous" button can be used to navigate to another candidate concept. The available search options include language, concept label, and concept description. When the "Exact Match Search" checkbox is checked, only concepts whose labels or descriptions exactly match the entered search keyword are retrieved. When the "Exact Match Search" checkbox is unchecked, a partial match search is performed, retrieving concepts whose labels or descriptions contain the search keyword as a substring. When the "URI Search" checkbox is checked, concept URIs are also included as search targets. When the "Case-Sensitive" checkbox is checked, searches against English labels or descriptions are performed in a case-sensitive manner.
-#. A toolbar available for editing the Is-a hierarchy and the Has-a hierarchy. The toolbar provides the same functionality as the popup menu shown in :numref:`construct-class-tree-panel-popup-menu`, which is displayed when a concept in the hierarchy is right-clicked with the mouse.
+#. A toolbar available for editing the Is-a hierarchy and the Has-a hierarchy. The toolbar provides the same functionality as the popup menu shown in :numref:`class-hierarchy-construction-panel-popup-menu`, which is displayed when a concept in the hierarchy is right-clicked with the mouse.
 #. A panel for displaying and editing the Is-a hierarchy and the Has-a hierarchy. Concepts can be added, deleted, and otherwise managed via the toolbar in component 2 or via the popup menu displayed by selecting a concept and right-clicking with the mouse.
 
-.. _construct-class-tree-panel-popup-menu:
-.. figure:: figures/construct-class-tree-panel-popup-menu.png
+.. _class-hierarchy-construction-panel-popup-menu:
+.. figure:: figures/class-hierarchy-construction-panel-popup-menu.png
    :scale: 60 %
-   :alt: Class Tree Construction Panel: Popup menu
+   :alt: Class Hierarchy Construction Panel: Popup menu
    :align: center
 
-   Class Tree Construction Panel: Popup menu
+   Class Hierarchy Construction Panel: Popup menu
 
-:numref:`construct-class-tree-panel-popup-menu` shows the popup menu of the Is-a Hierarchy Panel. The main difference between the Is-a Hierarchy Panel and the Has-a Hierarchy Panel is that the Has-a Hierarchy Panel defines Has-a relationships using concepts defined in the Is-a Hierarchy Panel. In addition, the "Delete Concept" operation described below cannot be performed in the Has-a hierarchy.
+:numref:`class-hierarchy-construction-panel-popup-menu` shows the popup menu of the Is-a Hierarchy Panel. The main difference between the Is-a Hierarchy Panel and the Has-a Hierarchy Panel is that the Has-a Hierarchy Panel defines Has-a relationships using concepts defined in the Is-a Hierarchy Panel. In addition, the "Delete Concept" operation described below cannot be performed in the Has-a hierarchy.
 
 DODDLE-OWL provides three types of concept deletion. "Delete Concept" deletes all nodes that share the same URI as the target node, along with all of their subordinate nodes. "Delete Link to Superordinate Concept" removes the relationship between the target node and its superordinate node when the target node is involved in multiple inheritance. "Delete Intermediate Concept" deletes the target node and redefines its subordinate nodes as subordinate nodes of the target node's superordinate node.
 
-.. _construct-class-tree-panel-node-icon:
-.. figure:: figures/construct-class-tree-panel-node-icon.png
+.. _class-hierarchy-construction-panel-node-icon:
+.. figure:: figures/class-hierarchy-construction-panel-node-icon.png
    :scale: 60 %
-   :alt: Class Tree Construction Panel: Node icon
+   :alt: Class Hierarchy Construction Panel: Node icon
    :align: center
 
-   Class Tree Construction Panel: Node icon
+   Class Hierarchy Construction Panel: Node icon
 
-The classes in the Is-a Hierarchy Panel and the Has-a Hierarchy Panel of the class hierarchy construction panel are of four types, as shown in :numref:`construct-class-tree-panel-node-icon`.
+The classes in the Is-a Hierarchy Panel and the Has-a Hierarchy Panel of the class hierarchy construction panel are of four types, as shown in :numref:`class-hierarchy-construction-panel-node-icon`.
 
 Concept Drift Management Panel
 ---------------------------------
-:numref:`construct-class-tree-panel-concept-drift-management-panel` is an enlarged view of the Concept Change Management Panel in :numref:`construct-class-tree-panel`-4, with each tab expanded.
+:numref:`class-hierarchy-construction-panel-concept-drift-management-panel` is an enlarged view of the Concept Change Management Panel in :numref:`class-hierarchy-construction-panel`-4, with each tab expanded.
 
-.. _construct-class-tree-panel-concept-drift-management-panel:
-.. figure:: figures/construct-class-tree-panel-concept-drift-management-panel.png
+.. _class-hierarchy-construction-panel-concept-drift-management-panel:
+.. figure:: figures/class-hierarchy-construction-panel-concept-drift-management-panel.png
    :scale: 60 %
-   :alt: Class Tree Construction Panel: Concept Drift Management Panel
+   :alt: Class Hierarchy Construction Panel: Concept Drift Management Panel
    :align: center
 
-   Class Tree Construction Panel: Concept Drift Management Panel
+   Class Hierarchy Construction Panel: Concept Drift Management Panel
 
 The following describes each component of the Concept Change Management Panel.
 
@@ -500,37 +500,37 @@ The following describes each component of the Concept Change Management Panel.
 #. Displays the results of pruning result analysis as a list. The "Pruned Concept List" at the bottom of component 2 presents the concepts that were pruned during concept hierarchy construction — specifically, the concepts that lay between the selected concept and its superordinate concept. Clicking the "Pruning Result Analysis" button displays in the list those concepts from which more intermediate concepts were removed than the number specified in the text field to the left of the button. When it has been confirmed that a pruning result analysis result requires no correction, or after a correction has been made, clicking the "Confirm Pruning Result Analysis Result" button removes the selected item from the list. (The number of pruned concepts for the concept in question becomes zero.)
 #. Displays a list of concepts involved in multiple inheritance. Selecting an item from the list displays at the bottom of component 3 a list of nodes that are involved in multiple inheritance. Selecting one of these nodes navigates to the corresponding concept in the Is-a Hierarchy Panel and selects the node. Clicking the "Delete Link to Superordinate Concept" button removes the relationship between the selected concept and its superordinate concept.
 
-Property Tree Construction Panel
+Property Hierarchy Construction Panel
 ========================================================
-:numref:`construct-property-tree-panel` shows the property hierarchy construction panel.
+:numref:`property-hierarchy-construction-panel` shows the property hierarchy construction panel.
 
-.. _construct-property-tree-panel:
-.. figure:: figures/construct-property-tree-panel.png
+.. _property-hierarchy-construction-panel:
+.. figure:: figures/property-hierarchy-construction-panel.png
    :scale: 60 %
-   :alt: Property Tree Construction Panel
+   :alt: Property Hierarchy Construction Panel
    :align: center
 
-   Property Tree Construction Panel
+   Property Hierarchy Construction Panel
 
-The majority of the components of the property hierarchy construction panel are the same as those of the class hierarchy construction panel. The difference is the presence of the Concept Definition Panel at  :numref:`construct-property-tree-panel`-1. When the EDR General Dictionary is specified as the general ontology and a property hierarchy is built, the Concept Definition Panel automatically defines the concepts that are in an agent or object relationship in the EDR Concept Description Dictionary as the domain and range respectively. It is also possible to reference the class hierarchy to add domains and ranges manually.
+The majority of the components of the property hierarchy construction panel are the same as those of the class hierarchy construction panel. The difference is the presence of the Concept Definition Panel at  :numref:`property-hierarchy-construction-panel`-1. When the EDR General Dictionary is specified as the general ontology and a property hierarchy is built, the Concept Definition Panel automatically defines the concepts that are in an agent or object relationship in the EDR Concept Description Dictionary as the domain and range respectively. It is also possible to reference the class hierarchy to add domains and ranges manually.
 
-.. _construct-property-tree-panel-node-icon:
-.. figure:: figures/construct-property-tree-panel-node-icon.png
+.. _property-hierarchy-construction-panel-node-icon:
+.. figure:: figures/property-hierarchy-construction-panel-node-icon.png
    :scale: 60 %
-   :alt: Property Tree Construction Panel: Node icon
+   :alt: Property Hierarchy Construction Panel: Node icon
    :align: center
 
-   Property Tree Construction Panel: Node icon
+   Property Hierarchy Construction Panel: Node icon
 
-The properties in the Is-a Hierarchy Panel and the Has-a Hierarchy Panel of the property hierarchy construction panel are of four types, as shown in :numref:`construct-property-tree-panel-node-icon`.
+The properties in the Is-a Hierarchy Panel and the Has-a Hierarchy Panel of the property hierarchy construction panel are of four types, as shown in :numref:`property-hierarchy-construction-panel-node-icon`.
 
 
 Relationship Construction Panel
 =============================================
-:numref:`construct-relationship-panel` shows a screenshot of the relationship construction panel.
+:numref:`relationship-construction-panel` shows a screenshot of the relationship construction panel.
 
-.. _construct-relationship-panel:
-.. figure:: figures/construct-relationship-panel.png
+.. _relationship-construction-panel:
+.. figure:: figures/relationship-construction-panel.png
    :scale: 60 %
    :alt: Relationship Construction Panel
    :align: center
@@ -544,7 +544,7 @@ The following describes each component of the relationship construction panel.
 #. Displays the input terms selected in the input term selection panel.
 #. Displays the input documents selected in the input document selection panel.
 #. Displays input terms related to the input term selected in component 3, together with their association values, in descending order of association value. The association values produced by the WordSpace algorithm, the Apriori algorithm, and a combination of both can be switched between using tabs.
-#. Displays the term selected in component 5 that is related to the input term selected in component 3, and adds the pair to component 7 as a correct concept pair or to component 8 as an incorrect concept pair. The direction of the arrow determines which concept serves as the domain and which serves as the range.
+#. Displays the term selected in component 5 that is related to the input term selected in component 3, and adds the pair to component 7 as a positive concept pair or to component 8 as a negative concept pair. The direction of the arrow determines which concept serves as the domain and which serves as the range.
 #. Displays the domain, property, and range. The property can be selected from the property hierarchy construction panel.
 #. Displays unnecessary concept pairs. Since unnecessary concept pairs are removed from the set of candidate concept pairs for concept definition, the remaining concept definitions become easier to manage.
 
@@ -679,9 +679,7 @@ Tool menu
 
   * Automatically ranks the concepts in the general-purpose ontology that correspond to input words from the input word set. When an input word is selected in the Input Concept Selection panel, the corresponding concepts are displayed in ranked order.
 
-* Construct Class Hierarchy
-* Construct Class and Property Hierarchy
-* DODDLE Dic Converter
+* DODDLE-OWL Dictionary Converter
 
   * Displays a dialog for converting the EDR Electronic Dictionary and Japanese WordNet dictionary files into a format usable by DODDLE-OWL.
 
@@ -726,7 +724,7 @@ Toolbar
   * - .. figure:: figures/toolbar/page_save.png
     - Save Project As — Save the project with a specified name
   * - .. figure:: figures/toolbar/plugin.png
-    - DODDLE Dic Converter
+    - DODDLE-OWL Dictionary Converter
   * - .. figure:: figures/toolbar/cog.png
     - Show Option Dialog
   * - .. figure:: figures/toolbar/help.png
