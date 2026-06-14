@@ -15,7 +15,7 @@ In order to get existing ontologies on the web, we use Swoogle Web services in t
 
 .. _implementation_architecture:
 .. figure:: figures/implementation-architecture-of-doddle-owl.svg
-   :scale: 100 %
+   :width: 100 %
    :alt: Implementation Architecture of DODDLE-OWL
    :align: center
 
@@ -191,7 +191,7 @@ The namespace table as shown in :numref:`ontology-selection-panel` -2 manages th
 
 .. _ontology-selection-panel:
 .. figure:: figures/ontology-selection-panel.png
-   :scale: 60 %
+   :width: 100 %
    :alt: A screenshot of the General Ontology Selection Panel
    :align: center
 
@@ -207,7 +207,7 @@ OWL meta data of the selected ontology from the ontology list (:numref:`owl-onto
 
 .. _owl-ontology-selection-panel:
 .. figure:: figures/owl-ontology-selection-panel.png
-   :scale: 60 %
+   :width: 100 %
    :alt: A screenshot of the OWL Ontology Selection Panel
    :align: center
 
@@ -221,7 +221,7 @@ We describe the details of each part in :numref:`input-document-selection-panel`
 
 .. _input-document-selection-panel:
 .. figure:: figures/input-document-selection-panel.png
-   :scale: 60 %
+   :width: 100 %
    :alt: A screenshot of the Input Document Selection Panel
    :align: center
 
@@ -244,7 +244,7 @@ In the Input Document Viewer, the user can select input terms while viewing the 
 
 .. _input-document-viewer:
 .. figure:: figures/input-document-viewer.png
-   :scale: 60 %
+   :width: 100 %
    :alt: A screenshot of the Input Document Viewer
    :align: center
 
@@ -264,7 +264,7 @@ In the Input Term Information Table, it is possible to select input terms from t
 
 .. _input-term-table:
 .. figure:: figures/input-term-table.png
-   :scale: 60 %
+   :width: 100 %
    :alt: A screenshot of the Input Term Information Table
    :align: center
 
@@ -286,7 +286,7 @@ In the Removed Term Information Table, a list of the term from the Input Term In
 
 .. _removed-term-table:
 .. figure:: figures/removed-term-table.png
-   :scale: 60 %
+   :width: 100 %
    :alt: A screenshot of the Removed Term Information Table
    :align: center
 
@@ -298,7 +298,7 @@ Input Concept Selection Panel
 
 .. _input-concept-selection-panel:
 .. figure:: figures/input-concept-selection-panel.png
-   :scale: 60 %
+   :width: 100 %
    :alt: Input Concept Selection Panel
    :align: center
 
@@ -318,7 +318,7 @@ Term List
 
 .. _input-concept-selection-panel-term-list:
 .. figure:: figures/input-concept-selection-panel-term-list.png
-   :scale: 60 %
+   :width: 100 %
    :alt: Input Concept Selection Panel: Term List
    :align: center
 
@@ -348,7 +348,7 @@ Concept List
 
 .. _input-concept-selection-panel-concept-list:
 .. figure:: figures/input-concept-selection-panel-concept-list.png
-   :scale: 60 %
+   :width: 50 %
    :alt: Input Concept Selection Panel: Concept List
    :align: center
 
@@ -362,7 +362,7 @@ Concept Information
 
 .. _input-concept-selection-panel-concept-info:
 .. figure:: figures/input-concept-selection-panel-concept-info.png
-   :scale: 60 %
+   :width: 100 %
    :alt: Input Concept Selection Panel: Concept Information
    :align: center
 
@@ -384,7 +384,7 @@ Concept Hierarchy Construction Option
 
 .. _input-concept-selection-panel-concept-hierarchy-construction-option:
 .. figure:: figures/input-concept-selection-panel-concept-hierarchy-construction-option.png
-   :scale: 60 %
+   :width: 100 %
    :alt: Input Concept Selection Panel: Concept Hierarchy Construction Option
    :align: center
 
@@ -409,7 +409,7 @@ Class Hierarchy Construction Panel
 
 .. _class-hierarchy-construction-panel:
 .. figure:: figures/class-hierarchy-construction-panel.png
-   :scale: 60 %
+   :width: 100 %
    :alt: Class Hierarchy Construction Panel
    :align: center
 
@@ -430,7 +430,7 @@ Concept Information Panel
 
 .. _class-hierarchy-construction-panel-concept-info:
 .. figure:: figures/class-hierarchy-construction-panel-concept-info.png
-   :scale: 60 %
+   :width: 100 %
    :alt: Class Hierarchy Construction Panel: Concept Information Panel
    :align: center
 
@@ -450,7 +450,7 @@ Is-a and Has-a Class Hierarchy Panel
 
 .. _class-hierarchy-construction-panel-isa-hasa-tree-panel:
 .. figure:: figures/class-hierarchy-construction-panel-isa-hasa-tree-panel.png
-   :scale: 60 %
+   :width: 100 %
    :alt: Class Hierarchy Construction Panel: Is-a and Has-a Class Hierarchy Panel
    :align: center
   
@@ -462,7 +462,7 @@ Is-a and Has-a Class Hierarchy Panel
 
 .. _class-hierarchy-construction-panel-popup-menu:
 .. figure:: figures/class-hierarchy-construction-panel-popup-menu.png
-   :scale: 60 %
+   :width: 100 %
    :alt: Class Hierarchy Construction Panel: Popup menu
    :align: center
 
@@ -474,7 +474,7 @@ DODDLE-OWL provides three types of concept deletion. "Delete Concept" deletes al
 
 .. _class-hierarchy-construction-panel-node-icon:
 .. figure:: figures/class-hierarchy-construction-panel-node-icon.png
-   :scale: 60 %
+   :width: 100 %
    :alt: Class Hierarchy Construction Panel: Node icon
    :align: center
 
@@ -488,7 +488,7 @@ Concept Drift Management Panel
 
 .. _class-hierarchy-construction-panel-concept-drift-management-panel:
 .. figure:: figures/class-hierarchy-construction-panel-concept-drift-management-panel.png
-   :scale: 60 %
+   :width: 100 %
    :alt: Class Hierarchy Construction Panel: Concept Drift Management Panel
    :align: center
 
@@ -506,7 +506,7 @@ Property Hierarchy Construction Panel
 
 .. _property-hierarchy-construction-panel:
 .. figure:: figures/property-hierarchy-construction-panel.png
-   :scale: 60 %
+   :width: 100 %
    :alt: Property Hierarchy Construction Panel
    :align: center
 
@@ -516,7 +516,7 @@ The majority of the components of the property hierarchy construction panel are 
 
 .. _property-hierarchy-construction-panel-node-icon:
 .. figure:: figures/property-hierarchy-construction-panel-node-icon.png
-   :scale: 60 %
+   :width: 50 %
    :alt: Property Hierarchy Construction Panel: Node icon
    :align: center
 
@@ -531,7 +531,7 @@ Relationship Construction Panel
 
 .. _relationship-construction-panel:
 .. figure:: figures/relationship-construction-panel.png
-   :scale: 60 %
+   :width: 100 %
    :alt: Relationship Construction Panel
    :align: center
 
@@ -559,7 +559,7 @@ Basic Tab
 
 .. _option-dialog-basic:
 .. figure:: figures/option-dialog-basic.png
-   :scale: 60 %
+   :width: 100 %
    :alt: Option Dialog: Basic Tab
    :align: center
 
@@ -588,7 +588,7 @@ Upper Concept List
 
 .. _option-dialog-folder:
 .. figure:: figures/option-dialog-folder.png
-   :scale: 60 %
+   :width: 100 %
    :alt: Option Dialog: Folder Tab
    :align: center
 
@@ -600,7 +600,7 @@ Input Concept Selection Tab
 
 .. _option-dialog-input-concept-selection:
 .. figure:: figures/option-dialog-input-concept-selection.png
-   :scale: 60 %
+   :width: 100 %
    :alt: Option Dialog: Input Concept Selection Tab
    :align: center
 
@@ -612,7 +612,7 @@ Comound Word Tab
 
 .. _option-dialog-compound-word:
 .. figure:: figures/option-dialog-compound-word.png
-   :scale: 60 %
+   :width: 100 %
    :alt: Option Dialog: Compound Word Tab
    :align: center
 
@@ -625,7 +625,7 @@ Display Tab
 
 .. _option-dialog-display:
 .. figure:: figures/option-dialog-display.png
-   :scale: 60 %
+   :width: 100 %
    :alt: Option Dialog: Display Tab
    :align: center
 
