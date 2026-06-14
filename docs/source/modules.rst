@@ -180,7 +180,7 @@ The input module receives a collection of domain-specific documents as input, re
 
 .. _input_module:
 .. figure:: figures/input-module.png
-   :scale: 100 %
+   :width: 100 %
    :alt:  System flow of Input Module
    :align: center
 
