@@ -119,7 +119,7 @@ To extract ontology elements from diverse formats, DODDLE-OWL utilizes five type
 
 
 .. _label_extraction:
-.. figure:: figures/label_extraction.png
+.. figure:: figures/label_extraction.*
    :width: 100 %
    :alt: Difference of the labels of concepts among OWL Basic Vocabulary, SKOS, and the WordNet RDF/OWL scheme
    :align: center
@@ -179,7 +179,7 @@ Input Modules
 The input module receives a collection of domain-specific documents as input, references the reference ontology, and outputs a set of input concepts. This module is composed of three sub-modules: the input document selection module, the input term selection module, and the input concept selection module. The system flow of the input module is illustrated in :numref:`input_module`. The following sections provide a detailed description of each module.
 
 .. _input_module:
-.. figure:: figures/input-module.png
+.. figure:: figures/input-module.*
    :width: 100 %
    :alt:  System flow of Input Module
    :align: center
@@ -249,17 +249,17 @@ The input module distinguishes between exactly-matched concepts (input concepts 
 Hierarchy Construction for Exactly-Matched Concepts
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-.. _process_of_perfectly_matched:
-.. figure:: figures/process_of_perfectly_matched_concept_tree_construction.png
+.. _process_of_exactly_matched:
+.. figure:: figures/process_of_exactly_matched_concept_hierarchy_construction.*
    :width: 100 %
    :alt: Hierarchy Construction Process for Exactly-Matched Concepts
    :align: center
 
    Hierarchy Construction Process for Exactly-Matched Concepts
 
-The process of hierarchy construction for exactly-matched concepts is illustrated in :numref:`process_of_perfectly_matched`. In this process, the system extracts and integrates all paths from the reference ontology that lead from the exactly-matched concepts (treated as leaf nodes) to the root concept. The resulting conceptual hierarchy is referred to as the Best Match Model.
+The process of hierarchy construction for exactly-matched concepts is illustrated in :numref:`process_of_exactly_matched`. In this process, the system extracts and integrates all paths from the reference ontology that lead from the exactly-matched concepts (treated as leaf nodes) to the root concept. The resulting conceptual hierarchy is referred to as the Best Match Model.
 
-The Best Match Model in :numref:`process_of_perfectly_matched` consists of three types of nodes:
+The Best Match Model in :numref:`process_of_exactly_matched` consists of three types of nodes:
 
 #.	Input Concept Nodes (enclosed by a single line): Concepts in the reference ontology that correspond to user-selected input terms; these are indispensable for the domain ontology.
 #.	SIN (Salient Internal Nodes) (enclosed by double lines): Internal nodes identified as significant for the hierarchy.
@@ -289,7 +289,7 @@ In the example shown in :numref:`process_of_partially_matched`, the user initial
 
 The prefix-based stratification focuses on the prefix portion of these partially-matched concepts. If a concept with the same label as the prefix portion already exists within the developing hierarchy, the system creates a new intermediate concept whose label combines the superconcept of that prefix and the label of the suffix-matched concept. Then, it redefines the hierarchy by placing the partially-matched concepts under this newly created intermediate concept. Since the prefix often serves to modify the suffix, combining prefix-based stratification with suffix-based methods allows for the construction of a more granular and detailed conceptual hierarchy.
 
-As shown in :numref:`process_of_perfectly_matched`, in the hierarchy built only through suffix-based stratification, the "gauge" and "radar" concepts (which correspond to the prefixes of "gauge information" and "radar information") are defined as hyponyms of the "instrument" concept. By applying prefix-based stratification here, a new concept "instrument information" —combining "instrument" and "information"—is created and defined as the superconcept of "gauge information" and "radar information." The introduction of this "instrument information" concept distinguishes these terms from "model information" and enables the systematic classification of information related to instruments.
+As shown in :numref:`process_of_exactly_matched`, in the hierarchy built only through suffix-based stratification, the "gauge" and "radar" concepts (which correspond to the prefixes of "gauge information" and "radar information") are defined as hyponyms of the "instrument" concept. By applying prefix-based stratification here, a new concept "instrument information" —combining "instrument" and "information"—is created and defined as the superconcept of "gauge information" and "radar information." The introduction of this "instrument information" concept distinguishes these terms from "model information" and enables the systematic classification of information related to instruments.
 
 Relationship Construction Module
 ---------------------------------------------
@@ -431,10 +431,10 @@ The following describes the hierarchy refinement module and the relationship ref
 
 Hierarchy Refinement Module
 -----------------------------------
-Since the initial concept hierarchy semi-automatically constructed from a reference ontology (in particular, a general ontology) defines general hierarchical relationships, the user must adjust the initial concept hierarchy to a specific domain while taking into account a problem known as concept drift - the semantic shift of concepts resulting from changes in the target domain. To manage concept drift, the hierarchy refinement module applies three strategies: Strategy 1: Matching Result Analysis, Strategy 2: Pruning Result Analysis, and Strategy 3: Multiple Inheritance Elimination. :numref:`process-tree-refinement` illustrates the concept hierarchy refinement process. Strategy 1 identifies concept drift from the perspective of matching results between the input concept set and the general-purpose ontology, Strategy 2 from the perspective of pruning results, and Strategy 3 from the perspective of multiple inheritance. The following describes each strategy in detail.
+Since the initial concept hierarchy semi-automatically constructed from a reference ontology (in particular, a general ontology) defines general hierarchical relationships, the user must adjust the initial concept hierarchy to a specific domain while taking into account a problem known as concept drift - the semantic shift of concepts resulting from changes in the target domain. To manage concept drift, the hierarchy refinement module applies three strategies: Strategy 1: Matching Result Analysis, Strategy 2: Pruning Result Analysis, and Strategy 3: Multiple Inheritance Elimination. :numref:`process-hierarchy-refinement` illustrates the concept hierarchy refinement process. Strategy 1 identifies concept drift from the perspective of matching results between the input concept set and the general-purpose ontology, Strategy 2 from the perspective of pruning results, and Strategy 3 from the perspective of multiple inheritance. The following describes each strategy in detail.
 
-.. _process-tree-refinement:
-.. figure:: figures/process_of_tree_refinement.png
+.. _process-hierarchy-refinement:
+.. figure:: figures/process_of_hierarchy_refinement.*
    :width: 100 %
    :alt:  Concept Hierarchy Refinement Process
    :align: center
@@ -527,7 +527,7 @@ Furthermore, DODDLE-OWL defines the label of a concept using the rdfs:label prop
 
 
 .. _translation_module:
-.. figure:: figures/translation_module.png
+.. figure:: figures/translation_module.*
    :width: 100 %
    :alt: Example of Converting a Domain Ontology to OWL Format via the Translation Module
    :align: center
